@@ -1,0 +1,14 @@
+input(x){
+z := #;
+while(x){
+ t := head(x);
+ if t = 0(#){
+    z := 0(z)
+    };
+ if t = 1(#){
+    z := 1(z)
+  };
+  x := last(x)
+  };
+ return z
+}
