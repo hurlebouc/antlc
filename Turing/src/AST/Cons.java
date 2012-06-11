@@ -28,9 +28,9 @@ public class Cons extends Expression {
         String s = tl.toAsm();
         s += "shl\t eax, 1\n";
         switch (hd) {
-            case 0:
+            case '0':
                 break;
-            case 1:
+            case '1':
                 s += "inc\teax\n";
                 break;
             default:
