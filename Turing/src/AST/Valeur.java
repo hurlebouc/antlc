@@ -24,7 +24,7 @@ public class Valeur extends Expression {
 
     @Override
     public String toAsm() {
-        String s = "\tmov\teax, 0";
+        String s = "\tmov\teax, 0\n";
         if (!v.equals("")) {
             s = "\tmov\teax, " + v + "\n";
         }
