@@ -20,7 +20,8 @@ public class Turing {
     public static void main(String[] args) throws RecognitionException {
         // TODO code application logic here
         String s = "last(0(x11))";
-        String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
+        //String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
+        String prog = utilitaire.Utilitaire.lireFichier("addition.while");
         
         CharStream stream = new ANTLRStringStream(prog);
         turingLexer lexer = new turingLexer(stream);

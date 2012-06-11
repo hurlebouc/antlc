@@ -32,7 +32,7 @@ expression returns [Expression result]
 		| '0' '(' e=expression ')' {$result = new Cons('0', $e.result);}
 		| '1' '(' e=expression ')' {$result = new Cons('1', $e.result);}
 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
-		| 'head' '(' e=expression ')' {$result = new }
+		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
 		| n=ID {$result = Variable.init($n.text);}
 		;
 
