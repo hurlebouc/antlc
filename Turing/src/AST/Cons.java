@@ -26,12 +26,12 @@ public class Cons extends Expression {
     @Override
     public String toAsm() {
         String s = tl.toAsm();
-        s += "shl\t eax, 1\n";
+        s += "\tshl\t eax, 1\n";
         switch (hd) {
             case '0':
                 break;
             case '1':
-                s += "inc\teax\n";
+                s += "\tinc\teax\n";
                 break;
             default:
                 throw new UnsupportedOperationException("caractère inconnu en tête");
