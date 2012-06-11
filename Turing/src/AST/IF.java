@@ -33,7 +33,7 @@ public class IF extends Instruction {
         String s = e1.toAsm();
         s += "\tmov\tebx, eax\n";
         s += e2.toAsm();
-        s += "\tcmp\teax, eax\n\tjne\tendif" + id + "\n";
+        s += "\tcmp\teax, ebx\n\tjne\tendif" + id + "\n";
         for (Instruction instr : li) {
             s += instr.toAsm();
         }
