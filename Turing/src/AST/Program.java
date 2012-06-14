@@ -26,7 +26,7 @@ public class Program {
     public Program(Arguments arg, Instructions instr, String varName) {
         this.arg = arg;
         this.instr = instr;
-        this.output = Variable.init(varName);
+        this.output = Variable.get(varName);
     }
     
     @Override

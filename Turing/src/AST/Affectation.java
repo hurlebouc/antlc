@@ -20,7 +20,7 @@ public class Affectation extends Instruction {
     }
     
     public Affectation(String varName, Expression e) {
-        this.var = Variable.init(varName);
+        this.var = Variable.get(varName);
         this.e = e;
     }
 

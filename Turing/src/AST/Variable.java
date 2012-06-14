@@ -22,44 +22,39 @@ public class Variable extends Expression {
         listevar.add(this);
     }
 
-    
     @Deprecated
     private Variable(String nom) {
         this.nom = nom;
         this.type = null;
         listevar.add(this);
     }
-    
-    public static Variable get(String varName){
-        return Variable.init(varName);
+
+    public static Variable get(String varName) {
+        Variable res = Variable.search(varName);
+        if (res == null) {
+            throw new UnsupportedOperationException("La variable " + varName + " n'a pas été déclarée.");
+        }
+        return res;
     }
 
-    static Variable init(String nom) {
-        Variable res = null;
+    static Variable search(String nom) {
         if (listevar == null) {
-            listevar = new ArrayList<Variable>();
+            return null;
         }
         for (Variable variable : listevar) {
             if (variable.nom.equals(nom)) {
-                res = variable;
-                break;
+                return variable;
             }
         }
-        if (res == null) {
-            throw new UnsupportedOperationException("La variable " + nom + " n'a pas été déclarée.");
-//            res = new Variable(nom);
-        }
-        return res;
+        return null;
     }
 
     static Variable declare(String nom, String type) {
         if (listevar == null) {
             listevar = new ArrayList<Variable>();
         }
-        for (Variable variable : listevar) {
-            if (variable.nom.equals(nom)) {
-                throw new UnsupportedOperationException("la variable " + nom + "a déjà été déclarée.");
-            }
+        if (Variable.search(nom) != null) {
+            throw new UnsupportedOperationException("la variable " + nom + " a déjà été déclarée.");
         }
         return new Variable(nom, type);
     }
