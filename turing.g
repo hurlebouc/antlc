@@ -33,7 +33,7 @@ expression returns [Expression result]
 		| '1' '(' e=expression ')' {$result = new Cons('1', $e.result);}
 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
 		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
-		| n=ID {$result = Variable.init($n.text);}
+		| n=ID {$result = Variable.get($n.text);}
 		;
 
 instruction returns [Instruction result]
@@ -60,5 +60,5 @@ arguments returns [Arguments result]
 	;
 
 program returns [Program result]
-	:	'input' '(' arg=arguments ')' '{' i=instructions 'return' id=ID '}' EOF {$result = new Program($arg.result, $i.result, Variable.init($id.text));}
+	:	'input' '(' arg=arguments ')' '{' i=instructions 'return' id=ID '}' EOF {$result = new Program($arg.result, $i.result, $id.text);}
 	;

@@ -16,10 +16,17 @@ public class Program {
     Instructions instr;
     Variable output;
 
+    @Deprecated
     public Program(Arguments arg, Instructions instr, Variable var) {
         this.arg = arg;
         this.instr = instr;
         this.output = var;
+    }
+    
+    public Program(Arguments arg, Instructions instr, String varName) {
+        this.arg = arg;
+        this.instr = instr;
+        this.output = Variable.init(varName);
     }
     
     @Override

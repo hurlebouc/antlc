@@ -21,18 +21,20 @@ public class Variable extends Expression {
         this.type = type;
         listevar.add(this);
     }
+
     
-    /**
-     * Juste à des fins de débugage temporaire
-     * @param nom 
-     */
+    @Deprecated
     private Variable(String nom) {
         this.nom = nom;
         this.type = null;
         listevar.add(this);
     }
+    
+    public static Variable get(String varName){
+        return Variable.init(varName);
+    }
 
-    public static Variable init(String nom) {
+    static Variable init(String nom) {
         Variable res = null;
         if (listevar == null) {
             listevar = new ArrayList<Variable>();
