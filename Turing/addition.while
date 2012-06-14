@@ -1,6 +1,8 @@
-input(x){
+input(int x){
+int z;
 z := #;
 while(x){
+ caca t;
  t := head(x);
  if (t = 0(#)){
     z := 0(z);

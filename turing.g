@@ -55,8 +55,8 @@ instructions_aux returns [Instructions result]
 	;
 	
 arguments returns [Arguments result]
-	:	n=ID {$result = new Arguments($n.text);}
-		|n=ID ',' arg=arguments{($arg.result).addVar($n.text); $result = $arg.result;}
+	:	type=ID n=ID {$result = new Arguments($n.text, $type.text);}
+		|type=ID n=ID ',' arg=arguments{($arg.result).addVar($n.text, $type.text); $result = $arg.result;}
 	;
 
 program returns [Program result]

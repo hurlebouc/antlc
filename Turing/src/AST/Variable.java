@@ -46,13 +46,16 @@ public class Variable extends Expression {
             }
         }
         if (res == null) {
-//            throw new UnsupportedOperationException("La variable " + nom + " n'a pas été déclarée.");
-            res = new Variable(nom);
+            throw new UnsupportedOperationException("La variable " + nom + " n'a pas été déclarée.");
+//            res = new Variable(nom);
         }
         return res;
     }
 
     static Variable declare(String nom, String type) {
+        if (listevar == null) {
+            listevar = new ArrayList<Variable>();
+        }
         for (Variable variable : listevar) {
             if (variable.nom.equals(nom)) {
                 throw new UnsupportedOperationException("la variable " + nom + "a déjà été déclarée.");

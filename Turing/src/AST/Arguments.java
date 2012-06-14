@@ -18,12 +18,12 @@ public class Arguments extends LinkedList<Variable>{
         this.add(var);
     }
     
-    public Arguments(String varName){
+    public Arguments(String varName, String typeName){
         super();
-        this.addVar(varName);
+        this.addVar(varName, typeName);
     }
     
-    public void addVar(String varName){
-        this.addFirst(Variable.init(varName));
+    public void addVar(String varName, String typeName){
+        this.addFirst(Variable.declare(varName, typeName));
     }
 }
