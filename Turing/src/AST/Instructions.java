@@ -4,6 +4,7 @@
  */
 package AST;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -11,5 +12,6 @@ import java.util.LinkedList;
  * @author devlopmac
  */
 public class Instructions extends LinkedList<Instruction>{
+    private ArrayList<Variable> varPool;
     
 }
