@@ -2,11 +2,13 @@ input(int x){
     int z;
     z := #;
     while(x){
-        int t;
+        typedef truc;
+        truc t;
         t := head(x);
         if (t = 0(#)){
             z := 0(z);
         };
+        truc chose;
         if (t = 1(#)){
             z := 1(z);
         };

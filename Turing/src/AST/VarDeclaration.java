@@ -8,16 +8,16 @@ package AST;
  *
  * @author hubert
  */
-public class Declaration extends Instruction {
+public class VarDeclaration extends Instruction {
 
     private Variable var;
 
     @Deprecated
-    public Declaration(Variable v) {
+    public VarDeclaration(Variable v) {
         this.var = v;
     }
     
-    public Declaration(String varName, String typeName) {
+    public VarDeclaration(String varName, String typeName) {
         this.var = Variable.declare(varName, typeName);
     }
     

@@ -41,8 +41,8 @@ instruction returns [Instruction result]
 		| 'if' '(' e1=expression '=' e2=expression ')' '{' li=instructions '}' {$result = new IF($e1.result, $e2.result, $li.result);}
 		| 'stop' {$result = new Stop();}
 		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
-		| type=ID n=ID {$result = new Declaration($n.text, $type.text);}
-		| 'typedef' type=ID
+		| type=ID n=ID {$result = new VarDeclaration($n.text, $type.text);}
+		| 'typedef' type=ID {$result = new TypeDeclaration($type.text);}
 	;
 	
 instructions returns [Instructions result]

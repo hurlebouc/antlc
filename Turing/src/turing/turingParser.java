@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-14 13:45:20
+// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-14 13:56:43
 
  package turing;
  import AST.*;
@@ -392,7 +392,7 @@ public class turingParser extends Parser {
 
                     n=(Token)match(input,ID,FOLLOW_ID_in_instruction390); 
 
-                    result = new Declaration((n!=null?n.getText():null), (type!=null?type.getText():null));
+                    result = new VarDeclaration((n!=null?n.getText():null), (type!=null?type.getText():null));
 
                     }
                     break;
@@ -402,6 +402,8 @@ public class turingParser extends Parser {
                     match(input,22,FOLLOW_22_in_instruction398); 
 
                     type=(Token)match(input,ID,FOLLOW_ID_in_instruction402); 
+
+                    result = new TypeDeclaration((type!=null?type.getText():null));
 
                     }
                     break;
@@ -455,7 +457,7 @@ public class turingParser extends Parser {
                 case 1 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:49:4: ';'
                     {
-                    match(input,14,FOLLOW_14_in_instructions418); 
+                    match(input,14,FOLLOW_14_in_instructions420); 
 
                     result = new Instructions();
 
@@ -464,13 +466,13 @@ public class turingParser extends Parser {
                 case 2 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:50:4: i= instruction lia= instructions_aux
                     {
-                    pushFollow(FOLLOW_instruction_in_instructions427);
+                    pushFollow(FOLLOW_instruction_in_instructions429);
                     i=instruction();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_instructions_aux_in_instructions431);
+                    pushFollow(FOLLOW_instructions_aux_in_instructions433);
                     lia=instructions_aux();
 
                     state._fsp--;
@@ -539,7 +541,7 @@ public class turingParser extends Parser {
                 case 1 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:54:5: ';'
                     {
-                    match(input,14,FOLLOW_14_in_instructions_aux450); 
+                    match(input,14,FOLLOW_14_in_instructions_aux452); 
 
                     result = new Instructions();
 
@@ -548,9 +550,9 @@ public class turingParser extends Parser {
                 case 2 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:55:4: ';' li= instructions
                     {
-                    match(input,14,FOLLOW_14_in_instructions_aux457); 
+                    match(input,14,FOLLOW_14_in_instructions_aux459); 
 
-                    pushFollow(FOLLOW_instructions_in_instructions_aux461);
+                    pushFollow(FOLLOW_instructions_in_instructions_aux463);
                     li=instructions();
 
                     state._fsp--;
@@ -632,9 +634,9 @@ public class turingParser extends Parser {
                 case 1 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:59:4: type= ID n= ID
                     {
-                    type=(Token)match(input,ID,FOLLOW_ID_in_arguments481); 
+                    type=(Token)match(input,ID,FOLLOW_ID_in_arguments483); 
 
-                    n=(Token)match(input,ID,FOLLOW_ID_in_arguments485); 
+                    n=(Token)match(input,ID,FOLLOW_ID_in_arguments487); 
 
                     result = new Arguments((n!=null?n.getText():null), (type!=null?type.getText():null));
 
@@ -643,13 +645,13 @@ public class turingParser extends Parser {
                 case 2 :
                     // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:60:4: type= ID n= ID ',' arg= arguments
                     {
-                    type=(Token)match(input,ID,FOLLOW_ID_in_arguments494); 
+                    type=(Token)match(input,ID,FOLLOW_ID_in_arguments496); 
 
-                    n=(Token)match(input,ID,FOLLOW_ID_in_arguments498); 
+                    n=(Token)match(input,ID,FOLLOW_ID_in_arguments500); 
 
-                    match(input,11,FOLLOW_11_in_arguments500); 
+                    match(input,11,FOLLOW_11_in_arguments502); 
 
-                    pushFollow(FOLLOW_arguments_in_arguments504);
+                    pushFollow(FOLLOW_arguments_in_arguments506);
                     arg=arguments();
 
                     state._fsp--;
@@ -692,33 +694,33 @@ public class turingParser extends Parser {
             // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:64:2: ( 'input' '(' arg= arguments ')' '{' i= instructions 'return' id= ID '}' EOF )
             // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:64:4: 'input' '(' arg= arguments ')' '{' i= instructions 'return' id= ID '}' EOF
             {
-            match(input,18,FOLLOW_18_in_program520); 
+            match(input,18,FOLLOW_18_in_program522); 
 
-            match(input,9,FOLLOW_9_in_program522); 
+            match(input,9,FOLLOW_9_in_program524); 
 
-            pushFollow(FOLLOW_arguments_in_program526);
+            pushFollow(FOLLOW_arguments_in_program528);
             arg=arguments();
 
             state._fsp--;
 
 
-            match(input,10,FOLLOW_10_in_program528); 
+            match(input,10,FOLLOW_10_in_program530); 
 
-            match(input,24,FOLLOW_24_in_program530); 
+            match(input,24,FOLLOW_24_in_program532); 
 
-            pushFollow(FOLLOW_instructions_in_program534);
+            pushFollow(FOLLOW_instructions_in_program536);
             i=instructions();
 
             state._fsp--;
 
 
-            match(input,20,FOLLOW_20_in_program536); 
+            match(input,20,FOLLOW_20_in_program538); 
 
-            id=(Token)match(input,ID,FOLLOW_ID_in_program540); 
+            id=(Token)match(input,ID,FOLLOW_ID_in_program542); 
 
-            match(input,25,FOLLOW_25_in_program542); 
+            match(input,25,FOLLOW_25_in_program544); 
 
-            match(input,EOF,FOLLOW_EOF_in_program544); 
+            match(input,EOF,FOLLOW_EOF_in_program546); 
 
             result = new Program(arg, i, (id!=null?id.getText():null));
 
@@ -784,27 +786,27 @@ public class turingParser extends Parser {
     public static final BitSet FOLLOW_ID_in_instruction390 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_instruction398 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_ID_in_instruction402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_instructions418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instruction_in_instructions427 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_instructions_aux_in_instructions431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_instructions_aux450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_instructions_aux457 = new BitSet(new long[]{0x0000000000E24040L});
-    public static final BitSet FOLLOW_instructions_in_instructions_aux461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_arguments481 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_ID_in_arguments485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_arguments494 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_ID_in_arguments498 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_11_in_arguments500 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_arguments_in_arguments504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_program520 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_program522 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_arguments_in_program526 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_program528 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_program530 = new BitSet(new long[]{0x0000000000E24040L});
-    public static final BitSet FOLLOW_instructions_in_program534 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_program536 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_ID_in_program540 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_program542 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_program544 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_instructions420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instruction_in_instructions429 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_instructions_aux_in_instructions433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_instructions_aux452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_instructions_aux459 = new BitSet(new long[]{0x0000000000E24040L});
+    public static final BitSet FOLLOW_instructions_in_instructions_aux463 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_arguments483 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ID_in_arguments487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_arguments496 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ID_in_arguments500 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_arguments502 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_arguments_in_arguments506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_program522 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_program524 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_arguments_in_program528 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_program530 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_program532 = new BitSet(new long[]{0x0000000000E24040L});
+    public static final BitSet FOLLOW_instructions_in_program536 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_program538 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ID_in_program542 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_program544 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_program546 = new BitSet(new long[]{0x0000000000000002L});
 
 }
