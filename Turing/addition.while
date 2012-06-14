@@ -1,16 +1,16 @@
 input(int x){
-int z;
-z := #;
-while(x){
- caca t;
- t := head(x);
- if (t = 0(#)){
-    z := 0(z);
+    int z;
+    z := #;
+    while(x){
+        int t;
+        t := head(x);
+        if (t = 0(#)){
+            z := 0(z);
+        };
+        if (t = 1(#)){
+            z := 1(z);
+        };
+        x := last(x);
     };
- if (t = 1(#)){
-    z := 1(z);
-  };
-  x := last(x);
-  };
- return z
+    return z
 }

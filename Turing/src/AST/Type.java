@@ -17,16 +17,16 @@ public class Type {
 
     private Type(String typeName) {
         this.name = typeName;
-        if(listeTypes == null){
-            listeTypes = new ArrayList<Type>();
-        }
         listeTypes.add(this);
     }
     
+    private static void initListeType(){
+        listeTypes = new ArrayList<Type>();
+        new Type("int");
+        new Type("string");
+    }
+    
     private static Type search(String typeName){
-        if(listeTypes == null){
-            return null;
-        }
         for (Type type : listeTypes) {
             if(typeName.equals(type.name)){
                 return type;
@@ -36,6 +36,9 @@ public class Type {
     }
     
     static Type get(String typeName){
+        if(listeTypes == null){
+            initListeType();
+        }
         Type res = Type.search(typeName);
         if(res == null){
             throw new UnsupportedOperationException("Le type " + typeName + " n'est pas déclaré.");
@@ -43,6 +46,9 @@ public class Type {
         return res;
     }
      static Type declare(String typeName){
+         if(listeTypes == null){
+            initListeType();
+        }
          if(Type.search(typeName) != null){
              throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
          }

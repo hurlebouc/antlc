@@ -14,11 +14,11 @@ public class Variable extends Expression {
 
     static ArrayList<Variable> listevar;
     private String nom;
-    private String type;
+    private Type type;
 
     private Variable(String nom, String type) {
         this.nom = nom;
-        this.type = type;
+        this.type = Type.get(type);
         if (listevar == null) {
             listevar = new ArrayList<Variable>();
         }

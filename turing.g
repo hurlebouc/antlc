@@ -42,6 +42,7 @@ instruction returns [Instruction result]
 		| 'stop' {$result = new Stop();}
 		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
 		| type=ID n=ID {$result = new Declaration($n.text, $type.text);}
+		| 'typedef' type=ID
 	;
 	
 instructions returns [Instructions result]
