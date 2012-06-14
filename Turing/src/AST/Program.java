@@ -28,7 +28,7 @@ public class Program {
     }
     
     public String toASM(){
-        String asm = Utilitaire.lireFichier("corps.asm");
+        String asm = Utilitaire.lireFichier("src/AST/corps.asm");
         String var = new String();
         for(Variable v : Variable.listevar){
             var += v.getName() + ": \t dd 0\n";

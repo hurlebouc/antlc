@@ -4,7 +4,6 @@
  */
 package turing;
 
-import AST.Expression;
 import AST.Program;
 import org.antlr.runtime.*;
 
@@ -30,6 +29,6 @@ public class Turing {
         
         
         Program e = parser.program();
-        System.out.println(e.toASM());
+        utilitaire.Utilitaire.ecrireFichier("res.asm", e.toASM());
     }
 }
