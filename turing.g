@@ -41,7 +41,7 @@ instruction returns [Instruction result]
 		| 'if' '(' e1=expression '=' e2=expression ')' '{' li=instructions '}' {$result = new IF($e1.result, $e2.result, $li.result);}
 		| 'stop' {$result = new Stop();}
 		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
-		| ID n=ID
+		| type=ID n=ID {$result = new Declaration(Variable.declare($n.text, $type.text));}
 	;
 	
 instructions returns [Instructions result]
