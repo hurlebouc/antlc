@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-14 11:51:46
+// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-14 12:17:19
 
  package turing;
  import AST.*;
@@ -223,13 +223,14 @@ public class turingParser extends Parser {
 
 
     // $ANTLR start "instruction"
-    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:39:1: instruction returns [Instruction result] : (n= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID );
+    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:39:1: instruction returns [Instruction result] : (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID );
     public final Instruction instruction() throws RecognitionException {
         Instruction result = null;
 
 
-        Token n=null;
+        Token var=null;
         Token type=null;
+        Token n=null;
         Expression e =null;
 
         Expression e1 =null;
@@ -240,7 +241,7 @@ public class turingParser extends Parser {
 
 
         try {
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:40:2: (n= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:40:2: (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID )
             int alt2=5;
             switch ( input.LA(1) ) {
             case ID:
@@ -287,9 +288,9 @@ public class turingParser extends Parser {
 
             switch (alt2) {
                 case 1 :
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:40:4: n= ID AFF e= expression
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:40:4: var= ID AFF e= expression
                     {
-                    n=(Token)match(input,ID,FOLLOW_ID_in_instruction308); 
+                    var=(Token)match(input,ID,FOLLOW_ID_in_instruction308); 
 
                     match(input,AFF,FOLLOW_AFF_in_instruction310); 
 
@@ -299,7 +300,7 @@ public class turingParser extends Parser {
                     state._fsp--;
 
 
-                    result = new Affectation(Variable.init((n!=null?n.getText():null)), e);
+                    result = new Affectation((var!=null?var.getText():null), e);
 
                     }
                     break;
@@ -385,7 +386,7 @@ public class turingParser extends Parser {
 
                     n=(Token)match(input,ID,FOLLOW_ID_in_instruction390); 
 
-                    result = new Declaration(Variable.declare((n!=null?n.getText():null), (type!=null?type.getText():null)));
+                    result = new Declaration((n!=null?n.getText():null), (type!=null?type.getText():null));
 
                     }
                     break;
@@ -606,7 +607,7 @@ public class turingParser extends Parser {
                     {
                     n=(Token)match(input,ID,FOLLOW_ID_in_arguments471); 
 
-                    result = new Arguments(Variable.init((n!=null?n.getText():null)));
+                    result = new Arguments((n!=null?n.getText():null));
 
                     }
                     break;
@@ -623,7 +624,7 @@ public class turingParser extends Parser {
                     state._fsp--;
 
 
-                    (arg).addFirst(Variable.init((n!=null?n.getText():null))); result = arg;
+                    (arg).addVar((n!=null?n.getText():null)); result = arg;
 
                     }
                     break;

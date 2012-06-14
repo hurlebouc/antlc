@@ -12,8 +12,18 @@ import java.util.LinkedList;
  */
 public class Arguments extends LinkedList<Variable>{
     
+    @Deprecated
     public Arguments(Variable var){
         super();
         this.add(var);
+    }
+    
+    public Arguments(String varName){
+        super();
+        this.addVar(varName);
+    }
+    
+    public void addVar(String varName){
+        this.addFirst(Variable.init(varName));
     }
 }

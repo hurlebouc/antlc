@@ -37,11 +37,11 @@ expression returns [Expression result]
 		;
 
 instruction returns [Instruction result]
-	:	n=ID AFF e=expression {$result = new Affectation(Variable.init($n.text), $e.result);}
+	:	var=ID AFF e=expression {$result = new Affectation($var.text, $e.result);}
 		| 'if' '(' e1=expression '=' e2=expression ')' '{' li=instructions '}' {$result = new IF($e1.result, $e2.result, $li.result);}
 		| 'stop' {$result = new Stop();}
 		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
-		| type=ID n=ID {$result = new Declaration(Variable.declare($n.text, $type.text));}
+		| type=ID n=ID {$result = new Declaration($n.text, $type.text);}
 	;
 	
 instructions returns [Instructions result]
@@ -55,8 +55,8 @@ instructions_aux returns [Instructions result]
 	;
 	
 arguments returns [Arguments result]
-	:	n=ID {$result = new Arguments(Variable.init($n.text));}
-		|n=ID ',' arg=arguments{($arg.result).addFirst(Variable.init($n.text)); $result = $arg.result;}
+	:	n=ID {$result = new Arguments($n.text);}
+		|n=ID ',' arg=arguments{($arg.result).addVar($n.text); $result = $arg.result;}
 	;
 
 program returns [Program result]

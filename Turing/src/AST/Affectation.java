@@ -13,8 +13,14 @@ public class Affectation extends Instruction {
     Variable var;
     Expression e;
 
+    @Deprecated
     public Affectation(Variable var, Expression e) {
         this.var = var;
+        this.e = e;
+    }
+    
+    public Affectation(String varName, Expression e) {
+        this.var = Variable.init(varName);
         this.e = e;
     }
 

@@ -12,8 +12,13 @@ public class Declaration extends Instruction {
 
     private Variable var;
 
+    @Deprecated
     public Declaration(Variable v) {
         this.var = v;
+    }
+    
+    public Declaration(String varName, String typeName) {
+        this.var = Variable.declare(varName, typeName);
     }
     
     @Override
