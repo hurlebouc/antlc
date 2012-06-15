@@ -37,7 +37,7 @@ expression returns [Expression result]
 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
 		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
 		| n=ID {$result = Variable.get($n.text);}
-		| n=NUM {$result = new Valeur($n.text);}
+		| n=NUM {$result = new Nombre($n.text);}
 		;
 
 instruction returns [Instruction result]
