@@ -10,11 +10,10 @@ package AST;
  */
 public class Valeur extends Expression {
 
-    int v;
+    String v;
 
     public Valeur(String v) {
-        int val = Integer.parseInt(v);
-        this.v = val;
+        this.v = v;
     }
 
     @Override
@@ -25,9 +24,10 @@ public class Valeur extends Expression {
 
     @Override
     public String toAsm() {
-        String s ;
-        s = "\tmov\teax, " + v + "\n";
-
+        String s = "\tmov\teax, 0\n";
+        if (!v.equals("")) {
+            s = "\tmov\teax, " + v + "\n";
+        }
         return s;
     }
 }
