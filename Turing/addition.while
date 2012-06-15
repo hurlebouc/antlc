@@ -1,8 +1,8 @@
 /*
-* Les fonctions un() et zero()
+* Les fonctions un() et zero() 
 */
 
-input(string x){
+input(int x){
     //string z;
     int z;
     // z := #;
@@ -17,7 +17,7 @@ input(string x){
             z := zero(z);
         };
         // if (t = 1(#)){
-        if (t = un(#)){
+        if (t = un(0)){
             // z := 1(z);
             z := un(z);
         };

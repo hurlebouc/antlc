@@ -16,6 +16,9 @@ public class Cons extends Expression {
     public Cons(char h, Expression t) {
         hd = h;
         tl = t;
+        if(!t.getType().equals(Type.get("int"))){
+            throw new UnsupportedOperationException("cons() ne prend que des int et " + t + " est de type " + t.getType());
+        }
         type = Type.get("int");
     }
 
