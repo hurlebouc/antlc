@@ -13,7 +13,7 @@ public class Valeur extends Expression {
     int v;
 
     public Valeur(String v) {
-        int val = Integer.parseInt(v);             
+        int val = Integer.parseInt(v);
         this.v = val;
     }
 
@@ -25,10 +25,9 @@ public class Valeur extends Expression {
 
     @Override
     public String toAsm() {
-        String s = "\tmov\teax, 0\n";
-        if (!v.equals("")) {
-            s = "\tmov\teax, " + v + "\n";
-        }
+        String s ;
+        s = "\tmov\teax, " + v + "\n";
+
         return s;
     }
 }
