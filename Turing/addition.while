@@ -1,24 +1,27 @@
+/*
+* Les fonctions un() et zero()
+*/
+
 input(string x){
-    int caca;
-    caca := 23;
-    string machin;
-    machin := caca;
-    string z;
-    z := #;
+    //string z;
+    int z;
+    // z := #;
+    z := 0;
     while(x){
         typedef truc;
-        string t;
+        int t;
         t := head(x);
-        if (t = 0(#)){
-            z := 0(z);
+        // if (t = 0(#)){
+        if (t = zero(0)){
+            // z := 0(z);
+            z := zero(z);
         };
-        truc chose;
-        if (t = 1(#)){
-            z := 1(z);
+        // if (t = 1(#)){
+        if (t = un(#)){
+            // z := 1(z);
+            z := un(z);
         };
         x := last(x);
     };
-    t:=z;
-    truc kjf;
     return z
 }

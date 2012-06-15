@@ -16,7 +16,7 @@ public class Cons extends Expression {
     public Cons(char h, Expression t) {
         hd = h;
         tl = t;
-        type = Type.get("string");
+        type = Type.get("int");
     }
 
     @Override

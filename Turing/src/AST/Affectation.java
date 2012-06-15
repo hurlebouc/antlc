@@ -28,6 +28,7 @@ public class Affectation extends Instruction {
         }
 
         if (var.getType().equals(Type.get("string")) && e.getType().equals(Type.get("int"))) {
+            System.out.println("WARNING : cast automatique.");
             this.e = e;
             return;
         } else {

@@ -32,8 +32,8 @@ AFF	:
 	
 expression returns [Expression result]
 	:	'#' {$result = new Valeur("");}
-		| '0' '(' e=expression ')' {$result = new Cons('0', $e.result);}
-		| '1' '(' e=expression ')' {$result = new Cons('1', $e.result);}
+		| 'zero' '(' e=expression ')' {$result = new Cons('0', $e.result);}
+		| 'un' '(' e=expression ')' {$result = new Cons('1', $e.result);}
 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
 		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
 		| n=ID {$result = Variable.get($n.text);}

@@ -3,12 +3,8 @@ section .data
 out:	db "%d",0xa,0x0	
 
 x: 	 dd 0
-caca: 	 dd 0
-machin: 	 dd 0
 z: 	 dd 0
 t: 	 dd 0
-chose: 	 dd 0
-kjf: 	 dd 0
 
 
 section .text
@@ -48,10 +44,6 @@ main:
 
 
 
-	mov	eax, 23
-	mov	[caca], eax
-	mov	eax, [caca]
-	mov	[machin], eax
 	mov	eax, 0
 	mov	[z], eax
 beginwhile0:
@@ -88,8 +80,6 @@ endif1:
 	mov	[x], eax
 	jmp	beginwhile0
 endwhile0:
-	mov	eax, [z]
-	mov	[t], eax
 
 
 	mov	eax, [z]
