@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-14 13:56:43
+// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-15 09:54:21
 
  package turing;
  
@@ -29,6 +29,7 @@ public class turingLexer extends Lexer {
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__26=26;
     public static final int AFF=4;
     public static final int COMMENT=5;
     public static final int ID=6;
@@ -117,10 +118,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:9:7: ( ',' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:9:9: ','
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:9:7: ( '+' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:9:9: '+'
             {
-            match(','); 
+            match('+'); 
 
             }
 
@@ -138,10 +139,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:10:7: ( '0' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:10:9: '0'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:10:7: ( ',' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:10:9: ','
             {
-            match('0'); 
+            match(','); 
 
             }
 
@@ -159,10 +160,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:11:7: ( '1' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:11:9: '1'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:11:7: ( '0' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:11:9: '0'
             {
-            match('1'); 
+            match('0'); 
 
             }
 
@@ -180,10 +181,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:12:7: ( ';' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:12:9: ';'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:12:7: ( '1' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:12:9: '1'
             {
-            match(';'); 
+            match('1'); 
 
             }
 
@@ -201,10 +202,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:13:7: ( '=' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:13:9: '='
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:13:7: ( ';' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:13:9: ';'
             {
-            match('='); 
+            match(';'); 
 
             }
 
@@ -222,12 +223,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:14:7: ( 'head' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:14:9: 'head'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:14:7: ( '=' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:14:9: '='
             {
-            match("head"); 
-
-
+            match('='); 
 
             }
 
@@ -245,10 +244,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:15:7: ( 'if' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:15:9: 'if'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:15:7: ( 'head' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:15:9: 'head'
             {
-            match("if"); 
+            match("head"); 
 
 
 
@@ -268,10 +267,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:16:7: ( 'input' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:16:9: 'input'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:16:7: ( 'if' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:16:9: 'if'
             {
-            match("input"); 
+            match("if"); 
 
 
 
@@ -291,10 +290,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:17:7: ( 'last' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:17:9: 'last'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:17:7: ( 'input' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:17:9: 'input'
             {
-            match("last"); 
+            match("input"); 
 
 
 
@@ -314,10 +313,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:18:7: ( 'return' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:18:9: 'return'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:18:7: ( 'last' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:18:9: 'last'
             {
-            match("return"); 
+            match("last"); 
 
 
 
@@ -337,10 +336,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:7: ( 'stop' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:9: 'stop'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:7: ( 'return' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:9: 'return'
             {
-            match("stop"); 
+            match("return"); 
 
 
 
@@ -360,10 +359,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:7: ( 'typedef' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:9: 'typedef'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:7: ( 'stop' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:9: 'stop'
             {
-            match("typedef"); 
+            match("stop"); 
 
 
 
@@ -383,10 +382,10 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:21:7: ( 'while' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:21:9: 'while'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:21:7: ( 'typedef' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:21:9: 'typedef'
             {
-            match("while"); 
+            match("typedef"); 
 
 
 
@@ -406,10 +405,12 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:22:7: ( '{' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:22:9: '{'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:22:7: ( 'while' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:22:9: 'while'
             {
-            match('{'); 
+            match("while"); 
+
+
 
             }
 
@@ -427,8 +428,29 @@ public class turingLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:23:7: ( '}' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:23:9: '}'
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:23:7: ( '{' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:23:9: '{'
+            {
+            match('{'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__25"
+
+    // $ANTLR start "T__26"
+    public final void mT__26() throws RecognitionException {
+        try {
+            int _type = T__26;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:24:7: ( '}' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:24:9: '}'
             {
             match('}'); 
 
@@ -441,7 +463,7 @@ public class turingLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__25"
+    // $ANTLR end "T__26"
 
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
@@ -725,429 +747,9 @@ public class turingLexer extends Lexer {
     // $ANTLR end "AFF"
 
     public void mTokens() throws RecognitionException {
-        // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | ID | COMMENT | WS | AFF )
-        int alt6=22;
-        switch ( input.LA(1) ) {
-        case '#':
-            {
-            alt6=1;
-            }
-            break;
-        case '(':
-            {
-            alt6=2;
-            }
-            break;
-        case ')':
-            {
-            alt6=3;
-            }
-            break;
-        case ',':
-            {
-            alt6=4;
-            }
-            break;
-        case '0':
-            {
-            alt6=5;
-            }
-            break;
-        case '1':
-            {
-            alt6=6;
-            }
-            break;
-        case ';':
-            {
-            alt6=7;
-            }
-            break;
-        case '=':
-            {
-            alt6=8;
-            }
-            break;
-        case 'h':
-            {
-            int LA6_9 = input.LA(2);
-
-            if ( (LA6_9=='e') ) {
-                int LA6_22 = input.LA(3);
-
-                if ( (LA6_22=='a') ) {
-                    int LA6_30 = input.LA(4);
-
-                    if ( (LA6_30=='d') ) {
-                        int LA6_38 = input.LA(5);
-
-                        if ( ((LA6_38 >= '0' && LA6_38 <= '9')||(LA6_38 >= 'A' && LA6_38 <= 'Z')||LA6_38=='_'||(LA6_38 >= 'a' && LA6_38 <= 'z')) ) {
-                            alt6=19;
-                        }
-                        else {
-                            alt6=9;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case 'i':
-            {
-            switch ( input.LA(2) ) {
-            case 'f':
-                {
-                int LA6_23 = input.LA(3);
-
-                if ( ((LA6_23 >= '0' && LA6_23 <= '9')||(LA6_23 >= 'A' && LA6_23 <= 'Z')||LA6_23=='_'||(LA6_23 >= 'a' && LA6_23 <= 'z')) ) {
-                    alt6=19;
-                }
-                else {
-                    alt6=10;
-                }
-                }
-                break;
-            case 'n':
-                {
-                int LA6_24 = input.LA(3);
-
-                if ( (LA6_24=='p') ) {
-                    int LA6_32 = input.LA(4);
-
-                    if ( (LA6_32=='u') ) {
-                        int LA6_39 = input.LA(5);
-
-                        if ( (LA6_39=='t') ) {
-                            int LA6_46 = input.LA(6);
-
-                            if ( ((LA6_46 >= '0' && LA6_46 <= '9')||(LA6_46 >= 'A' && LA6_46 <= 'Z')||LA6_46=='_'||(LA6_46 >= 'a' && LA6_46 <= 'z')) ) {
-                                alt6=19;
-                            }
-                            else {
-                                alt6=11;
-                            }
-                        }
-                        else {
-                            alt6=19;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-                }
-                break;
-            default:
-                alt6=19;
-            }
-
-            }
-            break;
-        case 'l':
-            {
-            int LA6_11 = input.LA(2);
-
-            if ( (LA6_11=='a') ) {
-                int LA6_25 = input.LA(3);
-
-                if ( (LA6_25=='s') ) {
-                    int LA6_33 = input.LA(4);
-
-                    if ( (LA6_33=='t') ) {
-                        int LA6_40 = input.LA(5);
-
-                        if ( ((LA6_40 >= '0' && LA6_40 <= '9')||(LA6_40 >= 'A' && LA6_40 <= 'Z')||LA6_40=='_'||(LA6_40 >= 'a' && LA6_40 <= 'z')) ) {
-                            alt6=19;
-                        }
-                        else {
-                            alt6=12;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case 'r':
-            {
-            int LA6_12 = input.LA(2);
-
-            if ( (LA6_12=='e') ) {
-                int LA6_26 = input.LA(3);
-
-                if ( (LA6_26=='t') ) {
-                    int LA6_34 = input.LA(4);
-
-                    if ( (LA6_34=='u') ) {
-                        int LA6_41 = input.LA(5);
-
-                        if ( (LA6_41=='r') ) {
-                            int LA6_48 = input.LA(6);
-
-                            if ( (LA6_48=='n') ) {
-                                int LA6_53 = input.LA(7);
-
-                                if ( ((LA6_53 >= '0' && LA6_53 <= '9')||(LA6_53 >= 'A' && LA6_53 <= 'Z')||LA6_53=='_'||(LA6_53 >= 'a' && LA6_53 <= 'z')) ) {
-                                    alt6=19;
-                                }
-                                else {
-                                    alt6=13;
-                                }
-                            }
-                            else {
-                                alt6=19;
-                            }
-                        }
-                        else {
-                            alt6=19;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case 's':
-            {
-            int LA6_13 = input.LA(2);
-
-            if ( (LA6_13=='t') ) {
-                int LA6_27 = input.LA(3);
-
-                if ( (LA6_27=='o') ) {
-                    int LA6_35 = input.LA(4);
-
-                    if ( (LA6_35=='p') ) {
-                        int LA6_42 = input.LA(5);
-
-                        if ( ((LA6_42 >= '0' && LA6_42 <= '9')||(LA6_42 >= 'A' && LA6_42 <= 'Z')||LA6_42=='_'||(LA6_42 >= 'a' && LA6_42 <= 'z')) ) {
-                            alt6=19;
-                        }
-                        else {
-                            alt6=14;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case 't':
-            {
-            int LA6_14 = input.LA(2);
-
-            if ( (LA6_14=='y') ) {
-                int LA6_28 = input.LA(3);
-
-                if ( (LA6_28=='p') ) {
-                    int LA6_36 = input.LA(4);
-
-                    if ( (LA6_36=='e') ) {
-                        int LA6_43 = input.LA(5);
-
-                        if ( (LA6_43=='d') ) {
-                            int LA6_50 = input.LA(6);
-
-                            if ( (LA6_50=='e') ) {
-                                int LA6_54 = input.LA(7);
-
-                                if ( (LA6_54=='f') ) {
-                                    int LA6_57 = input.LA(8);
-
-                                    if ( ((LA6_57 >= '0' && LA6_57 <= '9')||(LA6_57 >= 'A' && LA6_57 <= 'Z')||LA6_57=='_'||(LA6_57 >= 'a' && LA6_57 <= 'z')) ) {
-                                        alt6=19;
-                                    }
-                                    else {
-                                        alt6=15;
-                                    }
-                                }
-                                else {
-                                    alt6=19;
-                                }
-                            }
-                            else {
-                                alt6=19;
-                            }
-                        }
-                        else {
-                            alt6=19;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case 'w':
-            {
-            int LA6_15 = input.LA(2);
-
-            if ( (LA6_15=='h') ) {
-                int LA6_29 = input.LA(3);
-
-                if ( (LA6_29=='i') ) {
-                    int LA6_37 = input.LA(4);
-
-                    if ( (LA6_37=='l') ) {
-                        int LA6_44 = input.LA(5);
-
-                        if ( (LA6_44=='e') ) {
-                            int LA6_51 = input.LA(6);
-
-                            if ( ((LA6_51 >= '0' && LA6_51 <= '9')||(LA6_51 >= 'A' && LA6_51 <= 'Z')||LA6_51=='_'||(LA6_51 >= 'a' && LA6_51 <= 'z')) ) {
-                                alt6=19;
-                            }
-                            else {
-                                alt6=16;
-                            }
-                        }
-                        else {
-                            alt6=19;
-                        }
-                    }
-                    else {
-                        alt6=19;
-                    }
-                }
-                else {
-                    alt6=19;
-                }
-            }
-            else {
-                alt6=19;
-            }
-            }
-            break;
-        case '{':
-            {
-            alt6=17;
-            }
-            break;
-        case '}':
-            {
-            alt6=18;
-            }
-            break;
-        case 'A':
-        case 'B':
-        case 'C':
-        case 'D':
-        case 'E':
-        case 'F':
-        case 'G':
-        case 'H':
-        case 'I':
-        case 'J':
-        case 'K':
-        case 'L':
-        case 'M':
-        case 'N':
-        case 'O':
-        case 'P':
-        case 'Q':
-        case 'R':
-        case 'S':
-        case 'T':
-        case 'U':
-        case 'V':
-        case 'W':
-        case 'X':
-        case 'Y':
-        case 'Z':
-        case '_':
-        case 'a':
-        case 'b':
-        case 'c':
-        case 'd':
-        case 'e':
-        case 'f':
-        case 'g':
-        case 'j':
-        case 'k':
-        case 'm':
-        case 'n':
-        case 'o':
-        case 'p':
-        case 'q':
-        case 'u':
-        case 'v':
-        case 'x':
-        case 'y':
-        case 'z':
-            {
-            alt6=19;
-            }
-            break;
-        case '/':
-            {
-            alt6=20;
-            }
-            break;
-        case '\t':
-        case '\n':
-        case '\r':
-        case ' ':
-            {
-            alt6=21;
-            }
-            break;
-        case ':':
-            {
-            alt6=22;
-            }
-            break;
-        default:
-            NoViableAltException nvae =
-                new NoViableAltException("", 6, 0, input);
-
-            throw nvae;
-
-        }
-
+        // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | ID | COMMENT | WS | AFF )
+        int alt6=23;
+        alt6 = dfa6.predict(input);
         switch (alt6) {
             case 1 :
                 // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:10: T__8
@@ -1294,31 +896,39 @@ public class turingLexer extends Lexer {
                 }
                 break;
             case 19 :
-                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:116: ID
+                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:116: T__26
+                {
+                mT__26(); 
+
+
+                }
+                break;
+            case 20 :
+                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:122: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 20 :
-                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:119: COMMENT
+            case 21 :
+                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:125: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 21 :
-                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:127: WS
+            case 22 :
+                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:133: WS
                 {
                 mWS(); 
 
 
                 }
                 break;
-            case 22 :
-                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:130: AFF
+            case 23 :
+                // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:1:136: AFF
                 {
                 mAFF(); 
 
@@ -1331,6 +941,130 @@ public class turingLexer extends Lexer {
     }
 
 
+    protected DFA6 dfa6 = new DFA6(this);
+    static final String DFA6_eotS =
+        "\12\uffff\7\23\6\uffff\1\23\1\40\7\23\1\uffff\6\23\1\56\1\23\1\60"+
+        "\1\23\1\62\2\23\1\uffff\1\65\1\uffff\1\23\1\uffff\1\23\1\70\1\uffff"+
+        "\1\71\1\23\2\uffff\1\73\1\uffff";
+    static final String DFA6_eofS =
+        "\74\uffff";
+    static final String DFA6_minS =
+        "\1\11\11\uffff\1\145\1\146\1\141\1\145\1\164\1\171\1\150\6\uffff"+
+        "\1\141\1\60\1\160\1\163\1\164\1\157\1\160\1\151\1\144\1\uffff\1"+
+        "\165\1\164\1\165\1\160\1\145\1\154\1\60\1\164\1\60\1\162\1\60\1"+
+        "\144\1\145\1\uffff\1\60\1\uffff\1\156\1\uffff\1\145\1\60\1\uffff"+
+        "\1\60\1\146\2\uffff\1\60\1\uffff";
+    static final String DFA6_maxS =
+        "\1\175\11\uffff\1\145\1\156\1\141\1\145\1\164\1\171\1\150\6\uffff"+
+        "\1\141\1\172\1\160\1\163\1\164\1\157\1\160\1\151\1\144\1\uffff\1"+
+        "\165\1\164\1\165\1\160\1\145\1\154\1\172\1\164\1\172\1\162\1\172"+
+        "\1\144\1\145\1\uffff\1\172\1\uffff\1\156\1\uffff\1\145\1\172\1\uffff"+
+        "\1\172\1\146\2\uffff\1\172\1\uffff";
+    static final String DFA6_acceptS =
+        "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\7\uffff\1\22\1\23"+
+        "\1\24\1\25\1\26\1\27\11\uffff\1\13\15\uffff\1\12\1\uffff\1\15\1"+
+        "\uffff\1\17\2\uffff\1\14\2\uffff\1\21\1\16\1\uffff\1\20";
+    static final String DFA6_specialS =
+        "\74\uffff}>";
+    static final String[] DFA6_transitionS = {
+            "\2\25\2\uffff\1\25\22\uffff\1\25\2\uffff\1\1\4\uffff\1\2\1\3"+
+            "\1\uffff\1\4\1\5\2\uffff\1\24\1\6\1\7\10\uffff\1\26\1\10\1\uffff"+
+            "\1\11\3\uffff\32\23\4\uffff\1\23\1\uffff\7\23\1\12\1\13\2\23"+
+            "\1\14\5\23\1\15\1\16\1\17\2\23\1\20\3\23\1\21\1\uffff\1\22",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\27",
+            "\1\30\7\uffff\1\31",
+            "\1\32",
+            "\1\33",
+            "\1\34",
+            "\1\35",
+            "\1\36",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\37",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\41",
+            "\1\42",
+            "\1\43",
+            "\1\44",
+            "\1\45",
+            "\1\46",
+            "\1\47",
+            "",
+            "\1\50",
+            "\1\51",
+            "\1\52",
+            "\1\53",
+            "\1\54",
+            "\1\55",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\57",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\61",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\63",
+            "\1\64",
+            "",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "\1\66",
+            "",
+            "\1\67",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\72",
+            "",
+            "",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            ""
+    };
+
+    static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
+    static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
+    static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
+    static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
+    static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
+    static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
+    static final short[][] DFA6_transition;
+
+    static {
+        int numStates = DFA6_transitionS.length;
+        DFA6_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
+        }
+    }
+
+    class DFA6 extends DFA {
+
+        public DFA6(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 6;
+            this.eot = DFA6_eot;
+            this.eof = DFA6_eof;
+            this.min = DFA6_min;
+            this.max = DFA6_max;
+            this.accept = DFA6_accept;
+            this.special = DFA6_special;
+            this.transition = DFA6_transition;
+        }
+        public String getDescription() {
+            return "1:1: Tokens : ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | ID | COMMENT | WS | AFF );";
+        }
+    }
  
 
 }
