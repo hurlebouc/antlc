@@ -11,6 +11,9 @@
 
 ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
+    
+NUM 	:	('0'..'9') ('0'..'9')*
+	;
 
 COMMENT
     :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
@@ -34,6 +37,7 @@ expression returns [Expression result]
 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
 		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
 		| n=ID {$result = Variable.get($n.text);}
+		| n=NUM {$result = new Valeur($n.text);}
 		;
 
 instruction returns [Instruction result]
