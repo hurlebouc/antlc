@@ -1,6 +1,8 @@
 input(string x){
     int caca;
     caca := 23;
+    string machin;
+    machin := caca;
     string z;
     z := #;
     while(x){
