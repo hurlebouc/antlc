@@ -10,10 +10,11 @@ package AST;
  */
 public class Valeur extends Expression {
 
-    String v;
+    int v;
 
     public Valeur(String v) {
-        this.v = v;
+        int val = Integer.parseInt(v);             
+        this.v = val;
     }
 
     @Override
