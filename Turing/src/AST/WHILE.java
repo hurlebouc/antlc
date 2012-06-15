@@ -17,6 +17,9 @@ public class WHILE extends Instruction {
 
     public WHILE(Expression e, Instructions li) {
         this.e = e;
+        if(!e.getType().equals(Type.get("int"))){
+            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType());
+        }
         this.li = li;
         id = cpt++;
     }
