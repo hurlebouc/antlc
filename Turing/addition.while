@@ -1,11 +1,11 @@
-input(int x){
+input(string x){
     int caca;
     caca := 23;
-    int z;
+    string z;
     z := #;
     while(x){
         typedef truc;
-        truc t;
+        string t;
         t := head(x);
         if (t = 0(#)){
             z := 0(z);

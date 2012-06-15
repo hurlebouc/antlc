@@ -9,11 +9,15 @@ package AST;
  * @author hubert
  */
 abstract public class Expression {
-    private Type type;
+    protected Type type;
     
     abstract public String toAsm();
     
     public Type getType(){
         return type;
+    }
+    
+    public void setType(Type type){
+        this.type = type;
     }
 }

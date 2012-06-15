@@ -14,7 +14,6 @@ public class Variable extends Expression {
 
     static ArrayList<Variable> listevar;
     private String nom;
-    private Type type;
 
     private Variable(String nom, String type) {
         this.nom = nom;

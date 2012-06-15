@@ -14,6 +14,7 @@ public class Last extends Expression {
     
     public Last(Expression s){
         this.sub = s;
+        type = Type.get("string");
     }
     
     @Override

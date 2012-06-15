@@ -14,6 +14,7 @@ public class Head extends Expression{
     
     public Head(Expression e){
         this.e = e;
+        type = Type.get("string");
     }
 
     @Override

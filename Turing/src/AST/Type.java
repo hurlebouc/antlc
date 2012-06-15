@@ -54,4 +54,9 @@ public class Type {
          }
          return new Type(typeName);
      }
+     
+    @Override
+     public String toString(){
+         return name;
+     }
 }
