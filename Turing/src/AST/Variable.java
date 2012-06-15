@@ -47,7 +47,7 @@ public class Variable extends Expression {
         Variable res = Variable.search(varName);
         if (res == null) {
             throw new UnsupportedOperationException("La variable " + varName + " n'a pas été déclarée.");
-        }
+        }    
         return res;
     }
 
