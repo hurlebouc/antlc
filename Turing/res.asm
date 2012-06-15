@@ -3,6 +3,7 @@ section .data
 out:	db "%d",0xa,0x0	
 
 x: 	 dd 0
+caca: 	 dd 0
 z: 	 dd 0
 t: 	 dd 0
 chose: 	 dd 0
@@ -46,6 +47,8 @@ main:
 
 
 
+	mov	eax, 23
+	mov	[caca], eax
 	mov	eax, 0
 	mov	[z], eax
 beginwhile0:

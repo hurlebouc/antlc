@@ -21,6 +21,9 @@ public class Affectation extends Instruction {
     
     public Affectation(String varName, Expression e) {
         this.var = Variable.get(varName);
+        if(!var.getType().equals(e.getType())){
+            throw new UnsupportedOperationException("Type non compatible");
+        }
         this.e = e;
     }
 

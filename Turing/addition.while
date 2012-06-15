@@ -1,4 +1,6 @@
 input(int x){
+    int caca;
+    caca := 23;
     int z;
     z := #;
     while(x){
