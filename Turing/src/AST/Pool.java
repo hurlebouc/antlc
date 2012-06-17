@@ -28,31 +28,61 @@ public class Pool {
         current = this;
     }
 
-    Variable searchVar(String nom) {
+    private Variable searchVar(String nom) {
         for (Variable variable : listeVar) {
             if (variable.getName().equals(nom)) {
                 return variable;
             }
         }
-        if(pere != null){
-            for (Variable variable : pere.listeVar) {
-                return variable;
-            }
+        if (pere != null) {
+            return pere.searchVar(nom);
         }
         return null;
     }
 
-    Type searchType(String nom) {
+    private Type searchType(String nom) {
         for (Type type : listeTypes) {
             if (nom.equals(type.getName())) {
                 return type;
             }
         }
-        if(pere != null){
-            for (Type type : pere.listeTypes) {
-                return type;
-            }
+        if (pere != null) {
+            return pere.searchType(nom);
         }
         return null;
+    }
+
+    Variable getVar(String nom) {
+        Variable res = searchVar(nom);
+        if (res == null) {
+            throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
+        }
+        return res;
+    }
+
+    Type getType(String nom) {
+        Type res = searchType(nom);
+        if (res == null) {
+            throw new UnsupportedOperationException("Type " + nom + " undeclared in this scope.");
+        }
+        return res;
+    }
+
+    Variable declareVar(String nom, String type) {
+        if (searchVar(nom) != null) {
+            throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
+        }
+        Variable res = Variable.declareCheckLess(nom, type);
+        listeVar.add(res);
+        return res;
+    }
+    
+    Type declareType(String nom){
+        if (searchType(nom) != null) {
+            throw new UnsupportedOperationException("Type " + nom + " already definied in this scope.");
+        }
+        Type res = Type.declareCheckLess(nom);
+        listeTypes.add(res);
+        return Type.declareCheckLess(nom);
     }
 }

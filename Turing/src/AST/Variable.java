@@ -50,10 +50,20 @@ public class Variable extends Expression {
         }    
         return res;
     }
-
+    
+    @Deprecated
     static Variable declare(String nom, String type) {
         if (Variable.search(nom) != null) {
             throw new UnsupportedOperationException("la variable " + nom + " a déjà été déclarée.");
+        }
+        return new Variable(nom, type);
+    }
+    
+    static Variable declareCheckLess(String nom, String type) {
+        Variable res = Variable.search(nom);
+        if (res != null) {
+            res.type = Type.get(type);
+            return res;
         }
         return new Variable(nom, type);
     }

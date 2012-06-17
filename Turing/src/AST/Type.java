@@ -19,48 +19,61 @@ public class Type {
         this.name = typeName;
         listeTypes.add(this);
     }
-    
-    private static void initListeType(){
+
+    private static void initListeType() {
         listeTypes = new ArrayList<Type>();
         new Type("int");
         new Type("string");
     }
-    
-    private static Type search(String typeName){
+
+    private static Type search(String typeName) {
         for (Type type : listeTypes) {
-            if(typeName.equals(type.name)){
+            if (typeName.equals(type.name)) {
                 return type;
             }
         }
         return null;
     }
-    
-    static Type get(String typeName){
-        if(listeTypes == null){
+
+    static Type get(String typeName) {
+        if (listeTypes == null) {
             initListeType();
         }
         Type res = Type.search(typeName);
-        if(res == null){
+        if (res == null) {
             throw new UnsupportedOperationException("Le type " + typeName + " n'est pas déclaré.");
         }
         return res;
     }
-     static Type declare(String typeName){
-         if(listeTypes == null){
+
+    @Deprecated
+    static Type declare(String typeName) {
+        if (listeTypes == null) {
             initListeType();
         }
-         if(Type.search(typeName) != null){
-             throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
-         }
-         return new Type(typeName);
-     }
-     
+        if (Type.search(typeName) != null) {
+            throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
+        }
+        return new Type(typeName);
+    }
+
+    static Type declareCheckLess(String nom) {
+        if (listeTypes == null) {
+            initListeType();
+        }
+        Type res = Type.search(nom);
+        if (res != null) {
+            return res;
+        }
+        return new Type(nom);
+    }
+
     @Override
-     public String toString(){
-         return name;
-     }
-    
-    public String getName(){
+    public String toString() {
+        return name;
+    }
+
+    public String getName() {
         return name;
     }
 }
