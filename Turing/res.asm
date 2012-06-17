@@ -80,6 +80,8 @@ endif1:
 	mov	[x], eax
 	jmp	beginwhile0
 endwhile0:
+	mov	eax, 9
+	mov	[t], eax
 	mov	eax, [z]
 	jmp	endprog
 

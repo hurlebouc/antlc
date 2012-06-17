@@ -14,7 +14,7 @@ public class Nombre extends Expression {
 
     public Nombre(String s) {
         v = Integer.parseInt(s);
-        this.type = Type.get("int");
+        this.type = "int";
     }
 
     @Override
@@ -23,6 +23,16 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
+    public void checkSemantique(Pool pool) {
     }
+    
+    public String toString(){
+        return "Nombre[" + v + "]";
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return "int";
+    }
+    
 }

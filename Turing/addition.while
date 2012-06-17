@@ -8,7 +8,6 @@ input(int x){
     // z := #;
     z := 0;
     while(x){
-        typedef truc;
         int t;
         t := head(x);
         // if (t = 0(#)){
@@ -23,5 +22,7 @@ input(int x){
         };
         x := last(x);
     };
+    string t;
+    t:=9;
     return z;
 }

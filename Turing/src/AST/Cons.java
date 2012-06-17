@@ -16,10 +16,10 @@ public class Cons extends Expression {
     public Cons(char h, Expression t) {
         hd = h;
         tl = t;
-        if(!t.getType().equals(Type.get("int"))){
-            throw new UnsupportedOperationException("cons() ne prend que des int et " + t + " est de type " + t.getType());
-        }
-        type = Type.get("int");
+//        if(!t.getType().equals("int")){
+//            throw new UnsupportedOperationException("cons() ne prend que des int et " + t + " est de type " + t.getType());
+//        }
+        type = "int";
     }
 
     @Override
@@ -44,10 +44,15 @@ public class Cons extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
-        if(!tl.getType().equals(Type.get("int"))){
-            throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType());
+    public void checkSemantique(Pool pool) {
+        if(!tl.getType(pool).equals("int")){
+            throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType(pool));
         }
-        tl.checkSementique(pool);
+        tl.checkSemantique(pool);
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return "int";
     }
 }

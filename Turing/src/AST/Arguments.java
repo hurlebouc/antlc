@@ -12,18 +12,20 @@ import java.util.LinkedList;
  */
 public class Arguments extends LinkedList<Variable>{
     
-    @Deprecated
-    public Arguments(Variable var){
-        super();
-        this.add(var);
-    }
+    private Pool initialPool;
     
     public Arguments(String varName, String typeName){
         super();
+        initialPool = new Pool(null);
         this.addVar(varName, typeName);
     }
     
     public void addVar(String varName, String typeName){
-        this.addFirst(Variable.declare(varName, typeName));
+        this.addFirst(Variable.init(varName));
+        initialPool.declareVar(varName, typeName);
+    }
+    
+    public Pool getPool(){
+        return initialPool;
     }
 }

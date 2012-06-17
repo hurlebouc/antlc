@@ -9,17 +9,11 @@ package AST;
  * @author hubert
  */
 abstract public class Expression {
-    protected Type type;
+    protected String type;
     
     abstract public String toAsm();
     
-    public Type getType(){
-        return type;
-    }
+    abstract public String getType(Pool pool);
     
-    public void setType(Type type){
-        this.type = type;
-    }
-    
-    abstract public void checkSementique(Pool pool);
+    abstract public void checkSemantique(Pool pool);
 }

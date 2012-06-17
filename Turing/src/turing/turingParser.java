@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-17 15:34:39
+// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-17 17:57:36
 
   package turing;
   import AST.*;
@@ -208,7 +208,7 @@ public class turingParser extends Parser {
                     {
                     n=(Token)match(input,ID,FOLLOW_ID_in_expression301); 
 
-                    result = Variable.get((n!=null?n.getText():null));
+                    result = Variable.init((n!=null?n.getText():null));
 
                     }
                     break;

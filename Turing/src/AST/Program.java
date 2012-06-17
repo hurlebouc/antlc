@@ -36,12 +36,8 @@ public class Program {
     }
     
     public void checkSemantique(){
-        Pool pool = new Pool(null);
-        for (Variable variable : arg) {
-            pool.declareVar(variable.getName(), variable.getType().getName());
-        }
+        Pool pool = arg.getPool();
         instr.checkSemantique(pool);
-//        pool.existVar(output.getName());
     }
     
     @Override

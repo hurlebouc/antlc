@@ -27,9 +27,9 @@ public class Turing {
         TokenStream tokenstream = new CommonTokenStream(lexer);
         turingParser parser = new turingParser(tokenstream);
         
-        System.out.println("Parsing : \n===========");
+        System.out.println("Parsing :\n=========");
         Program e = parser.program();
-        System.out.println("Check Semantique : \n===================");
+        System.out.println("Check Semantique :\n==================");
         e.checkSemantique();
         utilitaire.Utilitaire.ecrireFichier("res.asm", e.toASM());
     }

@@ -11,6 +11,8 @@ package AST;
 public class VarDeclaration extends Instruction {
 
     private Variable var;
+    private String typeName;
+    private String varName;
 
     @Deprecated
     public VarDeclaration(Variable v) {
@@ -18,7 +20,10 @@ public class VarDeclaration extends Instruction {
     }
     
     public VarDeclaration(String varName, String typeName) {
-        this.var = Variable.declare(varName, typeName);
+//        this.var = Variable.declare(varName, typeName);
+        this.typeName = typeName;
+        this.varName = varName;
+        this.var = Variable.init(varName);
     }
     
     @Override
@@ -33,6 +38,7 @@ public class VarDeclaration extends Instruction {
 
     @Override
     public void checkSemantique(Pool pool) {
-        pool.declareVar(var.getName(), var.getType().getName());
+        pool.existType(typeName);
+        pool.declareVar(varName, typeName);
     }
 }

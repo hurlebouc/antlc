@@ -43,8 +43,9 @@ public class IF extends Instruction {
 
     @Override
     public void checkSemantique(Pool pool) {
-        if (e1.getType() != e2.getType()) {
-            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType() + ") et " + e2 + " (" + e2.getType() + ")");
+        
+        if (!e1.getType(pool).equals(e2.getType(pool))) {
+            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType(pool) + ") et " + e2 + " (" + e2.getType(pool) + ")");
         }
         li.checkSemantique(pool);
     }

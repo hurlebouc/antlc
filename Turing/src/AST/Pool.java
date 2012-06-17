@@ -16,7 +16,6 @@ import java.util.ArrayList;
  */
 public class Pool {
 
-    private static Pool current;
     private Pool pere;
     private ArrayList<Variable> listeVar;
     private ArrayList<Type> listeTypes;
@@ -25,7 +24,8 @@ public class Pool {
         this.pere = pere;
         listeVar = new ArrayList<Variable>();
         listeTypes = new ArrayList<Type>();
-        Pool.current = this;
+        listeTypes.add(new Type("int"));
+        listeTypes.add(new Type("string"));
     }
 
     private Variable searchVar(String nom) {
@@ -52,34 +52,36 @@ public class Pool {
         return null;
     }
 
-    void existVar(String nom) {
+    Variable existVar(String nom) {
         Variable res = searchVar(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
         }
+        return res;
     }
 
-    void existType(String nom) {
+    Type existType(String nom) {
         Type res = searchType(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Type " + nom + " undeclared in this scope.");
         }
+        return res;
     }
 
     Variable declareVar(String nom, String type) {
         if (searchVar(nom) != null) {
             throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
         }
-        Variable res = Variable.reDeclare(nom, type);
+        Variable res = Variable.newUnlinked(nom, type);
         listeVar.add(res);
         return res;
     }
-    
-    Type declareType(String nom){
+
+    Type declareType(String nom) {
         if (searchType(nom) != null) {
             throw new UnsupportedOperationException("Type " + nom + " already definied in this scope.");
         }
-        Type res = Type.use(nom);
+        Type res = Type.newUnlinked(nom);
         listeTypes.add(res);
         return res;
     }

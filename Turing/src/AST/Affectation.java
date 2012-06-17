@@ -10,49 +10,34 @@ package AST;
  */
 public class Affectation extends Instruction {
 
-    Variable var;
-    Expression e;
-
-    @Deprecated
-    public Affectation(Variable var, Expression e) {
-        this.var = var;
-        this.e = e;
-    }
+    private String varName;
+    private Expression e;
 
     public Affectation(String varName, Expression e) {
-        this.var = Variable.get(varName);
-        
-        if(var.getType().equals(e.getType())){
-            this.e = e;
-            return;
-        }
-
-        if (var.getType().equals(Type.get("string")) && e.getType().equals(Type.get("int"))) {
-            System.out.println("WARNING : cast automatique.");
-            this.e = e;
-            return;
-        } else {
-            throw new UnsupportedOperationException("Type de " + varName + " (" + var.getType() + ") non compatible avec (" + e.getType() + ")");
-        }
+//        this.var = Variable.get(varName); // plante si jamais intialisé
+        this.varName = varName;
+        this.e = e;
     }
 
     @Override
     public String toString() {
-        return var + " := " + e + "\n";
+        return varName + " := " + e + "\n";
     }
 
     @Override
     public String toAsm() {
         String code = e.toAsm();
-        return code + "\tmov\t[" + var.getName() + "], eax\n";
+        return code + "\tmov\t[" + varName + "], eax\n";
     }
 
     @Override
     public void checkSemantique(Pool pool) {
-        pool.existVar(var.getName());
-        if(!var.getType().equals(e.getType())){
-            throw new UnsupportedOperationException("Type de " + var.getName() + " (" + var.getType() + ") non compatible avec (" + e.getType() + ")");
+        Variable variable = pool.existVar(varName);
+        if (variable.getType(pool).equals("string") && e.getType(pool).equals("int")) {
+            System.out.println("WARNING : cast automatique.");
+        } else if (!variable.getType(pool).equals(e.getType(pool))) {
+            throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(pool) + ") non compatible avec (" + e.getType(pool) + ")");
         }
-        e.checkSementique(pool);
+        e.checkSemantique(pool);
     }
 }

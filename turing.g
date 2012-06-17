@@ -36,7 +36,7 @@
  		| 'un' '(' e=expression ')' {$result = new Cons('1', $e.result);}
  		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
  		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
- 		| n=ID {$result = Variable.get($n.text);}
+ 		| n=ID {$result = Variable.init($n.text);}
  		| n=NUM {$result = new Nombre($n.text);}
  		;
  

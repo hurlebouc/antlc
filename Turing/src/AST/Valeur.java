@@ -14,7 +14,7 @@ public class Valeur extends Expression {
 
     public Valeur(String v) {
         this.v = v;
-        type = Type.get("string");
+        type = "string";
     }
 
     @Override
@@ -33,6 +33,11 @@ public class Valeur extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
+    public void checkSemantique(Pool pool) {
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return "string";
     }
 }

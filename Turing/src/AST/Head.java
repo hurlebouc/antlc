@@ -14,10 +14,10 @@ public class Head extends Expression {
 
     public Head(Expression e) {
         this.e = e;
-        if (!e.getType().equals(Type.get("int"))) {
-            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
-        }
-        type = Type.get("int");
+//        if (!e.getType().equals("int")) {
+//            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
+//        }
+        type = "int";
     }
 
     @Override
@@ -28,10 +28,15 @@ public class Head extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
-        if (!e.getType().equals(Type.get("int"))) {
-            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
+    public void checkSemantique(Pool pool) {
+        if (!e.getType(pool).equals("int")) {
+            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType(pool));
         }
-        e.checkSementique(pool);
+        e.checkSemantique(pool);
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return "int";
     }
 }

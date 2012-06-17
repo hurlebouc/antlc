@@ -17,18 +17,18 @@ public class Variable extends Expression {
 
     private Variable(String nom, String type) {
         this.nom = nom;
-        this.type = Type.get(type);
+        this.type = type;
         if (listevar == null) {
             listevar = new ArrayList<Variable>();
         }
-        listevar.add(this);
+//        listevar.add(this);
     }
 
     @Deprecated
     private Variable(String nom) {
         this.nom = nom;
         this.type = null;
-        listevar.add(this);
+//        listevar.add(this);
     }
 
     private static Variable search(String nom) {
@@ -52,12 +52,24 @@ public class Variable extends Expression {
         return res;
     }
 
+    public static Variable init(String varName) {
+        Variable res = Variable.search(varName);
+        if (res == null) {
+            Variable v = new Variable(varName, null);
+            Variable.listevar.add(v);
+            return v;
+        }
+        return res;
+    }
+
     @Deprecated
     static Variable declare(String nom, String type) {
         if (Variable.search(nom) != null) {
             throw new UnsupportedOperationException("la variable " + nom + " a déjà été déclarée.");
         }
-        return new Variable(nom, type);
+        Variable res = new Variable(nom, type);
+        listevar.add(res);
+        return res;
     }
 
     /**
@@ -69,22 +81,30 @@ public class Variable extends Expression {
      * @return Nouvelle variable si le nom était inusité, variable avec, le cas
      * échéant un nouveau type sinon.
      */
+    @Deprecated
     static Variable use(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
-            res.type = Type.get(type);
+            res.type = type;
             return res;
         }
-        return new Variable(nom, type);
+        res = new Variable(nom, type);
+        listevar.add(res);
+        return res;
     }
-    
+
+    @Deprecated
     static Variable reDeclare(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
-            res.type = Type.get(type);
+            res.type = type;
             return res;
         }
         throw new UnsupportedOperationException("BAD COMPILATOR : variable");
+    }
+
+    static Variable newUnlinked(String nom, String type) {
+        return new Variable(nom, type);
     }
 
     @Override
@@ -102,7 +122,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) { // test l'existance
+    public void checkSemantique(Pool pool) { // test l'existance
         pool.existVar(nom);
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return pool.existVar(nom).type;
     }
 }

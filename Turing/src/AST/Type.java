@@ -15,15 +15,14 @@ public class Type {
     private static ArrayList<Type> listeTypes;
     private String name;
 
-    private Type(String typeName) {
+    public Type(String typeName) {
         this.name = typeName;
-        listeTypes.add(this);
     }
 
     private static void initListeType() {
         listeTypes = new ArrayList<Type>();
-        new Type("int");
-        new Type("string");
+        listeTypes.add(new Type("int"));
+        listeTypes.add(new Type("string"));
     }
 
     private static Type search(String typeName) {
@@ -55,9 +54,12 @@ public class Type {
         if (Type.search(typeName) != null) {
             throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
         }
-        return new Type(typeName);
+        Type res = new Type(typeName);
+        listeTypes.add(res);
+        return res;
     }
 
+    @Deprecated
     static Type use(String nom) {
         if (listeTypes == null) {
             initListeType();
@@ -66,10 +68,13 @@ public class Type {
         if (res != null) {
             return res;
         }
-        return new Type(nom);
+        res = new Type(nom);
+        listeTypes.add(res);
+        return res;
     }
-    
-    static Type reDeclare(String nom){
+
+    @Deprecated
+    static Type reDeclare(String nom) {
         if (listeTypes == null) {
             initListeType();
         }
@@ -78,6 +83,10 @@ public class Type {
             return res;
         }
         throw new UnsupportedOperationException("BAD COMPILATOR : type");
+    }
+
+    static Type newUnlinked(String nom) {
+        return new Type(nom);
     }
 
     @Override

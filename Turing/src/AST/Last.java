@@ -14,10 +14,10 @@ public class Last extends Expression {
     
     public Last(Expression s){
         this.sub = s;
-        if(!s.getType().equals(Type.get("int"))){
-            throw new UnsupportedOperationException("last() ne prend que des int et " + s + " est de type " + s.getType());
-        }
-        type = Type.get("int");
+//        if(!s.getType().equals("int")){
+//            throw new UnsupportedOperationException("last() ne prend que des int et " + s + " est de type " + s.getType());
+//        }
+        type = "int";
     }
     
     @Override
@@ -33,10 +33,15 @@ public class Last extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
-        if(!sub.getType().equals(Type.get("int"))){
-            throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType());
+    public void checkSemantique(Pool pool) {
+        if(!sub.getType(pool).equals("int")){
+            throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(pool));
         }
-        sub.checkSementique(pool);
+        sub.checkSemantique(pool);
+    }
+
+    @Override
+    public String getType(Pool pool) {
+        return "int";
     }
 }
