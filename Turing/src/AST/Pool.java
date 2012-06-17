@@ -25,7 +25,7 @@ public class Pool {
         this.pere = pere;
         listeVar = new ArrayList<Variable>();
         listeTypes = new ArrayList<Type>();
-        current = this;
+        Pool.current = this;
     }
 
     private Variable searchVar(String nom) {
@@ -72,7 +72,7 @@ public class Pool {
         if (searchVar(nom) != null) {
             throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
         }
-        Variable res = Variable.declareCheckLess(nom, type);
+        Variable res = Variable.use(nom, type);
         listeVar.add(res);
         return res;
     }
@@ -81,8 +81,8 @@ public class Pool {
         if (searchType(nom) != null) {
             throw new UnsupportedOperationException("Type " + nom + " already definied in this scope.");
         }
-        Type res = Type.declareCheckLess(nom);
+        Type res = Type.use(nom);
         listeTypes.add(res);
-        return Type.declareCheckLess(nom);
+        return res;
     }
 }

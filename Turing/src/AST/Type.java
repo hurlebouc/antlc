@@ -26,6 +26,7 @@ public class Type {
         new Type("string");
     }
 
+    @Deprecated
     private static Type search(String typeName) {
         for (Type type : listeTypes) {
             if (typeName.equals(type.name)) {
@@ -35,6 +36,7 @@ public class Type {
         return null;
     }
 
+    @Deprecated
     static Type get(String typeName) {
         if (listeTypes == null) {
             initListeType();
@@ -57,7 +59,7 @@ public class Type {
         return new Type(typeName);
     }
 
-    static Type declareCheckLess(String nom) {
+    static Type use(String nom) {
         if (listeTypes == null) {
             initListeType();
         }

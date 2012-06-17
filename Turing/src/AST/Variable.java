@@ -31,6 +31,7 @@ public class Variable extends Expression {
         listevar.add(this);
     }
     
+    @Deprecated
     private static Variable search(String nom) {
         if (listevar == null) {
             return null;
@@ -43,6 +44,7 @@ public class Variable extends Expression {
         return null;
     }
 
+    @Deprecated
     public static Variable get(String varName) {
         Variable res = Variable.search(varName);
         if (res == null) {
@@ -59,7 +61,7 @@ public class Variable extends Expression {
         return new Variable(nom, type);
     }
     
-    static Variable declareCheckLess(String nom, String type) {
+    static Variable use(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
             res.type = Type.get(type);
