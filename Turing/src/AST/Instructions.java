@@ -12,10 +12,10 @@ import java.util.LinkedList;
  */
 public class Instructions extends LinkedList<Instruction>{    
     
-    public void checkSementique(Pool pool){
+    public void checkSemantique(Pool pool){
         Pool newPool = new Pool(pool);
         for (Instruction instruction : this) {
-            instruction.checkSementique(newPool);
+            instruction.checkSemantique(newPool);
         }
     }
 }

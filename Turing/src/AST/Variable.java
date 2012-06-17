@@ -102,7 +102,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
-        throw new UnsupportedOperationException("Ne doit pas être utilisé.");
+    public void checkSementique(Pool pool) { // test l'existance
+        pool.existVar(nom);
     }
 }

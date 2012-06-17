@@ -42,10 +42,10 @@ public class IF extends Instruction {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
+    public void checkSemantique(Pool pool) {
         if (e1.getType() != e2.getType()) {
             throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType() + ") et " + e2 + " (" + e2.getType() + ")");
         }
-        li.checkSementique(pool);
+        li.checkSemantique(pool);
     }
 }

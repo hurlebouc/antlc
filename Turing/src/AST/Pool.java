@@ -52,19 +52,18 @@ public class Pool {
         return null;
     }
 
-    void testVar(String nom) {
+    void existVar(String nom) {
         Variable res = searchVar(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
         }
     }
 
-    Type getType(String nom) {
+    void existType(String nom) {
         Type res = searchType(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Type " + nom + " undeclared in this scope.");
         }
-        return res;
     }
 
     Variable declareVar(String nom, String type) {

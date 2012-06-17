@@ -22,6 +22,6 @@ public class Stop extends Instruction {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
+    public void checkSemantique(Pool pool) {
     }
 }

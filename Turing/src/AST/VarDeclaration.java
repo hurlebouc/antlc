@@ -32,7 +32,7 @@ public class VarDeclaration extends Instruction {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
+    public void checkSemantique(Pool pool) {
         pool.declareVar(var.getName(), var.getType().getName());
     }
 }

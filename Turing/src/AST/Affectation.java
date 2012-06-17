@@ -48,8 +48,8 @@ public class Affectation extends Instruction {
     }
 
     @Override
-    public void checkSementique(Pool pool) {
-        var.checkSementique(pool);
+    public void checkSemantique(Pool pool) {
+        pool.existVar(var.getName());
         if(!var.getType().equals(e.getType())){
             throw new UnsupportedOperationException("Type de " + var.getName() + " (" + var.getType() + ") non compatible avec (" + e.getType() + ")");
         }

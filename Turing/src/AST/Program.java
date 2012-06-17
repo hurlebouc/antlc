@@ -29,6 +29,15 @@ public class Program {
         this.output = Variable.get(varName);
     }
     
+    public void checkSemantique(){
+        Pool pool = new Pool(null);
+        for (Variable variable : arg) {
+            pool.declareVar(variable.getName(), variable.getType().getName());
+        }
+        instr.checkSemantique(pool);
+        pool.existVar(output.getName());
+    }
+    
     @Override
     public String toString(){
         return "input(" + arg + ") " + "{\n" + instr + "return " + output + "\n}";
