@@ -14,19 +14,25 @@ public class Program {
 
     Arguments arg;
     Instructions instr;
-    Variable output;
+//    Variable output;
 
-    @Deprecated
-    public Program(Arguments arg, Instructions instr, Variable var) {
-        this.arg = arg;
-        this.instr = instr;
-        this.output = var;
-    }
+//    @Deprecated
+//    public Program(Arguments arg, Instructions instr, Variable var) {
+//        this.arg = arg;
+//        this.instr = instr;
+//        this.output = var;
+//    }
+//    
+//    @Deprecated
+//    public Program(Arguments arg, Instructions instr, String varName) {
+//        this.arg = arg;
+//        this.instr = instr;
+//        this.output = Variable.get(varName);
+//    }
     
-    public Program(Arguments arg, Instructions instr, String varName) {
+    public Program(Arguments arg, Instructions instr) {
         this.arg = arg;
         this.instr = instr;
-        this.output = Variable.get(varName);
     }
     
     public void checkSemantique(){
@@ -35,12 +41,12 @@ public class Program {
             pool.declareVar(variable.getName(), variable.getType().getName());
         }
         instr.checkSemantique(pool);
-        pool.existVar(output.getName());
+//        pool.existVar(output.getName());
     }
     
     @Override
     public String toString(){
-        return "input(" + arg + ") " + "{\n" + instr + "return " + output + "\n}";
+        return "input(" + arg + ") " + "{\n" + instr + "\n}";
     }
     
     public String toASM(){
@@ -60,7 +66,7 @@ public class Program {
         }
         asm =  asm.replaceFirst("INPUT_LIST", var);
         
-        asm = asm.replaceFirst("OUTPUT", "\tmov\teax, [" + output.getName() + "]\n");
+//        asm = asm.replaceFirst(";OUTPUT", "\tmov\teax, [" + output.getName() + "]\n");
         
         var = "";
         for(Instruction instr : this.instr){

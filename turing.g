@@ -47,6 +47,7 @@
  		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
  		| type=ID n=ID {$result = new VarDeclaration($n.text, $type.text);}
  		| 'typedef' type=ID {$result = new TypeDeclaration($type.text);}
+ 		| 'return' e=expression {$result = new RETURN($e.result);}
  	;
  
  instructions returns [Instructions result]
@@ -65,5 +66,5 @@
  	;
  
  program returns [Program result]
- 	:	'input' '(' arg=arguments ')' '{' i=instructions 'return' id=ID '}' EOF {$result = new Program($arg.result, $i.result, $id.text);}
+ 	:	'input' '(' arg=arguments ')' '{' i=instructions '}' EOF {$result = new Program($arg.result, $i.result);}
  	;

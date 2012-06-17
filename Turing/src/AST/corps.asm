@@ -39,7 +39,7 @@ INPUT_LIST
 
 CORPS
 
-OUTPUT
+;OUTPUT
 
 endprog:
 	push eax

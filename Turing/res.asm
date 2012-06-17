@@ -80,10 +80,11 @@ endif1:
 	mov	[x], eax
 	jmp	beginwhile0
 endwhile0:
-
-
 	mov	eax, [z]
+	jmp	endprog
 
+
+;OUTPUT
 
 endprog:
 	push eax

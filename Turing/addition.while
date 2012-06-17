@@ -23,5 +23,5 @@ input(int x){
         };
         x := last(x);
     };
-    return z
+    return z;
 }
