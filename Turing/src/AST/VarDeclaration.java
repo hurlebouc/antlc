@@ -30,4 +30,9 @@ public class VarDeclaration extends Instruction {
     public String toAsm() {
         return "";
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        pool.declareVar(var.getName(), var.getType().getName());
+    }
 }

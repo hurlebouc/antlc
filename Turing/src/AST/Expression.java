@@ -20,4 +20,6 @@ abstract public class Expression {
     public void setType(Type type){
         this.type = type;
     }
+    
+    abstract public void checkSementique(Pool pool);
 }

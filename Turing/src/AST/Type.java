@@ -26,7 +26,6 @@ public class Type {
         new Type("string");
     }
 
-    @Deprecated
     private static Type search(String typeName) {
         for (Type type : listeTypes) {
             if (typeName.equals(type.name)) {
@@ -68,6 +67,17 @@ public class Type {
             return res;
         }
         return new Type(nom);
+    }
+    
+    static Type reDeclare(String nom){
+        if (listeTypes == null) {
+            initListeType();
+        }
+        Type res = Type.search(nom);
+        if (res != null) {
+            return res;
+        }
+        throw new UnsupportedOperationException("BAD COMPILATOR : type");
     }
 
     @Override

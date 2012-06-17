@@ -12,7 +12,7 @@ public class WHILE extends Instruction {
 
     Expression e;
     Instructions li;
-    int id;
+    private int id;
     private static int cpt;
 
     public WHILE(Expression e, Instructions li) {
@@ -41,5 +41,13 @@ public class WHILE extends Instruction {
         s += "\tjmp\tbeginwhile"+id+"\n";
         s += "endwhile" + id + ":\n";
         return s;
+    }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        if(!e.getType().equals(Type.get("int"))){
+            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType());
+        }
+        li.checkSementique(pool);
     }
 }

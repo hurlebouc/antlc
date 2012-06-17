@@ -30,8 +30,7 @@ public class Variable extends Expression {
         this.type = null;
         listevar.add(this);
     }
-    
-    @Deprecated
+
     private static Variable search(String nom) {
         if (listevar == null) {
             return null;
@@ -49,10 +48,10 @@ public class Variable extends Expression {
         Variable res = Variable.search(varName);
         if (res == null) {
             throw new UnsupportedOperationException("La variable " + varName + " n'a pas été déclarée.");
-        }    
+        }
         return res;
     }
-    
+
     @Deprecated
     static Variable declare(String nom, String type) {
         if (Variable.search(nom) != null) {
@@ -60,7 +59,16 @@ public class Variable extends Expression {
         }
         return new Variable(nom, type);
     }
-    
+
+    /**
+     * Cette fonction ne doit être appelée que lorsque le nom de variable n'est
+     * pas utilisé dans le scope courant.
+     *
+     * @param nom
+     * @param type
+     * @return Nouvelle variable si le nom était inusité, variable avec, le cas
+     * échéant un nouveau type sinon.
+     */
     static Variable use(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
@@ -68,6 +76,15 @@ public class Variable extends Expression {
             return res;
         }
         return new Variable(nom, type);
+    }
+    
+    static Variable reDeclare(String nom, String type) {
+        Variable res = Variable.search(nom);
+        if (res != null) {
+            res.type = Type.get(type);
+            return res;
+        }
+        throw new UnsupportedOperationException("BAD COMPILATOR : variable");
     }
 
     @Override
@@ -82,5 +99,10 @@ public class Variable extends Expression {
     @Override
     public String toAsm() {
         return "\tmov\teax, [" + nom + "]\n";
+    }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        throw new UnsupportedOperationException("Ne doit pas être utilisé.");
     }
 }

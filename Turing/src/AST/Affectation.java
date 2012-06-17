@@ -46,4 +46,13 @@ public class Affectation extends Instruction {
         String code = e.toAsm();
         return code + "\tmov\t[" + var.getName() + "], eax\n";
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        var.checkSementique(pool);
+        if(!var.getType().equals(e.getType())){
+            throw new UnsupportedOperationException("Type de " + var.getName() + " (" + var.getType() + ") non compatible avec (" + e.getType() + ")");
+        }
+        e.checkSementique(pool);
+    }
 }

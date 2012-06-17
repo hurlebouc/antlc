@@ -52,12 +52,11 @@ public class Pool {
         return null;
     }
 
-    Variable getVar(String nom) {
+    void testVar(String nom) {
         Variable res = searchVar(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
         }
-        return res;
     }
 
     Type getType(String nom) {
@@ -72,7 +71,7 @@ public class Pool {
         if (searchVar(nom) != null) {
             throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
         }
-        Variable res = Variable.use(nom, type);
+        Variable res = Variable.reDeclare(nom, type);
         listeVar.add(res);
         return res;
     }

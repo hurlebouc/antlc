@@ -10,4 +10,5 @@ package AST;
  */
 abstract public class Instruction {
     abstract public String toAsm();
+    abstract public void checkSementique(Pool pool);
 }

@@ -1,7 +1,7 @@
-// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-15 13:42:21
+// $ANTLR 3.4 /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g 2012-06-17 13:38:29
 
- package turing;
- 
+  package turing;
+  
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -579,7 +579,7 @@ public class turingLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:3: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -609,13 +609,13 @@ public class turingLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:14: (~ ( '\\n' | '\\r' ) )*
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:12: (~ ( '\\n' | '\\r' ) )*
                     loop3:
                     do {
                         int alt3=2;
@@ -649,7 +649,7 @@ public class turingLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:28: ( '\\r' )?
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:26: ( '\\r' )?
                     int alt4=2;
                     int LA4_0 = input.LA(1);
 
@@ -658,7 +658,7 @@ public class turingLexer extends Lexer {
                     }
                     switch (alt4) {
                         case 1 :
-                            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:28: '\\r'
+                            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:19:26: '\\r'
                             {
                             match('\r'); 
 
@@ -675,13 +675,13 @@ public class turingLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:9: '/*' ( options {greedy=false; } : . )* '*/'
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:7: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:14: ( options {greedy=false; } : . )*
+                    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:12: ( options {greedy=false; } : . )*
                     loop5:
                     do {
                         int alt5=2;
@@ -706,7 +706,7 @@ public class turingLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:42: .
+                    	    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:20:40: .
                     	    {
                     	    matchAny(); 
 
@@ -775,7 +775,7 @@ public class turingLexer extends Lexer {
             int _type = AFF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:30:5: ( ':=' )
-            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:31:2: ':='
+            // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:31:3: ':='
             {
             match(":="); 
 

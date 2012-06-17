@@ -8,13 +8,13 @@ package AST;
  *
  * @author hubert
  */
-public class Head extends Expression{
-    
+public class Head extends Expression {
+
     Expression e;
-    
-    public Head(Expression e){
+
+    public Head(Expression e) {
         this.e = e;
-        if(!e.getType().equals(Type.get("int"))){
+        if (!e.getType().equals(Type.get("int"))) {
             throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
         }
         type = Type.get("int");
@@ -26,5 +26,12 @@ public class Head extends Expression{
         s += "\tand\teax, 1\n";
         return s;
     }
-    
+
+    @Override
+    public void checkSementique(Pool pool) {
+        if (!e.getType().equals(Type.get("int"))) {
+            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
+        }
+        e.checkSementique(pool);
+    }
 }

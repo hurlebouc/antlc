@@ -42,4 +42,12 @@ public class Cons extends Expression {
         }
         return s;
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        if(!tl.getType().equals(Type.get("int"))){
+            throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType());
+        }
+        tl.checkSementique(pool);
+    }
 }

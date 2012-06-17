@@ -20,4 +20,8 @@ public class Stop extends Instruction {
     public String toAsm() {
         return "\tjmp\tendprog\n";
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+    }
 }

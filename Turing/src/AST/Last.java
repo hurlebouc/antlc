@@ -31,4 +31,12 @@ public class Last extends Expression {
         code += "\tshr\teax, 1\n";
         return code;
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        if(!sub.getType().equals(Type.get("int"))){
+            throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType());
+        }
+        sub.checkSementique(pool);
+    }
 }

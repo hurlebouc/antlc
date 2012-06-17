@@ -20,4 +20,9 @@ public class TypeDeclaration extends Instruction {
     public String toAsm() {
         return "";
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        pool.declareType(type.getName());
+    }
 }

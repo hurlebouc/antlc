@@ -31,4 +31,8 @@ public class Valeur extends Expression {
         }
         return s;
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+    }
 }

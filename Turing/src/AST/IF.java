@@ -40,4 +40,12 @@ public class IF extends Instruction {
         s += "endif" + id + ":\n";
         return s;
     }
+
+    @Override
+    public void checkSementique(Pool pool) {
+        if (e1.getType() != e2.getType()) {
+            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType() + ") et " + e2 + " (" + e2.getType() + ")");
+        }
+        li.checkSementique(pool);
+    }
 }

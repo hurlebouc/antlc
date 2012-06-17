@@ -11,4 +11,11 @@ import java.util.LinkedList;
  * @author devlopmac
  */
 public class Instructions extends LinkedList<Instruction>{    
+    
+    public void checkSementique(Pool pool){
+        Pool newPool = new Pool(pool);
+        for (Instruction instruction : this) {
+            instruction.checkSementique(newPool);
+        }
+    }
 }
