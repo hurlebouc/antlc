@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author hubert
  */
-public class Variable extends Expression {
+public class Variable extends Sous_Expression {
 
     static ArrayList<Variable> listevar;
     private String nom;

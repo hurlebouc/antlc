@@ -8,7 +8,7 @@ package AST;
  *
  * @author hubert
  */
-abstract public class Expression {
+abstract public class Sous_Expression {
     protected String type;
     
     abstract public String toAsm();

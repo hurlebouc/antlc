@@ -10,13 +10,13 @@ package AST;
  */
 public class IF extends Instruction {
 
-    Expression e1;
-    Expression e2;
+    Sous_Expression e1;
+    Sous_Expression e2;
     Instructions li;
     int id;
     static int cpt = 0;
 
-    public IF(Expression e1, Expression e2, Instructions li) {
+    public IF(Sous_Expression e1, Sous_Expression e2, Instructions li) {
         this.e1 = e1;
         this.e2 = e2;
         this.li = li;

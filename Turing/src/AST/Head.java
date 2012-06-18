@@ -8,11 +8,11 @@ package AST;
  *
  * @author hubert
  */
-public class Head extends Expression {
+public class Head extends Sous_Expression {
 
-    Expression e;
+    Sous_Expression e;
 
-    public Head(Expression e) {
+    public Head(Sous_Expression e) {
         this.e = e;
 //        if (!e.getType().equals("int")) {
 //            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());

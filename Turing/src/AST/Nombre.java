@@ -8,7 +8,7 @@ package AST;
  *
  * @author hubert
  */
-public class Nombre extends Expression {
+public class Nombre extends Sous_Expression {
 
     private int v;
 

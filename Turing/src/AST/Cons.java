@@ -8,12 +8,12 @@ package AST;
  *
  * @author hubert
  */
-public class Cons extends Expression {
+public class Cons extends Sous_Expression {
 
     char hd;
-    Expression tl;
+    Sous_Expression tl;
 
-    public Cons(char h, Expression t) {
+    public Cons(char h, Sous_Expression t) {
         hd = h;
         tl = t;
 //        if(!t.getType().equals("int")){

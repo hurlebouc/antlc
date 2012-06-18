@@ -61,13 +61,13 @@ public class turingParser extends Parser {
 
 
     // $ANTLR start "expression"
-    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:33:2: expression returns [Expression result] : ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM );
-    public final Expression expression() throws RecognitionException {
-        Expression result = null;
+    // /Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/turing.g:33:2: expression returns [Sous_Expression result] : ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM );
+    public final Sous_Expression expression() throws RecognitionException {
+        Sous_Expression result = null;
 
 
         Token n=null;
-        Expression e =null;
+        Sous_Expression e =null;
 
 
         try {
@@ -247,11 +247,11 @@ public class turingParser extends Parser {
         Token var=null;
         Token type=null;
         Token n=null;
-        Expression e =null;
+        Sous_Expression e =null;
 
-        Expression e1 =null;
+        Sous_Expression e1 =null;
 
-        Expression e2 =null;
+        Sous_Expression e2 =null;
 
         Instructions li =null;
 
