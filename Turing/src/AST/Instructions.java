@@ -12,8 +12,8 @@ import java.util.LinkedList;
  */
 public class Instructions extends LinkedList<Instruction>{    
     
-    public void checkSemantique(Environment pool){
-        Environment newPool = new Environment(pool);
+    public void typeCheck(Environment env){
+        Environment newPool = new Environment(env);
         for (Instruction instruction : this) {
             instruction.typeCheck(newPool);
         }

@@ -35,9 +35,9 @@ public class Program {
         this.instr = instr;
     }
     
-    public void checkSemantique(){
-        Environment pool = arg.getPool();
-        instr.checkSemantique(pool);
+    public void typeCheck(){
+        Environment env = arg.getPool();
+        instr.typeCheck(env);
     }
     
     @Override

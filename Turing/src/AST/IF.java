@@ -47,6 +47,6 @@ public class IF extends Instruction {
         if (!e1.getType(env).equals(e2.getType(env))) {
             throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType(env) + ") et " + e2 + " (" + e2.getType(env) + ")");
         }
-        li.checkSemantique(env);
+        li.typeCheck(env);
     }
 }

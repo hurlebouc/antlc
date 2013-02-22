@@ -48,6 +48,6 @@ public class WHILE extends Instruction {
         if(!e.getType(env).equals("int")){
             throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(env));
         }
-        li.checkSemantique(env);
+        li.typeCheck(env);
     }
 }

@@ -20,17 +20,17 @@ public class Turing {
         // TODO code application logic here
         String s = "last(0(x11))";
         //String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
-        String prog = utilitaire.Utilitaire.lireFichier("addition.while");
+        String src = utilitaire.Utilitaire.lireFichier("addition.while");
         
-        CharStream stream = new ANTLRStringStream(prog);
+        CharStream stream = new ANTLRStringStream(src);
         turingLexer lexer = new turingLexer(stream);
         TokenStream tokenstream = new CommonTokenStream(lexer);
         turingParser parser = new turingParser(tokenstream);
         
         System.out.println("Parsing :\n=========");
-        Program e = parser.program();
-        System.out.println("Check Semantique :\n==================");
-        e.checkSemantique();
-        utilitaire.Utilitaire.ecrireFichier("res.asm", e.toASM());
+        Program prog = parser.program();
+        System.out.println("Type check :\n============");
+        prog.typeCheck();
+        utilitaire.Utilitaire.ecrireFichier("res.asm", prog.toASM());
     }
 }
