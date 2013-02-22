@@ -47,7 +47,7 @@ public class Type {
     }
 
     @Deprecated
-    static Type declare(String typeName) {
+    public static Type declare(String typeName) {
         if (listeTypes == null) {
             initListeType();
         }

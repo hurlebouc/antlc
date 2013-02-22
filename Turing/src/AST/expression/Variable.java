@@ -124,12 +124,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment pool) { // test l'existance
-        pool.existVar(nom);
+    public void typeCheck(Environment env) { // test l'existance
+        env.existVar(nom);
     }
 
     @Override
-    public String getType(Environment pool) {
-        return pool.existVar(nom).type;
+    public String getType(Environment env) {
+        return env.existVar(nom).type;
     }
 }

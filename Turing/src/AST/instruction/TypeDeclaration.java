@@ -2,7 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.instruction;
+
+import AST.Environment;
+import AST.Instruction;
+import AST.Type;
 
 /**
  *

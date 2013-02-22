@@ -1,14 +1,9 @@
-// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g 2013-02-23 00:02:10
+// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g 2013-02-23 00:30:06
 
   package parser;
-import AST.expression.Variable;
-import AST.expression.Valeur;
-import AST.expression.Nombre;
-import AST.expression.Last;
-import AST.expression.Head;
-import AST.expression.Cons;
-import AST.expression.Expression;
   import AST.*;
+  import AST.expression.*;
+  import AST.instruction.*;
   
 
 import org.antlr.runtime.*;
@@ -70,7 +65,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "expression"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:33:2: expression returns [Expression result] : ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM );
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:35:2: expression returns [Expression result] : ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM );
 	public final Expression expression() throws RecognitionException {
 		Expression result = null;
 
@@ -79,7 +74,7 @@ public class turingParser extends Parser {
 		Expression e =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:34:3: ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:36:3: ( '#' | 'zero' '(' e= expression ')' | 'un' '(' e= expression ')' | 'last' '(' e= expression ')' | 'head' '(' e= expression ')' |n= ID |n= NUM )
 			int alt1=7;
 			switch ( input.LA(1) ) {
 			case 9:
@@ -124,14 +119,14 @@ public class turingParser extends Parser {
 			}
 			switch (alt1) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:34:5: '#'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:36:5: '#'
 					{
 					match(input,9,FOLLOW_9_in_expression222); 
 					result = new Valeur("");
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:35:6: 'zero' '(' e= expression ')'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:37:6: 'zero' '(' e= expression ')'
 					{
 					match(input,24,FOLLOW_24_in_expression231); 
 					match(input,10,FOLLOW_10_in_expression233); 
@@ -144,7 +139,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:36:6: 'un' '(' e= expression ')'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:38:6: 'un' '(' e= expression ')'
 					{
 					match(input,22,FOLLOW_22_in_expression248); 
 					match(input,10,FOLLOW_10_in_expression250); 
@@ -157,7 +152,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 4 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:37:6: 'last' '(' e= expression ')'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:39:6: 'last' '(' e= expression ')'
 					{
 					match(input,18,FOLLOW_18_in_expression265); 
 					match(input,10,FOLLOW_10_in_expression267); 
@@ -170,7 +165,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 5 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:38:6: 'head' '(' e= expression ')'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:40:6: 'head' '(' e= expression ')'
 					{
 					match(input,15,FOLLOW_15_in_expression282); 
 					match(input,10,FOLLOW_10_in_expression284); 
@@ -183,14 +178,14 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 6 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:39:6: n= ID
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:41:6: n= ID
 					{
 					n=(Token)match(input,ID,FOLLOW_ID_in_expression301); 
 					result = Variable.init((n!=null?n.getText():null));
 					}
 					break;
 				case 7 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:40:6: n= NUM
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:42:6: n= NUM
 					{
 					n=(Token)match(input,NUM,FOLLOW_NUM_in_expression312); 
 					result = new Nombre((n!=null?n.getText():null));
@@ -213,7 +208,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "instruction"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:43:2: instruction returns [Instruction result] : (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID | 'typedef' type= ID | 'return' e= expression );
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:45:2: instruction returns [Instruction result] : (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID | 'typedef' type= ID | 'return' e= expression );
 	public final Instruction instruction() throws RecognitionException {
 		Instruction result = null;
 
@@ -227,7 +222,7 @@ public class turingParser extends Parser {
 		Instructions li =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:44:3: (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID | 'typedef' type= ID | 'return' e= expression )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:46:3: (var= ID AFF e= expression | 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}' | 'stop' | 'while' '(' e= expression ')' '{' li= instructions '}' |type= ID n= ID | 'typedef' type= ID | 'return' e= expression )
 			int alt2=7;
 			switch ( input.LA(1) ) {
 			case ID:
@@ -286,7 +281,7 @@ public class turingParser extends Parser {
 			}
 			switch (alt2) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:44:5: var= ID AFF e= expression
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:46:5: var= ID AFF e= expression
 					{
 					var=(Token)match(input,ID,FOLLOW_ID_in_instruction336); 
 					match(input,AFF,FOLLOW_AFF_in_instruction338); 
@@ -298,7 +293,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:45:6: 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:47:6: 'if' '(' e1= expression '=' e2= expression ')' '{' li= instructions '}'
 					{
 					match(input,16,FOLLOW_16_in_instruction351); 
 					match(input,10,FOLLOW_10_in_instruction353); 
@@ -322,14 +317,14 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:46:6: 'stop'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:48:6: 'stop'
 					{
 					match(input,20,FOLLOW_20_in_instruction382); 
 					result = new Stop();
 					}
 					break;
 				case 4 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:47:6: 'while' '(' e= expression ')' '{' li= instructions '}'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:49:6: 'while' '(' e= expression ')' '{' li= instructions '}'
 					{
 					match(input,23,FOLLOW_23_in_instruction391); 
 					match(input,10,FOLLOW_10_in_instruction393); 
@@ -348,7 +343,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 5 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:48:6: type= ID n= ID
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:50:6: type= ID n= ID
 					{
 					type=(Token)match(input,ID,FOLLOW_ID_in_instruction418); 
 					n=(Token)match(input,ID,FOLLOW_ID_in_instruction422); 
@@ -356,7 +351,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 6 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:49:6: 'typedef' type= ID
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:51:6: 'typedef' type= ID
 					{
 					match(input,21,FOLLOW_21_in_instruction431); 
 					type=(Token)match(input,ID,FOLLOW_ID_in_instruction435); 
@@ -364,7 +359,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 7 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:50:6: 'return' e= expression
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:52:6: 'return' e= expression
 					{
 					match(input,19,FOLLOW_19_in_instruction444); 
 					pushFollow(FOLLOW_expression_in_instruction448);
@@ -391,7 +386,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "instructions"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:53:2: instructions returns [Instructions result] : ( ';' |i= instruction lia= instructions_aux );
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:55:2: instructions returns [Instructions result] : ( ';' |i= instruction lia= instructions_aux );
 	public final Instructions instructions() throws RecognitionException {
 		Instructions result = null;
 
@@ -400,7 +395,7 @@ public class turingParser extends Parser {
 		Instructions lia =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:54:3: ( ';' |i= instruction lia= instructions_aux )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:56:3: ( ';' |i= instruction lia= instructions_aux )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==13) ) {
@@ -418,14 +413,14 @@ public class turingParser extends Parser {
 
 			switch (alt3) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:54:5: ';'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:56:5: ';'
 					{
 					match(input,13,FOLLOW_13_in_instructions469); 
 					result = new Instructions();
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:55:5: i= instruction lia= instructions_aux
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:57:5: i= instruction lia= instructions_aux
 					{
 					pushFollow(FOLLOW_instruction_in_instructions479);
 					i=instruction();
@@ -455,7 +450,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "instructions_aux"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:58:2: instructions_aux returns [Instructions result] : ( ';' | ';' li= instructions );
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:60:2: instructions_aux returns [Instructions result] : ( ';' | ';' li= instructions );
 	public final Instructions instructions_aux() throws RecognitionException {
 		Instructions result = null;
 
@@ -463,7 +458,7 @@ public class turingParser extends Parser {
 		Instructions li =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:59:3: ( ';' | ';' li= instructions )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:61:3: ( ';' | ';' li= instructions )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0==13) ) {
@@ -497,14 +492,14 @@ public class turingParser extends Parser {
 
 			switch (alt4) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:59:6: ';'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:61:6: ';'
 					{
 					match(input,13,FOLLOW_13_in_instructions_aux505); 
 					result = new Instructions();
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:60:5: ';' li= instructions
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:62:5: ';' li= instructions
 					{
 					match(input,13,FOLLOW_13_in_instructions_aux513); 
 					pushFollow(FOLLOW_instructions_in_instructions_aux517);
@@ -531,7 +526,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "arguments"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:63:2: arguments returns [Arguments result] : (type= ID n= ID |type= ID n= ID ',' arg= arguments );
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:65:2: arguments returns [Arguments result] : (type= ID n= ID |type= ID n= ID ',' arg= arguments );
 	public final Arguments arguments() throws RecognitionException {
 		Arguments result = null;
 
@@ -541,7 +536,7 @@ public class turingParser extends Parser {
 		Arguments arg =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:64:3: (type= ID n= ID |type= ID n= ID ',' arg= arguments )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:66:3: (type= ID n= ID |type= ID n= ID ',' arg= arguments )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==ID) ) {
@@ -593,7 +588,7 @@ public class turingParser extends Parser {
 
 			switch (alt5) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:64:5: type= ID n= ID
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:66:5: type= ID n= ID
 					{
 					type=(Token)match(input,ID,FOLLOW_ID_in_arguments540); 
 					n=(Token)match(input,ID,FOLLOW_ID_in_arguments544); 
@@ -601,7 +596,7 @@ public class turingParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:65:5: type= ID n= ID ',' arg= arguments
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:67:5: type= ID n= ID ',' arg= arguments
 					{
 					type=(Token)match(input,ID,FOLLOW_ID_in_arguments554); 
 					n=(Token)match(input,ID,FOLLOW_ID_in_arguments558); 
@@ -630,7 +625,7 @@ public class turingParser extends Parser {
 
 
 	// $ANTLR start "program"
-	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:68:2: program returns [Program result] : 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF ;
+	// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:70:2: program returns [Program result] : 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF ;
 	public final Program program() throws RecognitionException {
 		Program result = null;
 
@@ -639,8 +634,8 @@ public class turingParser extends Parser {
 		Instructions i =null;
 
 		try {
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:69:3: ( 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF )
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:69:5: 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:71:3: ( 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:71:5: 'input' '(' arg= arguments ')' '{' i= instructions '}' EOF
 			{
 			match(input,17,FOLLOW_17_in_program584); 
 			match(input,10,FOLLOW_10_in_program586); 

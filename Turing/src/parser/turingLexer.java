@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g 2013-02-23 00:02:10
+// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g 2013-02-23 00:30:07
 
   package parser;
   
@@ -425,8 +425,8 @@ public class turingLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:12:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:12:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:14:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:14:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -436,7 +436,7 @@ public class turingLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:12:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:14:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -481,8 +481,8 @@ public class turingLexer extends Lexer {
 		try {
 			int _type = NUM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:15:6: ( ( '0' .. '9' ) ( '0' .. '9' )* )
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:15:8: ( '0' .. '9' ) ( '0' .. '9' )*
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:17:6: ( ( '0' .. '9' ) ( '0' .. '9' )* )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:17:8: ( '0' .. '9' ) ( '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -492,7 +492,7 @@ public class turingLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:15:19: ( '0' .. '9' )*
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:17:19: ( '0' .. '9' )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -537,7 +537,7 @@ public class turingLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:19:3: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:21:3: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='/') ) {
@@ -571,11 +571,11 @@ public class turingLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:19:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:21:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:19:12: (~ ( '\\n' | '\\r' ) )*
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:21:12: (~ ( '\\n' | '\\r' ) )*
 					loop3:
 					while (true) {
 						int alt3=2;
@@ -604,7 +604,7 @@ public class turingLexer extends Lexer {
 						}
 					}
 
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:19:26: ( '\\r' )?
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:21:26: ( '\\r' )?
 					int alt4=2;
 					int LA4_0 = input.LA(1);
 					if ( (LA4_0=='\r') ) {
@@ -612,7 +612,7 @@ public class turingLexer extends Lexer {
 					}
 					switch (alt4) {
 						case 1 :
-							// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:19:26: '\\r'
+							// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:21:26: '\\r'
 							{
 							match('\r'); 
 							}
@@ -625,11 +625,11 @@ public class turingLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:20:7: '/*' ( options {greedy=false; } : . )* '*/'
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:22:7: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:20:12: ( options {greedy=false; } : . )*
+					// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:22:12: ( options {greedy=false; } : . )*
 					loop5:
 					while (true) {
 						int alt5=2;
@@ -650,7 +650,7 @@ public class turingLexer extends Lexer {
 
 						switch (alt5) {
 						case 1 :
-							// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:20:40: .
+							// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:22:40: .
 							{
 							matchAny(); 
 							}
@@ -682,8 +682,8 @@ public class turingLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:23:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:23:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:25:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:25:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -710,8 +710,8 @@ public class turingLexer extends Lexer {
 		try {
 			int _type = AFF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:30:5: ( ':=' )
-			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:31:3: ':='
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:32:5: ( ':=' )
+			// /Users/hubert/Dropbox/projects/antc-code/hub_version/turing.g:33:3: ':='
 			{
 			match(":="); 
 

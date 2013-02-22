@@ -3,7 +3,8 @@
   @header{
   package parser;
   import AST.*;
-  import AST.expression.*
+  import AST.expression.*;
+  import AST.instruction.*;
   }
  
   @lexer::header{
