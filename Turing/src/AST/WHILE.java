@@ -10,12 +10,12 @@ package AST;
  */
 public class WHILE extends Instruction {
 
-    Sous_Expression e;
+    Expression e;
     Instructions li;
     private int id;
     private static int cpt;
 
-    public WHILE(Sous_Expression e, Instructions li) {
+    public WHILE(Expression e, Instructions li) {
         this.e = e;
 //        if(!e.getType().equals("int")){
 //            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType());

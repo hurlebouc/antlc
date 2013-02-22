@@ -11,9 +11,9 @@ package AST;
 public class Affectation extends Instruction {
 
     private String varName;
-    private Sous_Expression e;
+    private Expression e;
 
-    public Affectation(String varName, Sous_Expression e) {
+    public Affectation(String varName, Expression e) {
 //        this.var = Variable.get(varName); // plante si jamais intialisé
         this.varName = varName;
         this.e = e;

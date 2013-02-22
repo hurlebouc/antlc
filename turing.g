@@ -30,7 +30,7 @@
  AFF	:
  	':=';
  
- sub_expression returns [Sous_Expression result]
+ expression returns [Expression result]
  	:	'#' {$result = new Valeur("");}
  		| 'zero' '(' e=expression ')' {$result = new Cons('0', $e.result);}
  		| 'un' '(' e=expression ')' {$result = new Cons('1', $e.result);}
@@ -39,16 +39,6 @@
  		| n=ID {$result = Variable.init($n.text);}
  		| n=NUM {$result = new Nombre($n.text);}
  		;
-
-expression returns [Expression result]
-	:	e1=sub_expression {$result = new Expression();$result.add($e1.result);}
-	('+' e=sub_expression {$result.add($e.result);})*
-	;
-	
-//sur_expre_aux
-//	:	'+' expression sur_expre_aux
-//	|	'+' expression
-//	;
  
  instruction returns [Instruction result]
  	:	var=ID AFF e=expression {$result = new Affectation($var.text, $e.result);}

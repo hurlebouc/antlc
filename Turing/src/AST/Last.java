@@ -8,11 +8,11 @@ package AST;
  *
  * @author hubert
  */
-public class Last extends Sous_Expression {
+public class Last extends Expression {
 
-    Sous_Expression sub;
+    Expression sub;
     
-    public Last(Sous_Expression s){
+    public Last(Expression s){
         this.sub = s;
 //        if(!s.getType().equals("int")){
 //            throw new UnsupportedOperationException("last() ne prend que des int et " + s + " est de type " + s.getType());

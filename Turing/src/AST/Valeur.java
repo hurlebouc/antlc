@@ -8,7 +8,7 @@ package AST;
  *
  * @author hubert
  */
-public class Valeur extends Sous_Expression {
+public class Valeur extends Expression {
 
     String v;
 

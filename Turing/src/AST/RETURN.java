@@ -10,9 +10,9 @@ package AST;
  */
 public class RETURN extends Instruction {
 
-    private Sous_Expression output;
+    private Expression output;
 
-    public RETURN(Sous_Expression e) {
+    public RETURN(Expression e) {
         this.output = e;
     }
 
