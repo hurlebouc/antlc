@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Arguments.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Program.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Variable.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Sous_Expression.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Cons.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Head.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Nombre.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/RETURN.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Valeur.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/VarDeclaration.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/WHILE.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/TypeDeclaration.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Pool.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Type.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/IF.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Instructions.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Instruction.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Stop.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Affectation.java</file>
+        <file>file:/Users/hubert/Dropbox/personnel/developpeur/projet/antc-code/hub_version/Turing/src/AST/Expression.java</file>
+    </open-files>
 </project-private>
