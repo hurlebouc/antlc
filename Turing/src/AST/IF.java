@@ -42,11 +42,11 @@ public class IF extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
+    public void typeCheck(Environment env) {
         
-        if (!e1.getType(pool).equals(e2.getType(pool))) {
-            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType(pool) + ") et " + e2 + " (" + e2.getType(pool) + ")");
+        if (!e1.getType(env).equals(e2.getType(env))) {
+            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType(env) + ") et " + e2 + " (" + e2.getType(env) + ")");
         }
-        li.checkSemantique(pool);
+        li.checkSemantique(env);
     }
 }

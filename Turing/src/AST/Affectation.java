@@ -31,13 +31,13 @@ public class Affectation extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
-        Variable variable = pool.existVar(varName);
-        if (variable.getType(pool).equals("string") && e.getType(pool).equals("int")) {
+    public void typeCheck(Environment env) {
+        Variable variable = env.existVar(varName);
+        if (variable.getType(env).equals("string") && e.getType(env).equals("int")) {
             System.out.println("WARNING : cast automatique.");
-        } else if (!variable.getType(pool).equals(e.getType(pool))) {
-            throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(pool) + ") non compatible avec (" + e.getType(pool) + ")");
+        } else if (!variable.getType(env).equals(e.getType(env))) {
+            throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
         }
-        e.checkSemantique(pool);
+        e.checkSemantique(env);
     }
 }

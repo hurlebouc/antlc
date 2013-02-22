@@ -24,10 +24,10 @@ public class RETURN extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
-        if (!"int".equals(output.getType(pool))) {
-            throw new UnsupportedOperationException("return ne peut renvoyer que des (int) mais " + output + " est de type (" + output.getType(pool) + ").");
+    public void typeCheck(Environment env) {
+        if (!"int".equals(output.getType(env))) {
+            throw new UnsupportedOperationException("return ne peut renvoyer que des (int) mais " + output + " est de type (" + output.getType(env) + ").");
         }
-        output.checkSemantique(pool);
+        output.checkSemantique(env);
     }
 }

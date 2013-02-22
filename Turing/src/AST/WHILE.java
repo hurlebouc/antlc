@@ -44,10 +44,10 @@ public class WHILE extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
-        if(!e.getType(pool).equals("int")){
-            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(pool));
+    public void typeCheck(Environment env) {
+        if(!e.getType(env).equals("int")){
+            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(env));
         }
-        li.checkSemantique(pool);
+        li.checkSemantique(env);
     }
 }

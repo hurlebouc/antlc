@@ -14,13 +14,13 @@ import java.util.ArrayList;
  *
  * @author hubert
  */
-public class Pool {
+public class Environment {
 
-    private Pool pere;
+    private Environment pere;
     private ArrayList<Variable> listeVar;
     private ArrayList<Type> listeTypes;
 
-    public Pool(Pool pere) {
+    public Environment(Environment pere) {
         this.pere = pere;
         listeVar = new ArrayList<Variable>();
         listeTypes = new ArrayList<Type>();

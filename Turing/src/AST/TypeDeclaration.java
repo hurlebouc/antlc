@@ -22,7 +22,7 @@ public class TypeDeclaration extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
-        pool.declareType(type.getName());
+    public void typeCheck(Environment env) {
+        env.declareType(type.getName());
     }
 }

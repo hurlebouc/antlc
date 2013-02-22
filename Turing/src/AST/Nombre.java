@@ -23,7 +23,7 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
+    public void checkSemantique(Environment pool) {
     }
     
     public String toString(){
@@ -31,7 +31,7 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public String getType(Pool pool) {
+    public String getType(Environment pool) {
         return "int";
     }
     

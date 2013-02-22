@@ -28,7 +28,7 @@ public class Head extends Expression {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
+    public void checkSemantique(Environment pool) {
         if (!e.getType(pool).equals("int")) {
             throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType(pool));
         }
@@ -36,7 +36,7 @@ public class Head extends Expression {
     }
 
     @Override
-    public String getType(Pool pool) {
+    public String getType(Environment pool) {
         return "int";
     }
 }

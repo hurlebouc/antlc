@@ -122,12 +122,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void checkSemantique(Pool pool) { // test l'existance
+    public void checkSemantique(Environment pool) { // test l'existance
         pool.existVar(nom);
     }
 
     @Override
-    public String getType(Pool pool) {
+    public String getType(Environment pool) {
         return pool.existVar(nom).type;
     }
 }

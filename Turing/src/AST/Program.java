@@ -36,7 +36,7 @@ public class Program {
     }
     
     public void checkSemantique(){
-        Pool pool = arg.getPool();
+        Environment pool = arg.getPool();
         instr.checkSemantique(pool);
     }
     

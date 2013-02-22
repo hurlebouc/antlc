@@ -33,7 +33,7 @@ public class Last extends Expression {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
+    public void checkSemantique(Environment pool) {
         if(!sub.getType(pool).equals("int")){
             throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(pool));
         }
@@ -41,7 +41,7 @@ public class Last extends Expression {
     }
 
     @Override
-    public String getType(Pool pool) {
+    public String getType(Environment pool) {
         return "int";
     }
 }

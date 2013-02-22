@@ -13,7 +13,7 @@ abstract public class Expression {
     
     abstract public String toAsm();
     
-    abstract public String getType(Pool pool);
+    abstract public String getType(Environment pool);
     
-    abstract public void checkSemantique(Pool pool);
+    abstract public void checkSemantique(Environment pool);
 }

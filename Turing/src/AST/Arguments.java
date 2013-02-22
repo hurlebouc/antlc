@@ -12,11 +12,11 @@ import java.util.LinkedList;
  */
 public class Arguments extends LinkedList<Variable>{
     
-    private Pool initialPool;
+    private Environment initialPool;
     
     public Arguments(String varName, String typeName){
         super();
-        initialPool = new Pool(null);
+        initialPool = new Environment(null);
         this.addVar(varName, typeName);
     }
     
@@ -25,7 +25,7 @@ public class Arguments extends LinkedList<Variable>{
         initialPool.declareVar(varName, typeName);
     }
     
-    public Pool getPool(){
+    public Environment getPool(){
         return initialPool;
     }
 }

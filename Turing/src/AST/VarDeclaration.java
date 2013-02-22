@@ -37,8 +37,8 @@ public class VarDeclaration extends Instruction {
     }
 
     @Override
-    public void checkSemantique(Pool pool) {
-        pool.existType(typeName);
-        pool.declareVar(varName, typeName);
+    public void typeCheck(Environment env) {
+        env.existType(typeName);
+        env.declareVar(varName, typeName);
     }
 }
