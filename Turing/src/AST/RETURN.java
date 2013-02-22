@@ -4,6 +4,8 @@
  */
 package AST;
 
+import AST.expression.Expression;
+
 /**
  *
  * @author hubert
@@ -28,6 +30,6 @@ public class RETURN extends Instruction {
         if (!"int".equals(output.getType(env))) {
             throw new UnsupportedOperationException("return ne peut renvoyer que des (int) mais " + output + " est de type (" + output.getType(env) + ").");
         }
-        output.checkSemantique(env);
+        output.typeCheck(env);
     }
 }

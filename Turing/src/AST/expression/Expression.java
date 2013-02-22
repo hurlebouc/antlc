@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
+
+import AST.Environment;
 
 /**
  *
@@ -13,7 +15,7 @@ abstract public class Expression {
     
     abstract public String toAsm();
     
-    abstract public String getType(Environment pool);
+    abstract public String getType(Environment env);
     
-    abstract public void checkSemantique(Environment pool);
+    abstract public void typeCheck(Environment env);
 }

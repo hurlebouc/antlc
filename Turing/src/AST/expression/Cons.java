@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
+
+import AST.Environment;
+import AST.expression.Expression;
 
 /**
  *
@@ -44,15 +47,15 @@ public class Cons extends Expression {
     }
 
     @Override
-    public void checkSemantique(Environment pool) {
-        if(!tl.getType(pool).equals("int")){
-            throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType(pool));
+    public void typeCheck(Environment env) {
+        if(!tl.getType(env).equals("int")){
+            throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType(env));
         }
-        tl.checkSemantique(pool);
+        tl.typeCheck(env);
     }
 
     @Override
-    public String getType(Environment pool) {
+    public String getType(Environment env) {
         return "int";
     }
 }

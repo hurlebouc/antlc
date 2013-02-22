@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
+
+import AST.Environment;
+import AST.expression.Expression;
 
 /**
  *
@@ -33,15 +36,15 @@ public class Last extends Expression {
     }
 
     @Override
-    public void checkSemantique(Environment pool) {
-        if(!sub.getType(pool).equals("int")){
-            throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(pool));
+    public void typeCheck(Environment env) {
+        if(!sub.getType(env).equals("int")){
+            throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(env));
         }
-        sub.checkSemantique(pool);
+        sub.typeCheck(env);
     }
 
     @Override
-    public String getType(Environment pool) {
+    public String getType(Environment env) {
         return "int";
     }
 }

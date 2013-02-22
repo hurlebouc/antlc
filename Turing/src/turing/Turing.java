@@ -4,6 +4,8 @@
  */
 package turing;
 
+import parser.turingParser;
+import parser.turingLexer;
 import AST.Program;
 import org.antlr.runtime.*;
 
@@ -17,7 +19,6 @@ public class Turing {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws RecognitionException {
-        // TODO code application logic here
         String s = "last(0(x11))";
         //String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
         String src = utilitaire.Utilitaire.lireFichier("addition.while");
@@ -31,6 +32,8 @@ public class Turing {
         Program prog = parser.program();
         System.out.println("Type check :\n============");
         prog.typeCheck();
-        utilitaire.Utilitaire.ecrireFichier("res.asm", prog.toASM());
+        System.out.println("Compile :\n=========");
+        String asm = prog.toASM();
+        utilitaire.Utilitaire.ecrireFichier("res.asm", asm);
     }
 }

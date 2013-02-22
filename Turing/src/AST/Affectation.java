@@ -4,6 +4,9 @@
  */
 package AST;
 
+import AST.expression.Variable;
+import AST.expression.Expression;
+
 /**
  *
  * @author devlopmac
@@ -38,6 +41,6 @@ public class Affectation extends Instruction {
         } else if (!variable.getType(env).equals(e.getType(env))) {
             throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
         }
-        e.checkSemantique(env);
+        e.typeCheck(env);
     }
 }

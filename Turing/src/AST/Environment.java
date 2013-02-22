@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.expression.Variable;
 import java.util.ArrayList;
 
 /**
@@ -52,7 +53,7 @@ public class Environment {
         return null;
     }
 
-    Variable existVar(String nom) {
+    public Variable existVar(String nom) {
         Variable res = searchVar(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
@@ -60,7 +61,7 @@ public class Environment {
         return res;
     }
 
-    Type existType(String nom) {
+    public Type existType(String nom) {
         Type res = searchType(nom);
         if (res == null) {
             throw new UnsupportedOperationException("Type " + nom + " undeclared in this scope.");
@@ -68,7 +69,7 @@ public class Environment {
         return res;
     }
 
-    Variable declareVar(String nom, String type) {
+    public Variable declareVar(String nom, String type) {
         if (searchVar(nom) != null) {
             throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
         }
@@ -77,7 +78,7 @@ public class Environment {
         return res;
     }
 
-    Type declareType(String nom) {
+    public Type declareType(String nom) {
         if (searchType(nom) != null) {
             throw new UnsupportedOperationException("Type " + nom + " already definied in this scope.");
         }

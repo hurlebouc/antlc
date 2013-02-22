@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
+
+import AST.Environment;
+import AST.expression.Expression;
 
 /**
  *
@@ -23,7 +26,7 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public void checkSemantique(Environment pool) {
+    public void typeCheck(Environment env) {
     }
     
     public String toString(){
@@ -31,7 +34,7 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public String getType(Environment pool) {
+    public String getType(Environment env) {
         return "int";
     }
     

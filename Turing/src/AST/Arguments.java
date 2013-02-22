@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.expression.Variable;
 import java.util.LinkedList;
 
 /**

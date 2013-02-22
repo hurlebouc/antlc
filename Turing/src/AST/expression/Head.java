@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
+
+import AST.Environment;
+import AST.expression.Expression;
 
 /**
  *
@@ -28,15 +31,15 @@ public class Head extends Expression {
     }
 
     @Override
-    public void checkSemantique(Environment pool) {
-        if (!e.getType(pool).equals("int")) {
-            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType(pool));
+    public void typeCheck(Environment env) {
+        if (!e.getType(env).equals("int")) {
+            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType(env));
         }
-        e.checkSemantique(pool);
+        e.typeCheck(env);
     }
 
     @Override
-    public String getType(Environment pool) {
+    public String getType(Environment env) {
         return "int";
     }
 }

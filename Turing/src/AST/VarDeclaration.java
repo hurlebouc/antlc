@@ -4,6 +4,8 @@
  */
 package AST;
 
+import AST.expression.Variable;
+
 /**
  *
  * @author hubert

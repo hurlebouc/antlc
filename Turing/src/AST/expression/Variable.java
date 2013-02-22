@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.expression;
 
+import AST.Environment;
+import AST.expression.Expression;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Variable extends Expression {
 
-    static ArrayList<Variable> listevar;
+    public static ArrayList<Variable> listevar;
     private String nom;
 
     private Variable(String nom, String type) {
@@ -63,7 +65,7 @@ public class Variable extends Expression {
     }
 
     @Deprecated
-    static Variable declare(String nom, String type) {
+    public static Variable declare(String nom, String type) {
         if (Variable.search(nom) != null) {
             throw new UnsupportedOperationException("la variable " + nom + " a déjà été déclarée.");
         }
@@ -82,7 +84,7 @@ public class Variable extends Expression {
      * échéant un nouveau type sinon.
      */
     @Deprecated
-    static Variable use(String nom, String type) {
+    public static Variable use(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
             res.type = type;
@@ -94,7 +96,7 @@ public class Variable extends Expression {
     }
 
     @Deprecated
-    static Variable reDeclare(String nom, String type) {
+    public static Variable reDeclare(String nom, String type) {
         Variable res = Variable.search(nom);
         if (res != null) {
             res.type = type;
@@ -103,7 +105,7 @@ public class Variable extends Expression {
         throw new UnsupportedOperationException("BAD COMPILATOR : variable");
     }
 
-    static Variable newUnlinked(String nom, String type) {
+    public static Variable newUnlinked(String nom, String type) {
         return new Variable(nom, type);
     }
 
@@ -122,7 +124,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void checkSemantique(Environment pool) { // test l'existance
+    public void typeCheck(Environment pool) { // test l'existance
         pool.existVar(nom);
     }
 
