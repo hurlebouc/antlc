@@ -13,20 +13,20 @@ import java.util.LinkedList;
  */
 public class Arguments extends LinkedList<Variable>{
     
-    private Environment initialPool;
+    private Environment intEnv;
     
     public Arguments(String varName, String typeName){
         super();
-        initialPool = new Environment(null);
+        intEnv = new Environment(null);
         this.addVar(varName, typeName);
     }
     
     public void addVar(String varName, String typeName){
         this.addFirst(Variable.init(varName));
-        initialPool.declareVar(varName, typeName);
+        intEnv.declareVar(varName, typeName);
     }
     
-    public Environment getPool(){
-        return initialPool;
+    public Environment buildLocalEnv(){
+        return intEnv;
     }
 }

@@ -33,38 +33,38 @@
  	':=';
  
  expression returns [Expression result]
- 	:	'#' {$result = new Valeur("");}
- 		| 'zero' '(' e=expression ')' {$result = new Cons('0', $e.result);}
- 		| 'un' '(' e=expression ')' {$result = new Cons('1', $e.result);}
- 		| 'last' '(' e=expression ')' {$result = new Last($e.result);}
- 		| 'head' '(' e=expression ')' {$result = new Head($e.result);}
- 		| n=ID {$result = Variable.init($n.text);}
- 		| n=NUM {$result = new Nombre($n.text);}
+ 	:	'#' 				{$result = new Valeur("");}
+ 		| 'zero' '(' e=expression ')'	{$result = new Cons('0', $e.result);}
+ 		| 'un' '(' e=expression ')' 	{$result = new Cons('1', $e.result);}
+ 		| 'last' '(' e=expression ')' 	{$result = new Last($e.result);}
+ 		| 'head' '(' e=expression ')' 	{$result = new Head($e.result);}
+ 		| n=ID 				{$result = Variable.init($n.text);}
+ 		| n=NUM 			{$result = new Nombre($n.text);}
  		;
  
  instruction returns [Instruction result]
- 	:	var=ID AFF e=expression {$result = new Affectation($var.text, $e.result);}
- 		| 'if' '(' e1=expression '=' e2=expression ')' '{' li=instructions '}' {$result = new IF($e1.result, $e2.result, $li.result);}
- 		| 'stop' {$result = new Stop();}
- 		| 'while' '(' e=expression ')' '{' li=instructions '}' {$result = new WHILE($e.result, $li.result);}
- 		| type=ID n=ID {$result = new VarDeclaration($n.text, $type.text);}
- 		| 'typedef' type=ID {$result = new TypeDeclaration($type.text);}
- 		| 'return' e=expression {$result = new RETURN($e.result);}
+ 	:	var=ID AFF e=expression 						{$result = new Affectation($var.text, $e.result);}
+ 		| 'if' '(' e1=expression '=' e2=expression ')' '{' li=instructions '}' 	{$result = new IF($e1.result, $e2.result, $li.result);}
+ 		| 'stop' 								{$result = new Stop();}
+ 		| 'while' '(' e=expression ')' '{' li=instructions '}' 			{$result = new WHILE($e.result, $li.result);}
+ 		| type=ID n=ID 								{$result = new VarDeclaration($n.text, $type.text);}
+ 		| 'typedef' type=ID 							{$result = new TypeDeclaration($type.text);}
+ 		| 'return' e=expression 						{$result = new RETURN($e.result);}
  	;
  
  instructions returns [Instructions result]
- 	:	';' {$result = new Instructions();}
- 		|i=instruction lia=instructions_aux {($lia.result).addFirst($i.result); $result = $lia.result;}
+ 	:	';' 					{$result = new Instructions();}
+ 		|i=instruction lia=instructions_aux 	{($lia.result).addFirst($i.result); $result = $lia.result;}
  	;
  
  instructions_aux returns [Instructions result]
- 	: 	';' {$result = new Instructions();}
- 		|';' li=instructions {$result = $li.result;}
+ 	: 	';' 			{$result = new Instructions();}
+ 		|';' li=instructions 	{$result = $li.result;}
  	;
  
  arguments returns [Arguments result]
- 	:	type=ID n=ID {$result = new Arguments($n.text, $type.text);}
- 		|type=ID n=ID ',' arg=arguments{($arg.result).addVar($n.text, $type.text); $result = $arg.result;}
+ 	:	type=ID n=ID 			{$result = new Arguments($n.text, $type.text);}
+ 		|type=ID n=ID ',' arg=arguments	{($arg.result).addVar($n.text, $type.text); $result = $arg.result;}
  	;
  
  program returns [Program result]

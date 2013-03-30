@@ -26,13 +26,6 @@ public class Variable extends Expression {
 //        listevar.add(this);
     }
 
-    @Deprecated
-    private Variable(String nom) {
-        this.nom = nom;
-        this.type = null;
-//        listevar.add(this);
-    }
-
     private static Variable search(String nom) {
         if (listevar == null) {
             return null;
@@ -45,15 +38,6 @@ public class Variable extends Expression {
         return null;
     }
 
-    @Deprecated
-    public static Variable get(String varName) {
-        Variable res = Variable.search(varName);
-        if (res == null) {
-            throw new UnsupportedOperationException("La variable " + varName + " n'a pas été déclarée.");
-        }
-        return res;
-    }
-
     public static Variable init(String varName) {
         Variable res = Variable.search(varName);
         if (res == null) {
@@ -62,47 +46,6 @@ public class Variable extends Expression {
             return v;
         }
         return res;
-    }
-
-    @Deprecated
-    public static Variable declare(String nom, String type) {
-        if (Variable.search(nom) != null) {
-            throw new UnsupportedOperationException("la variable " + nom + " a déjà été déclarée.");
-        }
-        Variable res = new Variable(nom, type);
-        listevar.add(res);
-        return res;
-    }
-
-    /**
-     * Cette fonction ne doit être appelée que lorsque le nom de variable n'est
-     * pas utilisé dans le scope courant.
-     *
-     * @param nom
-     * @param type
-     * @return Nouvelle variable si le nom était inusité, variable avec, le cas
-     * échéant un nouveau type sinon.
-     */
-    @Deprecated
-    public static Variable use(String nom, String type) {
-        Variable res = Variable.search(nom);
-        if (res != null) {
-            res.type = type;
-            return res;
-        }
-        res = new Variable(nom, type);
-        listevar.add(res);
-        return res;
-    }
-
-    @Deprecated
-    public static Variable reDeclare(String nom, String type) {
-        Variable res = Variable.search(nom);
-        if (res != null) {
-            res.type = type;
-            return res;
-        }
-        throw new UnsupportedOperationException("BAD COMPILATOR : variable");
     }
 
     public static Variable newUnlinked(String nom, String type) {

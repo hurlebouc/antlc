@@ -39,7 +39,7 @@ public class Affectation extends Instruction {
     public void typeCheck(Environment env) {
         Variable variable = env.existVar(varName);
         if (variable.getType(env).equals("string") && e.getType(env).equals("int")) {
-            System.out.println("WARNING : cast automatique.");
+            System.out.println("WARNING : conversion automatique int -> string.");
         } else if (!variable.getType(env).equals(e.getType(env))) {
             throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
         }

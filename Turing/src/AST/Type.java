@@ -34,17 +34,17 @@ public class Type {
         return null;
     }
 
-    @Deprecated
-    static Type get(String typeName) {
-        if (listeTypes == null) {
-            initListeType();
-        }
-        Type res = Type.search(typeName);
-        if (res == null) {
-            throw new UnsupportedOperationException("Le type " + typeName + " n'est pas déclaré.");
-        }
-        return res;
-    }
+//    @Deprecated
+//    static Type get(String typeName) {
+//        if (listeTypes == null) {
+//            initListeType();
+//        }
+//        Type res = Type.search(typeName);
+//        if (res == null) {
+//            throw new UnsupportedOperationException("Le type " + typeName + " n'est pas déclaré.");
+//        }
+//        return res;
+//    }
 
     @Deprecated
     public static Type declare(String typeName) {
@@ -59,31 +59,31 @@ public class Type {
         return res;
     }
 
-    @Deprecated
-    static Type use(String nom) {
-        if (listeTypes == null) {
-            initListeType();
-        }
-        Type res = Type.search(nom);
-        if (res != null) {
-            return res;
-        }
-        res = new Type(nom);
-        listeTypes.add(res);
-        return res;
-    }
+//    @Deprecated
+//    static Type use(String nom) {
+//        if (listeTypes == null) {
+//            initListeType();
+//        }
+//        Type res = Type.search(nom);
+//        if (res != null) {
+//            return res;
+//        }
+//        res = new Type(nom);
+//        listeTypes.add(res);
+//        return res;
+//    }
 
-    @Deprecated
-    static Type reDeclare(String nom) {
-        if (listeTypes == null) {
-            initListeType();
-        }
-        Type res = Type.search(nom);
-        if (res != null) {
-            return res;
-        }
-        throw new UnsupportedOperationException("BAD COMPILATOR : type");
-    }
+//    @Deprecated
+//    static Type reDeclare(String nom) {
+//        if (listeTypes == null) {
+//            initListeType();
+//        }
+//        Type res = Type.search(nom);
+//        if (res != null) {
+//            return res;
+//        }
+//        throw new UnsupportedOperationException("BAD COMPILATOR : type");
+//    }
 
     static Type newUnlinked(String nom) {
         return new Type(nom);

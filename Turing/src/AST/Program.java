@@ -15,21 +15,6 @@ public class Program {
 
     Arguments arg;
     Instructions instr;
-//    Variable output;
-
-//    @Deprecated
-//    public Program(Arguments arg, Instructions instr, Variable var) {
-//        this.arg = arg;
-//        this.instr = instr;
-//        this.output = var;
-//    }
-//    
-//    @Deprecated
-//    public Program(Arguments arg, Instructions instr, String varName) {
-//        this.arg = arg;
-//        this.instr = instr;
-//        this.output = Variable.get(varName);
-//    }
     
     public Program(Arguments arg, Instructions instr) {
         this.arg = arg;
@@ -37,7 +22,7 @@ public class Program {
     }
     
     public void typeCheck(){
-        Environment env = arg.getPool();
+        Environment env = arg.buildLocalEnv();
         instr.typeCheck(env);
     }
     
