@@ -7,7 +7,8 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.Instructions;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -47,11 +48,20 @@ public class IF extends Instruction {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        
-        if (!e1.getType(env).equals(e2.getType(env))) {
-            throw new UnsupportedOperationException("test entre " + e1 + " (" + e1.getType(env) + ") et " + e2 + " (" + e2.getType(env) + ")");
+    public boolean typeCheck(Environment env) {
+        Type te1 = e1.getType(env);
+        Type te2 = e2.getType(env);
+        if (!te1.equals(te2)) {
+//            throw new UnsupportedOperationException(
+//                    "test entre " + e1 + " (" + te1 + ") et " 
+//                    + e2 + " (" + te2 + ")");
+            return false;
         }
-        li.typeCheck(env);
+        return li.typeCheck(env);
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        return env;
     }
 }

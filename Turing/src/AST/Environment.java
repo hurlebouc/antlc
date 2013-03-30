@@ -5,7 +5,7 @@
 package AST;
 
 import AST.expression.Variable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Chaque nouveau pool doit être initialisé dans les environnements appelant le
@@ -17,73 +17,93 @@ import java.util.ArrayList;
  */
 public class Environment {
 
+    private class VarType {
+
+        Variable var;
+        Type type;
+
+        public VarType(Variable var, Type type) {
+            this.var = var;
+            this.type = type;
+        }
+    }
     private Environment pere;
-    private ArrayList<Variable> listeVar;
-    private ArrayList<Type> listeTypes;
+    private LinkedList<VarType> listeVar;
+    private LinkedList<Type> listeTypes;
 
     public Environment(Environment pere) {
         this.pere = pere;
-        listeVar = new ArrayList<Variable>();
-        listeTypes = new ArrayList<Type>();
-        listeTypes.add(new Type("int"));
-        listeTypes.add(new Type("string"));
+        listeVar = new LinkedList<VarType>();
+        listeTypes = new LinkedList<Type>();
+//        listeTypes.add(new Type("int"));
+//        listeTypes.add(new Type("string"));
     }
 
-    private Variable searchVar(String nom) {
-        for (Variable variable : listeVar) {
-            if (variable.getName().equals(nom)) {
-                return variable;
+    private Variable searchVar(Variable var) {
+        for (VarType tv : listeVar) {
+            if (tv.var.equals(var)) {
+                return tv.var;
             }
         }
         if (pere != null) {
-            return pere.searchVar(nom);
+            return pere.searchVar(var);
         }
         return null;
     }
 
-    private Type searchType(String nom) {
+    private Type searchType(Type tyref) {
         for (Type type : listeTypes) {
-            if (nom.equals(type.getName())) {
+            if (tyref.equals(type)) {
                 return type;
             }
         }
         if (pere != null) {
-            return pere.searchType(nom);
+            return pere.searchType(tyref);
         }
         return null;
     }
 
-    public Variable existVar(String nom) {
-        Variable res = searchVar(nom);
+    public Variable existVar(Variable var) {
+        Variable res = searchVar(var);
         if (res == null) {
-            throw new UnsupportedOperationException("Variable " + nom + " undeclared in this scope.");
+            throw new UnsupportedOperationException("Variable " + var + " undeclared in this scope.");
         }
         return res;
     }
 
-    public Type existType(String nom) {
-        Type res = searchType(nom);
+    public Type existType(Type type) {
+        Type res = searchType(type);
         if (res == null) {
-            throw new UnsupportedOperationException("Type " + nom + " undeclared in this scope.");
+            throw new UnsupportedOperationException("Type " + type + " undeclared in this scope.");
         }
         return res;
     }
 
-    public Variable declareVar(String nom, String type) {
-        if (searchVar(nom) != null) {
-            throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
-        }
-        Variable res = Variable.newUnlinked(nom, type);
-        listeVar.add(res);
-        return res;
+//    public Variable declareVar(String nom, String type) {
+//        if (searchVar(nom) != null) {
+//            throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
+//        }
+//        Variable res = Variable.newUnlinked(nom, type);
+//        listeVar.add(res);
+//        return res;
+//    }
+    public Environment addVariable(Variable var, Type type) {
+        Environment newEnv = new Environment(this);
+        newEnv.listeVar.add(new VarType(var, type));
+        return newEnv;
     }
 
-    public Type declareType(String nom) {
-        if (searchType(nom) != null) {
-            throw new UnsupportedOperationException("Type " + nom + " already definied in this scope.");
-        }
-        Type res = Type.newUnlinked(nom);
-        listeTypes.add(res);
-        return res;
+//    public Type declareType(Type type) {
+//        if (searchType(type) != null) {
+//            throw new UnsupportedOperationException("Type " + type + " already definied in this scope.");
+//        }
+//        Type res = Type.newUnlinked(type);
+//        listeTypes.add(res);
+//        return res;
+//    }
+    public Environment addType(Type type) {
+        Environment newEnv = new Environment(this);
+        newEnv.listeTypes.add(type);
+        return newEnv;
     }
 }

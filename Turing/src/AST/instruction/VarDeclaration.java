@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -6,6 +6,7 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
+import AST.Type;
 import AST.expression.Variable;
 
 /**
@@ -15,8 +16,7 @@ import AST.expression.Variable;
 public class VarDeclaration extends Instruction {
 
     private Variable var;
-    private String typeName;
-    private String varName;
+    private Type type;
 
     @Deprecated
     public VarDeclaration(Variable v) {
@@ -25,9 +25,8 @@ public class VarDeclaration extends Instruction {
     
     public VarDeclaration(String varName, String typeName) {
 //        this.var = Variable.declare(varName, typeName);
-        this.typeName = typeName;
-        this.varName = varName;
-        this.var = Variable.init(varName);
+        this.type = Type.newType(typeName);
+        this.var = Variable.newVariable(varName);
     }
     
     @Override
@@ -41,8 +40,16 @@ public class VarDeclaration extends Instruction {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        env.existType(typeName);
-        env.declareVar(varName, typeName);
+    public boolean typeCheck(Environment env) {
+        env.existType(type);
+        return true;
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        /*
+         * ... alpha-renommage
+         */
+        return env.addVariable(var, type); 
     }
 }

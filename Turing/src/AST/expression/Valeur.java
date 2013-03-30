@@ -5,7 +5,7 @@
 package AST.expression;
 
 import AST.Environment;
-import AST.expression.Expression;
+import AST.Expression;
 
 /**
  *

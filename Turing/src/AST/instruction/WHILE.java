@@ -7,7 +7,8 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.Instructions;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -49,10 +50,16 @@ public class WHILE extends Instruction {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        if(!e.getType(env).equals("int")){
-            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(env));
+    public boolean typeCheck(Environment env) {
+        if(!e.getType(env).equals(Type.tyint)){
+//            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(env));
+            return false;
         }
-        li.typeCheck(env);
+        return li.typeCheck(env);
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        return env;
     }
 }

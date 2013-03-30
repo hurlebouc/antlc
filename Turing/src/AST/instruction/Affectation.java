@@ -7,7 +7,8 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.expression.Variable;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -15,34 +16,42 @@ import AST.expression.Expression;
  */
 public class Affectation extends Instruction {
 
-    private String varName;
+    private Variable var;
     private Expression e;
 
     public Affectation(String varName, Expression e) {
 //        this.var = Variable.get(varName); // plante si jamais intialisé
-        this.varName = varName;
+        this.var = Variable.newVariable(varName);
         this.e = e;
     }
 
     @Override
     public String toString() {
-        return varName + " := " + e + "\n";
+        return var + " := " + e + "\n";
     }
 
     @Override
     public String toAsm() {
         String code = e.toAsm();
-        return code + "\tmov\t[" + varName + "], eax\n";
+        return code + "\tmov\t[" + var + "], eax\n";
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        Variable variable = env.existVar(varName);
-        if (variable.getType(env).equals("string") && e.getType(env).equals("int")) {
+    public boolean typeCheck(Environment env) {
+        Variable variable = env.existVar(var);
+        Type typeExpr = e.getType(env);
+        Type typeVar = variable.getType(env);
+        if (typeVar.equals(Type.tystring) && typeExpr.equals(Type.tyint)) {
             System.out.println("WARNING : conversion automatique int -> string.");
-        } else if (!variable.getType(env).equals(e.getType(env))) {
-            throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
+        } else if (!typeVar.equals(typeExpr)) {
+            return false;
+            //throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
         }
-        e.typeCheck(env);
+        return true;
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        return env;
     }
 }

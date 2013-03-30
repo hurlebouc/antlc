@@ -5,7 +5,8 @@
 package AST.expression;
 
 import AST.Environment;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +16,10 @@ import java.util.ArrayList;
 public class Variable extends Expression {
 
     public static ArrayList<Variable> listevar;
+
+    public static Variable newVariable(String varName) {
+        return new Variable(varName, null);
+    }
     private String nom;
 
     private Variable(String nom, String type) {
@@ -72,7 +77,11 @@ public class Variable extends Expression {
     }
 
     @Override
-    public String getType(Environment env) {
+    public Type getType(Environment env) {
         return env.existVar(nom).type;
+    }
+    
+    public boolean equals(Variable var){
+        return this.nom.equals(var.nom);
     }
 }

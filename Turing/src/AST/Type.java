@@ -12,80 +12,45 @@ import java.util.ArrayList;
  */
 public class Type {
 
-    private static ArrayList<Type> listeTypes;
+//    private static ArrayList<Type> listeTypes;
+    public static Type tyint = new Type("int");
+    public static Type tystring = new Type("string");
+    
     private String name;
 
-    public Type(String typeName) {
+    private Type(String typeName) {
         this.name = typeName;
     }
 
-    private static void initListeType() {
-        listeTypes = new ArrayList<Type>();
-        listeTypes.add(new Type("int"));
-        listeTypes.add(new Type("string"));
-    }
-
-    private static Type search(String typeName) {
-        for (Type type : listeTypes) {
-            if (typeName.equals(type.name)) {
-                return type;
-            }
-        }
-        return null;
-    }
-
-//    @Deprecated
-//    static Type get(String typeName) {
-//        if (listeTypes == null) {
-//            initListeType();
-//        }
-//        Type res = Type.search(typeName);
-//        if (res == null) {
-//            throw new UnsupportedOperationException("Le type " + typeName + " n'est pas déclaré.");
-//        }
-//        return res;
+//    private static void initListeType() {
+//        listeTypes = new ArrayList<Type>();
+//        listeTypes.add(tyint);
+//        listeTypes.add(tystring);
 //    }
-
-    @Deprecated
-    public static Type declare(String typeName) {
-        if (listeTypes == null) {
-            initListeType();
-        }
-        if (Type.search(typeName) != null) {
-            throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
-        }
-        Type res = new Type(typeName);
-        listeTypes.add(res);
-        return res;
-    }
-
+//
+//    private static Type search(String typeName) {
+//        for (Type type : listeTypes) {
+//            if (typeName.equals(type.name)) {
+//                return type;
+//            }
+//        }
+//        return null;
+//    }
+//
 //    @Deprecated
-//    static Type use(String nom) {
+//    public static Type declare(String typeName) {
 //        if (listeTypes == null) {
 //            initListeType();
 //        }
-//        Type res = Type.search(nom);
-//        if (res != null) {
-//            return res;
+//        if (Type.search(typeName) != null) {
+//            throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
 //        }
-//        res = new Type(nom);
+//        Type res = new Type(typeName);
 //        listeTypes.add(res);
 //        return res;
 //    }
-
-//    @Deprecated
-//    static Type reDeclare(String nom) {
-//        if (listeTypes == null) {
-//            initListeType();
-//        }
-//        Type res = Type.search(nom);
-//        if (res != null) {
-//            return res;
-//        }
-//        throw new UnsupportedOperationException("BAD COMPILATOR : type");
-//    }
-
-    static Type newUnlinked(String nom) {
+    
+    public static Type newType(String nom){
         return new Type(nom);
     }
 
@@ -96,5 +61,9 @@ public class Type {
 
     public String getName() {
         return name;
+    }
+    
+    public boolean equals(Type t){
+        return this.name.equals(t.name);
     }
 }

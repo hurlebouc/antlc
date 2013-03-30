@@ -9,7 +9,7 @@ import AST.Instruction;
 import AST.Type;
 
 /**
- *
+ * On va dire qu'on pet déclarer un type n'importe où...
  * @author hubert
  */
 public class TypeDeclaration extends Instruction {
@@ -17,7 +17,7 @@ public class TypeDeclaration extends Instruction {
     private Type type;
 
     public TypeDeclaration(String typeName) {
-        this.type = Type.declare(typeName);
+        this.type = Type.newType(typeName);
     }
 
     @Override
@@ -26,7 +26,17 @@ public class TypeDeclaration extends Instruction {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        env.declareType(type.getName());
+    public boolean typeCheck(Environment env) {
+        return true;
+//        env.declareType(type);
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        /*
+         * Ici on se contente d'ajouter le nouveau type à l'environnement car on
+         * suppose que tous les types sont différents par alpha-renommage.
+         */
+        return env.addType(type); 
     }
 }

@@ -12,10 +12,14 @@ import java.util.LinkedList;
  */
 public class Instructions extends LinkedList<Instruction>{    
     
-    public void typeCheck(Environment env){
-        Environment newPool = new Environment(env);
+    public boolean typeCheck(Environment env){
+        Environment newEnv = env;
         for (Instruction instruction : this) {
-            instruction.typeCheck(newPool);
+            if (!instruction.typeCheck(newEnv)){
+                return false;
+            }
+            newEnv = instruction.nextEnv(newEnv);
         }
+        return true;
     }
 }

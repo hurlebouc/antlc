@@ -5,7 +5,8 @@
 package AST.expression;
 
 import AST.Environment;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -55,7 +56,7 @@ public class Cons extends Expression {
     }
 
     @Override
-    public String getType(Environment env) {
+    public Type getType(Environment env) {
         return "int";
     }
 }

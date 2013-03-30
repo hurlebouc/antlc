@@ -6,7 +6,8 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
-import AST.expression.Expression;
+import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -28,10 +29,15 @@ public class RETURN extends Instruction {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        if (!"int".equals(output.getType(env))) {
+    public boolean typeCheck(Environment env) {
+        if (!Type.tyint.equals(output.getType(env))) {
             throw new UnsupportedOperationException("return ne peut renvoyer que des (int) mais " + output + " est de type (" + output.getType(env) + ").");
         }
-        output.typeCheck(env);
+        return true;
+    }
+
+    @Override
+    public Environment nextEnv(Environment env) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
