@@ -18,10 +18,6 @@ public class Last extends Expression {
     
     public Last(Expression s){
         this.sub = s;
-//        if(!s.getType().equals("int")){
-//            throw new UnsupportedOperationException("last() ne prend que des int et " + s + " est de type " + s.getType());
-//        }
-        type = "int";
     }
     
     @Override

@@ -18,7 +18,6 @@ public class Valeur extends Expression {
 
     public Valeur(String v) {
         this.v = v;
-        type = "string";
     }
 
     @Override

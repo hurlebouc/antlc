@@ -30,10 +30,15 @@ public class Turing {
         
         System.out.println("Parsing :\n=========");
         Program prog = parser.program();
+        prog = alphaRenaming(prog);
         System.out.println("Type check :\n============");
         prog.typeCheck();
         System.out.println("Compile :\n=========");
         String asm = prog.toASM();
         utilitaire.Utilitaire.ecrireFichier("res.asm", asm);
+    }
+
+    private static Program alphaRenaming(Program prog) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

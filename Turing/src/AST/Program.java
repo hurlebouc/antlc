@@ -5,6 +5,7 @@
 package AST;
 
 import AST.expression.Variable;
+import java.util.LinkedList;
 import utilitaire.Utilitaire;
 
 /**
@@ -37,7 +38,9 @@ public class Program {
     public String toASM(){
         String asm = Utilitaire.lireFichier("src/AST/corps.asm");
         String var = new String();
-        for(Variable v : Variable.listevar){
+        LinkedList<Variable> VarList = fetchVar();
+//        for(Variable v : Variable.listevar){
+        for(Variable v : VarList){
             var += v.getName() + ": \t dd 0\n";
         }
         asm =  asm.replaceFirst("VAR_LIST", var);
@@ -60,6 +63,10 @@ public class Program {
         asm =  asm.replaceFirst("CORPS", var);
         
         return asm;
+    }
+
+    private LinkedList<Variable> fetchVar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

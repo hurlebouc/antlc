@@ -2,9 +2,6 @@ extern printf,exit
 section .data
 out:	db "%d",0xa,0x0	
 
-x: 	 dd 0
-t: 	 dd 0
-z: 	 dd 0
 
 
 section .text

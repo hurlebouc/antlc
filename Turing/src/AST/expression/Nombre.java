@@ -18,7 +18,6 @@ public class Nombre extends Expression {
 
     public Nombre(String s) {
         v = Integer.parseInt(s);
-        this.type = "int";
     }
 
     @Override

@@ -18,10 +18,6 @@ public class Head extends Expression {
 
     public Head(Expression e) {
         this.e = e;
-//        if (!e.getType().equals("int")) {
-//            throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType());
-//        }
-        type = "int";
     }
 
     @Override
