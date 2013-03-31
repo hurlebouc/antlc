@@ -6,6 +6,7 @@ package AST.expression;
 
 import AST.Environment;
 import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -36,15 +37,10 @@ public class Last extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        if(!sub.getType(env).equals("int")){
+    public Type getType(Environment env) {
+        if(!sub.getType(env).equals(Type.tyint)){
             throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(env));
         }
-        sub.typeCheck(env);
-    }
-
-    @Override
-    public String getType(Environment env) {
-        return "int";
+        return Type.tyint;
     }
 }

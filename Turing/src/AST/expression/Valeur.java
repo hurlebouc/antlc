@@ -6,6 +6,7 @@ package AST.expression;
 
 import AST.Environment;
 import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -36,11 +37,7 @@ public class Valeur extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-    }
-
-    @Override
-    public String getType(Environment env) {
-        return "string";
+    public Type getType(Environment env) {
+        return Type.tystring;
     }
 }

@@ -23,6 +23,9 @@ public class Program {
     
     public void typeCheck(){
         Environment env = arg.buildLocalEnv();
+        env = env.addType(Type.tyint);
+        env = env.addType(Type.tystring);
+        env = env.addType(Type.tyunit);
         instr.typeCheck(env);
     }
     

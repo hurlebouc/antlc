@@ -38,6 +38,6 @@ public class RETURN extends Instruction {
 
     @Override
     public Environment nextEnv(Environment env) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return env;
     }
 }

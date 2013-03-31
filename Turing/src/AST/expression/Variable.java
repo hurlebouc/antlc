@@ -72,13 +72,8 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment env) { // test l'existance
-        env.existVar(nom);
-    }
-
-    @Override
     public Type getType(Environment env) {
-        return env.existVar(nom).type;
+        return env.existVar(this);
     }
     
     public boolean equals(Variable var){

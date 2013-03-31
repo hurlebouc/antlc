@@ -38,9 +38,9 @@ public class Affectation extends Instruction {
 
     @Override
     public boolean typeCheck(Environment env) {
-        Variable variable = env.existVar(var);
+//        Variable variable = env.existVar(var);
         Type typeExpr = e.getType(env);
-        Type typeVar = variable.getType(env);
+        Type typeVar = var.getType(env);
         if (typeVar.equals(Type.tystring) && typeExpr.equals(Type.tyint)) {
             System.out.println("WARNING : conversion automatique int -> string.");
         } else if (!typeVar.equals(typeExpr)) {

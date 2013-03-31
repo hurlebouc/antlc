@@ -3,8 +3,8 @@ section .data
 out:	db "%d",0xa,0x0	
 
 x: 	 dd 0
-z: 	 dd 0
 t: 	 dd 0
+z: 	 dd 0
 
 
 section .text
@@ -45,14 +45,14 @@ main:
 
 
 	mov	eax, 0
-	mov	[z], eax
+	mov	[Variable[z]], eax
 beginwhile0:
 	mov	eax, [x]
 	cmp	eax, 0
 	je	endwhile0
 	mov	eax, [x]
 	and	eax, 1
-	mov	[t], eax
+	mov	[Variable[t]], eax
 	mov	eax, [t]
 	mov	ebx, eax
 	mov	eax, 0
@@ -61,7 +61,7 @@ beginwhile0:
 	jne	endif0
 	mov	eax, [z]
 	shl	 eax, 1
-	mov	[z], eax
+	mov	[Variable[z]], eax
 endif0:
 	mov	eax, [t]
 	mov	ebx, eax
@@ -73,15 +73,15 @@ endif0:
 	mov	eax, [z]
 	shl	 eax, 1
 	inc	eax
-	mov	[z], eax
+	mov	[Variable[z]], eax
 endif1:
 	mov	eax, [x]
 	shr	eax, 1
-	mov	[x], eax
+	mov	[Variable[x]], eax
 	jmp	beginwhile0
 endwhile0:
 	mov	eax, 9
-	mov	[t], eax
+	mov	[Variable[t]], eax
 	mov	eax, [z]
 	jmp	endprog
 

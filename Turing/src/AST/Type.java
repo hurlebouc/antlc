@@ -4,8 +4,6 @@
  */
 package AST;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author hubert
@@ -13,10 +11,11 @@ import java.util.ArrayList;
 public class Type {
 
 //    private static ArrayList<Type> listeTypes;
-    public static Type tyint = new Type("int");
-    public static Type tystring = new Type("string");
+    public final static Type tyint = new Type("int");
+    public final static Type tystring = new Type("string");
+    public final static Type tyunit = new Type("unit");
     
-    private String name;
+    private final String name;
 
     private Type(String typeName) {
         this.name = typeName;

@@ -6,6 +6,7 @@ package AST.expression;
 
 import AST.Environment;
 import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -24,18 +25,14 @@ public class Nombre extends Expression {
     public String toAsm() {
         return "\tmov\teax, " + v + "\n";
     }
-
-    @Override
-    public void typeCheck(Environment env) {
-    }
     
     public String toString(){
         return "Nombre[" + v + "]";
     }
 
     @Override
-    public String getType(Environment env) {
-        return "int";
+    public Type getType(Environment env) {
+        return Type.tyint;
     }
     
 }

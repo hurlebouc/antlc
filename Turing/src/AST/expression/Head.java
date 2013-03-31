@@ -6,6 +6,7 @@ package AST.expression;
 
 import AST.Environment;
 import AST.Expression;
+import AST.Type;
 
 /**
  *
@@ -31,15 +32,10 @@ public class Head extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        if (!e.getType(env).equals("int")) {
+    public Type getType(Environment env) {
+        if (!e.getType(env).equals(Type.tyint)) {
             throw new UnsupportedOperationException("head() ne prend que des int et " + e + " est de type " + e.getType(env));
         }
-        e.typeCheck(env);
-    }
-
-    @Override
-    public String getType(Environment env) {
-        return "int";
+        return Type.tyint;
     }
 }

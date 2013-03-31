@@ -48,15 +48,10 @@ public class Cons extends Expression {
     }
 
     @Override
-    public void typeCheck(Environment env) {
-        if(!tl.getType(env).equals("int")){
+    public Type getType(Environment env) {
+        if(!tl.getType(env).equals(Type.tyint)){
             throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType(env));
         }
-        tl.typeCheck(env);
-    }
-
-    @Override
-    public Type getType(Environment env) {
-        return "int";
+        return Type.tyint;
     }
 }

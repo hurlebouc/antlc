@@ -39,10 +39,10 @@ public class Environment {
 //        listeTypes.add(new Type("string"));
     }
 
-    private Variable searchVar(Variable var) {
+    private Type searchVar(Variable var) {
         for (VarType tv : listeVar) {
             if (tv.var.equals(var)) {
-                return tv.var;
+                return tv.type;
             }
         }
         if (pere != null) {
@@ -63,8 +63,8 @@ public class Environment {
         return null;
     }
 
-    public Variable existVar(Variable var) {
-        Variable res = searchVar(var);
+    public Type existVar(Variable var) {
+        Type res = searchVar(var);
         if (res == null) {
             throw new UnsupportedOperationException("Variable " + var + " undeclared in this scope.");
         }

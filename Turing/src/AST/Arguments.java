@@ -23,7 +23,7 @@ public class Arguments extends LinkedList<Variable>{
     
     public void addVar(String varName, String typeName){
         this.addFirst(Variable.newVariable(varName));
-        intEnv.addVariable(Variable.newVariable(varName), Type.newType(typeName));
+        intEnv = intEnv.addVariable(Variable.newVariable(varName), Type.newType(typeName));
     }
     
     public Environment buildLocalEnv(){
