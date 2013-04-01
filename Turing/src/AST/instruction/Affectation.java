@@ -9,6 +9,7 @@ import AST.Instruction;
 import AST.expression.Variable;
 import AST.Expression;
 import AST.Type;
+import java.util.LinkedList;
 
 /**
  *
@@ -53,5 +54,10 @@ public class Affectation extends Instruction {
     @Override
     public Environment nextEnv(Environment env) {
         return env;
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return null;
     }
 }

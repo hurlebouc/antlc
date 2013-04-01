@@ -47,9 +47,13 @@ public class VarDeclaration extends Instruction {
 
     @Override
     public Environment nextEnv(Environment env) {
-        /*
-         * ... alpha-renommage
-         */
+        
+        // ... alpha-renommage
         return env.addVariable(var, type); 
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return this.var;
     }
 }

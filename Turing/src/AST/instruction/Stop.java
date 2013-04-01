@@ -6,6 +6,8 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
+import AST.expression.Variable;
+import java.util.LinkedList;
 
 /**
  *
@@ -32,5 +34,10 @@ public class Stop extends Instruction {
     @Override
     public Environment nextEnv(Environment env) {
         return env;
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return null;
     }
 }

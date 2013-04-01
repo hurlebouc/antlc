@@ -8,6 +8,8 @@ import AST.Environment;
 import AST.Instruction;
 import AST.Expression;
 import AST.Type;
+import AST.expression.Variable;
+import java.util.LinkedList;
 
 /**
  *
@@ -39,5 +41,10 @@ public class RETURN extends Instruction {
     @Override
     public Environment nextEnv(Environment env) {
         return env;
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return null;
     }
 }

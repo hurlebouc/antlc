@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.expression.Variable;
 import java.util.LinkedList;
 
 /**
@@ -21,5 +22,16 @@ public class Instructions extends LinkedList<Instruction>{
             newEnv = instruction.nextEnv(newEnv);
         }
         return true;
+    }
+
+    LinkedList<Variable> fetchVar() {
+        LinkedList<Variable> res = new LinkedList<Variable>();
+        for (Instruction instr : this) {
+            Variable newVariable = instr.fetchVar();
+            if(newVariable != null){
+                res.add(newVariable);
+            }
+        }
+        return res;
     }
 }

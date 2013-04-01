@@ -4,6 +4,10 @@
  */
 package AST;
 
+import AST.expression.Variable;
+import java.util.Collection;
+import java.util.LinkedList;
+
 /**
  *
  * @author hubert
@@ -28,4 +32,10 @@ abstract public class Instruction {
 
     
     abstract public String toAsm();
+
+    /**
+     * Cette fonction retourne la variable créée par l'instruction
+     * @return retourne null si l'instruction ne crée par de variable.
+     */
+    abstract public Variable fetchVar();
 }

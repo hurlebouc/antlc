@@ -9,6 +9,7 @@ import AST.Instruction;
 import AST.Instructions;
 import AST.Expression;
 import AST.Type;
+import AST.expression.Variable;
 
 /**
  *
@@ -61,5 +62,10 @@ public class WHILE extends Instruction {
     @Override
     public Environment nextEnv(Environment env) {
         return env;
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return null;
     }
 }

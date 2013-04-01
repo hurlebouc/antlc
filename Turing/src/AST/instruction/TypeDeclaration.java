@@ -7,6 +7,8 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.Type;
+import AST.expression.Variable;
+import java.util.LinkedList;
 
 /**
  * On va dire qu'on pet déclarer un type n'importe où...
@@ -38,5 +40,10 @@ public class TypeDeclaration extends Instruction {
          * suppose que tous les types sont différents par alpha-renommage.
          */
         return env.addType(type); 
+    }
+
+    @Override
+    public Variable fetchVar() {
+        return null;
     }
 }

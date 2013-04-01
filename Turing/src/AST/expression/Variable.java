@@ -7,7 +7,6 @@ package AST.expression;
 import AST.Environment;
 import AST.Expression;
 import AST.Type;
-import java.util.ArrayList;
 
 /**
  *

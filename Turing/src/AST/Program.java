@@ -66,6 +66,12 @@ public class Program {
     }
 
     private LinkedList<Variable> fetchVar() {
+        LinkedList<Variable> res = instr.fetchVar();
+        res.addAll(arg.fetchVar());
+        return res;
+    }
+
+    public void alphaRename() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

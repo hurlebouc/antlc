@@ -5,6 +5,7 @@
 package AST;
 
 import AST.expression.Variable;
+import java.util.Collection;
 import java.util.LinkedList;
 
 /**
@@ -22,11 +23,16 @@ public class Arguments extends LinkedList<Variable>{
     }
     
     public void addVar(String varName, String typeName){
+        // vérifier que toutes les variales ont des noms différents
         this.addFirst(Variable.newVariable(varName));
         intEnv = intEnv.addVariable(Variable.newVariable(varName), Type.newType(typeName));
     }
     
     public Environment buildLocalEnv(){
         return intEnv;
+    }
+
+    LinkedList<Variable> fetchVar() {
+        return this;
     }
 }
