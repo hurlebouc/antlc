@@ -14,8 +14,6 @@ import AST.Type;
  */
 public class Variable extends Expression {
 
-//    public static ArrayList<Variable> listevar;
-
     public static Variable newVariable(String varName) {
         return new Variable(varName);
     }
@@ -23,32 +21,7 @@ public class Variable extends Expression {
 
     private Variable(String nom) {
         this.nom = nom;
-//        if (listevar == null) {
-//            listevar = new ArrayList<Variable>();
-//        }
     }
-
-//    private static Variable search(String nom) {
-//        if (listevar == null) {
-//            return null;
-//        }
-//        for (Variable variable : listevar) {
-//            if (variable.nom.equals(nom)) {
-//                return variable;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public static Variable init(String varName) {
-//        Variable res = Variable.search(varName);
-//        if (res == null) {
-//            Variable v = new Variable(varName);
-//            Variable.listevar.add(v);
-//            return v;
-//        }
-//        return res;
-//    }
 
     @Override
     public String toString() {

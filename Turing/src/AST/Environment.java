@@ -6,6 +6,7 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
+import toolbox.Couple;
 
 /**
  * Chaque nouveau pool doit être initialisé dans les environnements appelant le
@@ -17,32 +18,22 @@ import java.util.LinkedList;
  */
 public class Environment {
 
-    private class VarType {
-
-        Variable var;
-        Type type;
-
-        public VarType(Variable var, Type type) {
-            this.var = var;
-            this.type = type;
-        }
-    }
     private Environment pere;
-    private LinkedList<VarType> listeVar;
+    private LinkedList< Couple<Variable, Type> > listeVar;
     private LinkedList<Type> listeTypes;
 
     public Environment(Environment pere) {
         this.pere = pere;
-        listeVar = new LinkedList<VarType>();
+        listeVar = new LinkedList< Couple<Variable, Type> >();
         listeTypes = new LinkedList<Type>();
 //        listeTypes.add(new Type("int"));
 //        listeTypes.add(new Type("string"));
     }
 
     private Type searchVar(Variable var) {
-        for (VarType tv : listeVar) {
-            if (tv.var.equals(var)) {
-                return tv.type;
+        for (Couple<Variable, Type> tv : listeVar) {
+            if (tv.fst.equals(var)) {
+                return tv.snd;
             }
         }
         if (pere != null) {
@@ -89,7 +80,7 @@ public class Environment {
 //    }
     public Environment addVariable(Variable var, Type type) {
         Environment newEnv = new Environment(this);
-        newEnv.listeVar.add(new VarType(var, type));
+        newEnv.listeVar.add(new Couple(var, type));
         return newEnv;
     }
 

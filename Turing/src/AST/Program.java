@@ -6,6 +6,8 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
+import toolbox.Couple;
+import toolbox.List;
 import utilitaire.Utilitaire;
 
 /**
@@ -39,7 +41,6 @@ public class Program {
         String asm = Utilitaire.lireFichier("src/AST/corps.asm");
         String var = new String();
         LinkedList<Variable> VarList = fetchVar();
-//        for(Variable v : Variable.listevar){
         for(Variable v : VarList){
             var += v.getName() + ": \t dd 0\n";
         }
@@ -72,6 +73,8 @@ public class Program {
     }
 
     public void alphaRename() {
+        List< Couple<Variable, Variable> > mapVar = List.empty;
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

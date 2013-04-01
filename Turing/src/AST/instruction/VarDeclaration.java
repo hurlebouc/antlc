@@ -17,11 +17,6 @@ public class VarDeclaration extends Instruction {
 
     private Variable var;
     private Type type;
-
-    @Deprecated
-    public VarDeclaration(Variable v) {
-        this.var = v;
-    }
     
     public VarDeclaration(String varName, String typeName) {
 //        this.var = Variable.declare(varName, typeName);
