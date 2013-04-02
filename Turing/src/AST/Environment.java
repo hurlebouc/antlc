@@ -5,8 +5,13 @@
 package AST;
 
 import AST.expression.Variable;
-import java.util.LinkedList;
 import toolbox.Couple;
+import toolbox.Either;
+import toolbox.Fun;
+import toolbox.Left;
+import toolbox.List;
+import toolbox.NotFoundException;
+import toolbox.Right;
 
 /**
  * Chaque nouveau pool doit être initialisé dans les environnements appelant le
@@ -16,85 +21,101 @@ import toolbox.Couple;
  *
  * @author hubert
  */
-public class Environment {
+public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
 
-    private Environment pere;
-    private LinkedList< Couple<Variable, Type> > listeVar;
-    private LinkedList<Type> listeTypes;
-
-    public Environment(Environment pere) {
-        this.pere = pere;
-        listeVar = new LinkedList< Couple<Variable, Type> >();
-        listeTypes = new LinkedList<Type>();
-//        listeTypes.add(new Type("int"));
-//        listeTypes.add(new Type("string"));
+    private Environment(Either<Couple<Variable, Type>, Type> e, Environment env) {
+        super(e, env);
     }
+    
+    public static Environment cons(Either<Couple<Variable, Type>, Type> head, Environment env){
+        return new Environment(head, env);
+    }
+    
+    public static Environment empty = null;
 
-    private Type searchVar(Variable var) {
-        for (Couple<Variable, Type> tv : listeVar) {
-            if (tv.fst.equals(var)) {
-                return tv.snd;
+    private Type searchVar(final Variable var) throws NotFoundException {
+        
+        Fun<Either<Couple<Variable, Type>, Type>, Boolean> p =
+                new Fun<Either<Couple<Variable, Type>, Type>, Boolean>() {
+
+            @Override
+            public Boolean apply(Either<Couple<Variable, Type>, Type> arg) {
+                if (arg.isRight()) {
+                    return false;
+                }
+                Couple prod = ((Left<Couple<Variable, Type>, Type>) arg).unwrap();
+                if (prod.fst.equals(var)) {
+                    return true;
+                }
+                return false;
             }
-        }
-        if (pere != null) {
-            return pere.searchVar(var);
-        }
-        return null;
+        };
+        
+        Either<Couple<Variable, Type>, Type> res = this.search(p);
+        Couple<Variable, Type> prod = ((Left<Couple<Variable, Type>, Type>) res).unwrap();
+        return prod.snd;
     }
 
-    private Type searchType(Type tyref) {
-        for (Type type : listeTypes) {
-            if (tyref.equals(type)) {
-                return type;
+    private Type searchType(final Type tyref) throws NotFoundException {
+        
+        Fun<Either<Couple<Variable, Type>, Type>, Boolean> p = 
+                new Fun<Either<Couple<Variable, Type>, Type>, Boolean>() {
+
+            @Override
+            public Boolean apply(Either<Couple<Variable, Type>, Type> arg) {
+                if (arg.isLeft()) {
+                    return false;
+                }
+                Type ty = ((Right<Couple<Variable, Type>, Type>) arg).unwrap();
+                if (ty.equals(tyref)) {
+                    return true;
+                }
+                return false;
             }
-        }
-        if (pere != null) {
-            return pere.searchType(tyref);
-        }
-        return null;
+        };
+        
+        Either<Couple<Variable, Type>, Type> res = this.search(p);
+        Type ty = ((Right<Couple<Variable, Type>, Type>) res).unwrap();
+        return ty;
     }
 
-    public Type existVar(Variable var) {
-        Type res = searchVar(var);
-        if (res == null) {
-            throw new UnsupportedOperationException("Variable " + var + " undeclared in this scope.");
+    public Type existVar(Variable var) throws TypingException {
+        Type res;
+        try {
+            res = searchVar(var);
+        } catch (NotFoundException ex) {
+            throw new TypingException("Variable " + var + " undeclared in this scope.");
         }
         return res;
     }
 
-    public Type existType(Type type) {
-        Type res = searchType(type);
-        if (res == null) {
-            throw new UnsupportedOperationException("Type " + type + " undeclared in this scope.");
+    public Type existType(Type type) throws TypingException {
+        Type res;
+        try {
+            res = searchType(type);
+        } catch (NotFoundException ex) {
+            throw new TypingException("Type " + type + " undeclared in this scope.");
         }
         return res;
     }
 
-//    public Variable declareVar(String nom, String type) {
-//        if (searchVar(nom) != null) {
-//            throw new UnsupportedOperationException("Variable " + nom + " already definied in this scope.");
-//        }
-//        Variable res = Variable.newUnlinked(nom, type);
-//        listeVar.add(res);
-//        return res;
-//    }
     public Environment addVariable(Variable var, Type type) {
-        Environment newEnv = new Environment(this);
-        newEnv.listeVar.add(new Couple(var, type));
-        return newEnv;
+        return Environment.cons(
+                new Left<Couple<Variable, Type>, Type>(
+                    new Couple<Variable, Type>(var, type)
+                ),
+                this
+        );
     }
-
-//    public Type declareType(Type type) {
-//        if (searchType(type) != null) {
-//            throw new UnsupportedOperationException("Type " + type + " already definied in this scope.");
-//        }
-//        Type res = Type.newUnlinked(type);
-//        listeTypes.add(res);
-//        return res;
-//    }
+    
     public Environment addType(Type type) {
-        Environment newEnv = new Environment(this);
-        newEnv.listeTypes.add(type);
-        return newEnv;
+        return Environment.cons(
+                new Right<Couple<Variable, Type>, Type>(type),
+                this
+        );
+        
+//        Environment newEnv = new Environment(this);
+//        newEnv.listeTypes.add(type);
+//        return newEnv;
     }
 }

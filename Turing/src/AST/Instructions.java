@@ -6,6 +6,8 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
+import toolbox.Couple;
+import toolbox.List;
 
 /**
  *
@@ -33,5 +35,9 @@ public class Instructions extends LinkedList<Instruction>{
             }
         }
         return res;
+    }
+
+    List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar) {
+        
     }
 }

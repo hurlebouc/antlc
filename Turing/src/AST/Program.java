@@ -73,9 +73,9 @@ public class Program {
     }
 
     public void alphaRename() {
-        List< Couple<Variable, Variable> > mapVar = List.empty;
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List mapVar = List.empty;
+        mapVar = arg.alphaRename(mapVar);
+        mapVar = instr.alphaRename(mapVar);
     }
     
 }
