@@ -7,6 +7,8 @@ package AST;
 import AST.expression.Variable;
 import java.util.Collection;
 import java.util.LinkedList;
+import toolbox.Couple;
+import toolbox.List;
 
 /**
  *
@@ -38,4 +40,6 @@ abstract public class Instruction {
      * @return retourne null si l'instruction ne crée par de variable.
      */
     abstract public Variable fetchVar();
+
+    abstract public List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar);
 }

@@ -38,6 +38,9 @@ public class Instructions extends LinkedList<Instruction>{
     }
 
     List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar) {
-        
+        for (Instruction instruction : this) {
+            mapVar = instruction.alphaRename(mapVar);
+        }
+        return mapVar;
     }
 }

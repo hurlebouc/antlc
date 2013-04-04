@@ -15,7 +15,7 @@ public class List<T> {
     /**
      * \exists alpha. alpha list
      */
-    public final static List empty = null;
+    public final static <T> List<T> empty(){ return null;}
 
     protected List(T head, List<T> tail) {
         this.head = head;
@@ -41,29 +41,29 @@ public class List<T> {
         if (p.apply(head)) {
             return head;
         }
-        if (tail == empty) {
+        if (tail == empty()) {
             throw new NotFoundException();
         }
         return tail.search(p);
     }
 
     public boolean isEmpty() {
-        return this.equals(List.empty);
+        return this.equals(List.empty());
     }
     
     /*
      * -------------------------------------------------------------------------
      */
 
-    Integer truc(List<Integer> t) {
-        return t.head;
-    }
-
-    void bidule() {
-        List machin = new List<String>("", empty);
-        /*
-         * Je ne comprends pas pourquoi Java accepte de typer ça...
-         */
-        truc(machin);
-    }
+//    Integer truc(List<Integer> t) {
+//        return t.head;
+//    }
+//
+//    void bidule() {
+//        List machin = new List<String>("", empty());
+//        /*
+//         * Je ne comprends pas pourquoi Java accepte de typer ça...
+//         */
+//        truc(machin);
+//    }
 }

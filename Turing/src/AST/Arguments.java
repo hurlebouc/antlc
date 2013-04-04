@@ -40,7 +40,7 @@ public class Arguments extends LinkedList<Variable> {
     }
 
     List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar) {
-        List<Couple<Variable, Variable>> res = List.empty;
+        List<Couple<Variable, Variable>> res = List.empty();
         for (Variable variable : this) {
             res = List.cons(new Couple<Variable, Variable>(variable, variable), res);
         }

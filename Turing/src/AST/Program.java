@@ -73,9 +73,9 @@ public class Program {
     }
 
     public void alphaRename() {
-        List mapVar = List.empty;
+        List<Couple<Variable, Variable>> mapVar = List.empty();
         mapVar = arg.alphaRename(mapVar);
-        mapVar = instr.alphaRename(mapVar);
+        instr.alphaRename(mapVar);
     }
     
 }
