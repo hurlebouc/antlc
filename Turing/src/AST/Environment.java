@@ -5,13 +5,13 @@
 package AST;
 
 import AST.expression.Variable;
-import toolbox.Couple;
-import toolbox.Either;
-import toolbox.Fun;
-import toolbox.Left;
-import toolbox.List;
-import toolbox.NotFoundException;
-import toolbox.Right;
+import toolbox.base.Couple;
+import toolbox.base.Either;
+import toolbox.base.Fun;
+import toolbox.base.Left;
+import toolbox.base.List;
+import toolbox.base.NotFoundException;
+import toolbox.base.Right;
 
 /**
  * Chaque nouveau pool doit être initialisé dans les environnements appelant le

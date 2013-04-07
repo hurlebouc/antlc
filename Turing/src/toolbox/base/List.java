@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package toolbox;
+package toolbox.base;
 
 /**
  *
@@ -13,9 +13,9 @@ public class List<T> {
     private T head;
     private List<T> tail;
     /**
-     * \exists alpha. alpha list
+     * \forral alpha. alpha list
      */
-    public final static <T> List<T> empty(){ return null;}
+    public static <T> List<T> empty(){ return null;}
 
     protected List(T head, List<T> tail) {
         this.head = head;
@@ -37,6 +37,12 @@ public class List<T> {
         return tail;
     }
 
+    /**
+     * Cette fonction cherche le premier élément de la liste validant le prédicat p.
+     * @param p : T -> boolean
+     * @return
+     * @throws NotFoundException 
+     */
     public T search(Fun<T, Boolean> p) throws NotFoundException {
         if (p.apply(head)) {
             return head;
@@ -55,15 +61,16 @@ public class List<T> {
      * -------------------------------------------------------------------------
      */
 
-//    Integer truc(List<Integer> t) {
-//        return t.head;
-//    }
-//
-//    void bidule() {
-//        List machin = new List<String>("", empty());
-//        /*
-//         * Je ne comprends pas pourquoi Java accepte de typer ça...
-//         */
-//        truc(machin);
-//    }
+    Integer truc(List<Integer> t) {
+        return t.head;
+    }
+
+    void bidule() {
+        List<String> truc = List.empty();
+        List machin = new List<String>("", truc);
+        /*
+         * Je ne comprends pas pourquoi Java accepte de typer ça...
+         */
+        truc(machin);
+    }
 }

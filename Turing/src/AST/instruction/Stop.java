@@ -6,8 +6,11 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
+import AST.Type;
 import AST.expression.Variable;
-import java.util.LinkedList;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
 
 /**
  *
@@ -39,5 +42,10 @@ public class Stop extends Instruction {
     @Override
     public Variable fetchVar() {
         return null;
+    }
+
+    @Override
+    public Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        return alphaMap;
     }
 }

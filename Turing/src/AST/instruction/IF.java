@@ -10,7 +10,10 @@ import AST.Instructions;
 import AST.Expression;
 import AST.Type;
 import AST.expression.Variable;
-import java.util.LinkedList;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -71,4 +74,16 @@ public class IF extends Instruction {
     public Variable fetchVar() {
         return null;
     }
+
+    @Override
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Expression alphaExpr1 = e1.alphaRename(alphaMap);
+        Expression alphaExpr2 = e2.alphaRename(alphaMap);
+        RenamingPack<Instructions> PackListInstr = li.alphaRename(alphaMap);
+        
+        Instruction alphaIF = new IF(alphaExpr1, alphaExpr2, PackListInstr.getRenamed());
+        return new RenamingPack(alphaIF, alphaMap); // après le if, le alpha est le même qu'au début
+    }
+
+
 }

@@ -6,8 +6,10 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
-import toolbox.Couple;
-import toolbox.List;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -26,7 +28,7 @@ public class Instructions extends LinkedList<Instruction>{
         return true;
     }
 
-    LinkedList<Variable> fetchVar() {
+    public LinkedList<Variable> fetchVar() {
         LinkedList<Variable> res = new LinkedList<Variable>();
         for (Instruction instr : this) {
             Variable newVariable = instr.fetchVar();
@@ -37,10 +39,22 @@ public class Instructions extends LinkedList<Instruction>{
         return res;
     }
 
-    List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar) {
+    /**
+     * ATTENTION : cette fonction introduit des effets de bord car elle modifie
+     * son appelant.
+     * @param mapVar
+     * @return 
+     */
+    public RenamingPack<Instructions> alphaRename(
+            Couple< List<ICouple<Variable, Variable>>,
+                    List<ICouple<Type, Type>> > alphaMap) {
+        Instructions alphaInstr = new Instructions();
         for (Instruction instruction : this) {
-            mapVar = instruction.alphaRename(mapVar);
+            RenamingPack<Instruction> packInstr = instruction.alphaRename(alphaMap);
+            alphaMap = packInstr.getAlphaMap();
+            alphaInstr.addLast(packInstr.getRenamed());
         }
-        return mapVar;
+        RenamingPack<Instructions> res = new RenamingPack(alphaInstr, alphaMap);
+        return res;
     }
 }

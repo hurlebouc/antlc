@@ -6,8 +6,10 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
-import toolbox.Couple;
-import toolbox.List;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 import utilitaire.Utilitaire;
 
 /**
@@ -72,10 +74,17 @@ public class Program {
         return res;
     }
 
-    public void alphaRename() {
-        List<Couple<Variable, Variable>> mapVar = List.empty();
-        mapVar = arg.alphaRename(mapVar);
-        instr.alphaRename(mapVar);
+    public Program alphaRename() {
+        List<ICouple<Variable, Variable>> mapVar = List.empty();
+        List<ICouple<Type, Type>> mapType = List.empty();
+        Couple< List<ICouple<Variable, Variable>>, 
+                List<ICouple<Type, Type>>> alphaMap;
+        alphaMap = new Couple(mapVar, mapType);
+        alphaMap = arg.alphaRename(alphaMap);
+        RenamingPack<Instructions> PackedAlphaInstr = instr.alphaRename(alphaMap);
+        Arguments alphaArg = arg; // CHANGER ICI !!!!!!!!!
+        Instructions alphaInstr = PackedAlphaInstr.getRenamed();
+        return new Program(alphaArg, alphaInstr);
     }
     
 }

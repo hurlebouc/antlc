@@ -2,24 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package toolbox;
+package toolbox.base;
 
 /**
  *
  * @author hubert
  */
-public class Right<S, T> extends Either<S,T> {
-    
-    public Right(T t){
-        super(null, t);
+public class Left<S, T> extends Either<S, T> {
+
+    public Left(S s) {
+        super(s, null);
     }
 
     @Override
     public boolean isLeft() {
-        return false;
+        return true;
     }
     
-    public T unwrap(){
-        return t;
+    public S unwrap(){
+        return s;
     }
 }

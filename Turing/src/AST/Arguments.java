@@ -6,10 +6,9 @@ package AST;
 
 import AST.expression.Variable;
 import java.util.LinkedList;
-import toolbox.Couple;
-import toolbox.Either;
-import toolbox.Left;
-import toolbox.List;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
 
 /**
  *
@@ -39,11 +38,18 @@ public class Arguments extends LinkedList<Variable> {
         return this;
     }
 
-    List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar) {
-        List<Couple<Variable, Variable>> res = List.empty();
+    Couple< List<ICouple<Variable, Variable>>,
+            List<ICouple<Type, Type>> > 
+            alphaRename(
+            Couple< List<ICouple<Variable, Variable>>,
+                    List<ICouple<Type, Type>> > alphaMap) {
+        List<ICouple<Variable, Variable>> varMap = alphaMap.fst;
+        List<ICouple<Type, Type>> typeMap = alphaMap.snd;
+        System.out.println("ATTENTION : revenir dans la fonction d'alpha renommage des arguments et enlever le 0");
         for (Variable variable : this) {
-            res = List.cons(new Couple<Variable, Variable>(variable, variable), res);
+            varMap = List.cons(new ICouple<Variable, Variable>(variable, variable, 0), varMap);
         }
-        return res;
+        alphaMap = new Couple(varMap, typeMap);
+        return alphaMap;
     }
 }

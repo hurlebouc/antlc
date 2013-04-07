@@ -5,10 +5,10 @@
 package AST;
 
 import AST.expression.Variable;
-import java.util.Collection;
-import java.util.LinkedList;
-import toolbox.Couple;
-import toolbox.List;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -23,23 +23,32 @@ abstract public class Instruction {
      * @return true si l'instruction est typable
      */
     abstract public boolean typeCheck(Environment env);
-    
+
     /**
      * Construit le nouvel environnement (est logiquement appelée après le test
      * de typage)
+     *
      * @param env environnement dans lequel est typée l'instruction
      * @return nouvel environnement de l'instruction suivante
      */
     abstract public Environment nextEnv(Environment env);
 
-    
     abstract public String toAsm();
 
     /**
      * Cette fonction retourne la variable créée par l'instruction
+     *
      * @return retourne null si l'instruction ne crée par de variable.
      */
     abstract public Variable fetchVar();
 
-    abstract public List<Couple<Variable, Variable>> alphaRename(List<Couple<Variable, Variable>> mapVar);
+    /**
+     * Renome l'AST afin d'éviter les clashs de nom. ATTENTION : cette fonction
+     * introduit des effets de bord : en effet, elle modifie this.
+     *
+     * @param mapVar
+     * @return
+     */
+    abstract public RenamingPack<Instruction> alphaRename(
+            Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap);
 }

@@ -9,7 +9,10 @@ import AST.Instruction;
 import AST.expression.Variable;
 import AST.Expression;
 import AST.Type;
-import java.util.LinkedList;
+import toolbox.base.Couple;
+import toolbox.usage.ICouple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -23,6 +26,12 @@ public class Affectation extends Instruction {
     public Affectation(String varName, Expression e) {
 //        this.var = Variable.get(varName); // plante si jamais intialisé
         this.var = Variable.newVariable(varName);
+        this.e = e;
+    }
+    
+    private Affectation(Variable var, Expression e) {
+//        this.var = Variable.get(varName); // plante si jamais intialisé
+        this.var = var;
         this.e = e;
     }
 
@@ -60,4 +69,15 @@ public class Affectation extends Instruction {
     public Variable fetchVar() {
         return null;
     }
+
+    @Override
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Variable alphaVar = var.alphaRename(alphaMap);
+        Expression alphaExpr = e.alphaRename(alphaMap);
+        Instruction alphaInstr = new Affectation(alphaVar, alphaExpr);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(alphaInstr, alphaMap);
+        return res;
+    }
+
+    
 }
