@@ -7,6 +7,9 @@ package AST.expression;
 import AST.Environment;
 import AST.Expression;
 import AST.Type;
+import toolbox.base.Couple;
+import toolbox.base.List;
+import toolbox.usage.ICouple;
 
 /**
  *
@@ -49,5 +52,11 @@ public class Cons extends Expression {
             throw new UnsupportedOperationException("cons() ne prend que des int et " + tl + " est de type " + tl.getType(env));
         }
         return Type.tyint;
+    }
+
+    @Override
+    public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Expression alphaExpression = tl.alphaRename(alphaMap);
+        return new Cons(hd, alphaExpression);
     }
 }

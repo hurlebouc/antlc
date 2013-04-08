@@ -11,6 +11,7 @@ import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;
 import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -45,7 +46,8 @@ public class Stop extends Instruction {
     }
 
     @Override
-    public Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
-        return alphaMap;
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        RenamingPack<Instruction> res = new RenamingPack(new Stop(), alphaMap);
+        return res;
     }
 }

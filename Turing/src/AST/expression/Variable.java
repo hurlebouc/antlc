@@ -7,6 +7,12 @@ package AST.expression;
 import AST.Environment;
 import AST.Expression;
 import AST.Type;
+import AST.TypingException;
+import toolbox.base.Couple;
+import toolbox.base.Fun;
+import toolbox.base.List;
+import toolbox.base.NotFoundException;
+import toolbox.usage.ICouple;
 
 /**
  *
@@ -39,10 +45,35 @@ public class Variable extends Expression {
 
     @Override
     public Type getType(Environment env) {
-        return env.existVar(this);
+        try {
+            return env.existVar(this);
+        } catch (TypingException ex) {
+            throw new UnknownError("Erreur non attendue : " + ex.getMessage());
+        }
     }
     
     public boolean equals(Variable var){
         return this.nom.equals(var.nom);
+    }
+
+    @Override
+    public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        final Variable comp = this;
+        
+        Fun<ICouple<Variable, Variable>, Boolean> p = new Fun<ICouple<Variable, Variable>, Boolean>() {
+            @Override
+            public Boolean apply(ICouple<Variable, Variable> arg) {
+                Variable var = arg.fst;
+                return var.equals(comp);
+            }
+        };
+        
+        Couple<Variable, Variable> matching;
+        try {
+            matching = List.search(p, alphaMap.fst);
+        } catch (NotFoundException ex) {
+            throw new UnsupportedOperationException("Erreur inattendue : " + ex.getMessage());
+        }
+        return matching.snd;
     }
 }

@@ -4,6 +4,15 @@
  */
 package AST;
 
+import AST.expression.Variable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import toolbox.base.Couple;
+import toolbox.base.Fun;
+import toolbox.base.List;
+import toolbox.base.NotFoundException;
+import toolbox.usage.ICouple;
+
 /**
  *
  * @author hubert
@@ -64,5 +73,26 @@ public class Type {
     
     public boolean equals(Type t){
         return this.name.equals(t.name);
+    }
+
+    public Type alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        
+        final Type comp = this;
+        
+        Fun<ICouple<Type, Type>, Boolean> p = new Fun<ICouple<Type, Type>, Boolean>() {
+            @Override
+            public Boolean apply(ICouple<Type, Type> arg) {
+                Type t = arg.fst;
+                return t.equals(comp);
+            }
+        };
+        
+        Couple<Type, Type> matching;
+        try {
+            matching = List.search(p, alphaMap.snd);
+        } catch (NotFoundException ex) {
+            throw new UnknownError("Erreur inattendue : " + ex.getMessage());
+        }
+        return matching.snd;
     }
 }

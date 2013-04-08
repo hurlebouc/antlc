@@ -27,7 +27,7 @@ public class Arguments extends LinkedList<Variable> {
     public void addVar(String varName, String typeName) {
         // vérifier que toutes les variales ont des noms différents
         this.addFirst(Variable.newVariable(varName));
-        locEnv = locEnv.addVariable(Variable.newVariable(varName), Type.newType(typeName));
+        locEnv = Environment.addVariable(Variable.newVariable(varName), Type.newType(typeName), locEnv);
     }
 
     public Environment buildLocalEnv() {

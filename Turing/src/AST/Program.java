@@ -28,9 +28,9 @@ public class Program {
     
     public void typeCheck(){
         Environment env = arg.buildLocalEnv();
-        env = env.addType(Type.tyint);
-        env = env.addType(Type.tystring);
-        env = env.addType(Type.tyunit);
+        env = Environment.addType(Type.tyint, env);
+        env = Environment.addType(Type.tystring, env);
+        env = Environment.addType(Type.tyunit, env);
         instr.typeCheck(env);
     }
     
@@ -60,8 +60,8 @@ public class Program {
 //        asm = asm.replaceFirst(";OUTPUT", "\tmov\teax, [" + output.getName() + "]\n");
         
         var = "";
-        for(Instruction instr : this.instr){
-            var += instr.toAsm();
+        for(Instruction instr_ : this.instr){
+            var += instr_.toAsm();
         }
         asm =  asm.replaceFirst("CORPS", var);
         

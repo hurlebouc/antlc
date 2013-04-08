@@ -7,6 +7,9 @@ package AST.expression;
 import AST.Environment;
 import AST.Expression;
 import AST.Type;
+import toolbox.base.Couple;
+import toolbox.base.List;
+import toolbox.usage.ICouple;
 
 /**
  *
@@ -38,5 +41,11 @@ public class Last extends Expression {
             throw new UnsupportedOperationException("last() ne prend que des int et " + sub + " est de type " + sub.getType(env));
         }
         return Type.tyint;
+    }
+
+    @Override
+    public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Expression alphaExpression = sub.alphaRename(alphaMap);
+        return new Last(alphaExpression);
     }
 }

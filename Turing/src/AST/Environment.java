@@ -51,7 +51,7 @@ public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
             }
         };
         
-        Either<Couple<Variable, Type>, Type> res = this.search(p);
+        Either<Couple<Variable, Type>, Type> res = List.search(p, this);
         Couple<Variable, Type> prod = ((Left<Couple<Variable, Type>, Type>) res).unwrap();
         return prod.snd;
     }
@@ -74,7 +74,7 @@ public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
             }
         };
         
-        Either<Couple<Variable, Type>, Type> res = this.search(p);
+        Either<Couple<Variable, Type>, Type> res = List.search(p, this);
         Type ty = ((Right<Couple<Variable, Type>, Type>) res).unwrap();
         return ty;
     }
@@ -99,19 +99,19 @@ public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
         return res;
     }
 
-    public Environment addVariable(Variable var, Type type) {
+    public static Environment addVariable(Variable var, Type type, Environment env) {
         return Environment.cons(
                 new Left<Couple<Variable, Type>, Type>(
                     new Couple<Variable, Type>(var, type)
                 ),
-                this
+                env
         );
     }
     
-    public Environment addType(Type type) {
+    public static Environment addType(Type type, Environment env) {
         return Environment.cons(
                 new Right<Couple<Variable, Type>, Type>(type),
-                this
+                env
         );
         
 //        Environment newEnv = new Environment(this);

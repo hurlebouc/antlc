@@ -10,6 +10,10 @@ import AST.Instructions;
 import AST.Expression;
 import AST.Type;
 import AST.expression.Variable;
+import toolbox.base.Couple;
+import toolbox.base.List;
+import toolbox.pack.RenamingPack;
+import toolbox.usage.ICouple;
 
 /**
  *
@@ -67,5 +71,18 @@ public class WHILE extends Instruction {
     @Override
     public Variable fetchVar() {
         return null;
+    }
+
+    @Override
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Expression alphaExpression = e.alphaRename(alphaMap);
+        
+        RenamingPack<Instructions> rpInstrs = li.alphaRename(alphaMap);
+        Instructions alphaInstructions = rpInstrs.getRenamed();
+        
+        WHILE alphaWhile = new WHILE(alphaExpression, alphaInstructions);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(alphaWhile, alphaMap);
+        
+        return res;
     }
 }

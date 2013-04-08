@@ -72,7 +72,7 @@ public class Affectation extends Instruction {
 
     @Override
     public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
-        Variable alphaVar = var.alphaRename(alphaMap);
+        Variable alphaVar = (Variable) var.alphaRename(alphaMap);
         Expression alphaExpr = e.alphaRename(alphaMap);
         Instruction alphaInstr = new Affectation(alphaVar, alphaExpr);
         RenamingPack<Instruction> res = new RenamingPack<Instruction>(alphaInstr, alphaMap);

@@ -12,6 +12,7 @@ import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;
 import toolbox.base.List;
+import toolbox.pack.RenamingPack;
 
 /**
  *
@@ -51,8 +52,9 @@ public class RETURN extends Instruction {
     }
 
     @Override
-    public Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
-        output.alphaRename(alphaMap);
-        return alphaMap;
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+        Expression alphaExpression = output.alphaRename(alphaMap);
+        RenamingPack<Instruction> res = new RenamingPack(new RETURN(alphaExpression), alphaMap);
+        return res;
     }
 }

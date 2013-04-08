@@ -43,14 +43,17 @@ public class List<T> {
      * @return
      * @throws NotFoundException 
      */
-    public T search(Fun<T, Boolean> p) throws NotFoundException {
-        if (p.apply(head)) {
-            return head;
-        }
-        if (tail == empty()) {
+    public static <T> T search(Fun<T, Boolean> p, List<T> list) throws NotFoundException {
+        if (list == empty()) {
             throw new NotFoundException();
         }
-        return tail.search(p);
+        if (p.apply(list.head)) {
+            return list.head;
+        }
+        if (list.tail == empty()) {
+            throw new NotFoundException();
+        }
+        return List.search(p, list.tail);
     }
 
     public boolean isEmpty() {

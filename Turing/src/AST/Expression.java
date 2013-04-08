@@ -19,12 +19,7 @@ abstract public class Expression {
     
     abstract public Type getType(Environment env);
     
-    /**
-     * ATTENTION : fonction à effet de bord !
-     * @param mapVar
-     * @return 
-     */
-    abstract public <T extends Expression> T alphaRename(
+    abstract public Expression alphaRename(
             Couple< List<ICouple<Variable, Variable>>,
                     List<ICouple<Type, Type>> > alphaMap);
 }
