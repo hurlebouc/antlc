@@ -6,7 +6,7 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
-import AST.Type;
+import AST.type.Type;
 import AST.TypingException;
 import AST.expression.Variable;
 import java.util.logging.Level;

@@ -8,7 +8,7 @@ import AST.Environment;
 import AST.Instruction;
 import AST.expression.Variable;
 import AST.Expression;
-import AST.Type;
+import AST.type.Type;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;
 import toolbox.base.List;
@@ -55,7 +55,6 @@ public class Affectation extends Instruction {
             System.out.println("WARNING : conversion automatique int -> string.");
         } else if (!typeVar.equals(typeExpr)) {
             return false;
-            //throw new UnsupportedOperationException("Type de " + variable.getName() + " (" + variable.getType(env) + ") non compatible avec (" + e.getType(env) + ")");
         }
         return true;
     }

@@ -7,7 +7,7 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.Expression;
-import AST.Type;
+import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;

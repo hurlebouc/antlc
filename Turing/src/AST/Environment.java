@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.base.Either;
@@ -22,6 +23,13 @@ import toolbox.base.Right;
  * @author hubert
  */
 public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
+
+    public static Environment concat(Environment env1, Environment env2) {
+        if (env1 == empty) {
+            return env2;
+        }
+        return concat((Environment) env1.tail(), Environment.cons(env1.head(), env2));
+    }
 
     private Environment(Either<Couple<Variable, Type>, Type> e, Environment env) {
         super(e, env);

@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.type.Type;
 import AST.expression.Variable;
 import java.util.LinkedList;
 import toolbox.base.Couple;
@@ -25,7 +26,7 @@ public class Arguments extends LinkedList<Variable> {
     }
 
     public void addVar(String varName, String typeName) {
-        // vérifier que toutes les variales ont des noms différents
+        // TODO : vérifier que toutes les variales ont des noms différents
         this.addFirst(Variable.newVariable(varName));
         locEnv = Environment.addVariable(Variable.newVariable(varName), Type.newType(typeName), locEnv);
     }
@@ -38,11 +39,7 @@ public class Arguments extends LinkedList<Variable> {
         return this;
     }
 
-    Couple< List<ICouple<Variable, Variable>>,
-            List<ICouple<Type, Type>> > 
-            alphaRename(
-            Couple< List<ICouple<Variable, Variable>>,
-                    List<ICouple<Type, Type>> > alphaMap) {
+    Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaRename(Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
         List<ICouple<Variable, Variable>> varMap = alphaMap.fst;
         List<ICouple<Type, Type>> typeMap = alphaMap.snd;
         System.out.println("ATTENTION : revenir dans la fonction d'alpha renommage des arguments et enlever le 0");

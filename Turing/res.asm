@@ -2,8 +2,8 @@ extern printf,exit
 section .data
 out:	db "%d",0xa,0x0	
 
-z: 	 dd 0
-t: 	 dd 0
+z0: 	 dd 0
+t0: 	 dd 0
 x: 	 dd 0
 
 
@@ -45,44 +45,44 @@ main:
 
 
 	mov	eax, 0
-	mov	[Variable[z]], eax
-beginwhile0:
+	mov	[Variable[z0]], eax
+beginwhile1:
 	mov	eax, [x]
 	cmp	eax, 0
-	je	endwhile0
+	je	endwhile1
 	mov	eax, [x]
 	and	eax, 1
-	mov	[Variable[t]], eax
-	mov	eax, [t]
+	mov	[Variable[t0]], eax
+	mov	eax, [t0]
 	mov	ebx, eax
 	mov	eax, 0
 	shl	 eax, 1
 	cmp	eax, ebx
-	jne	endif0
-	mov	eax, [z]
+	jne	endif2
+	mov	eax, [z0]
 	shl	 eax, 1
-	mov	[Variable[z]], eax
-endif0:
-	mov	eax, [t]
+	mov	[Variable[z0]], eax
+endif2:
+	mov	eax, [t0]
 	mov	ebx, eax
 	mov	eax, 0
 	shl	 eax, 1
 	inc	eax
 	cmp	eax, ebx
-	jne	endif1
-	mov	eax, [z]
+	jne	endif3
+	mov	eax, [z0]
 	shl	 eax, 1
 	inc	eax
-	mov	[Variable[z]], eax
-endif1:
+	mov	[Variable[z0]], eax
+endif3:
 	mov	eax, [x]
 	shr	eax, 1
 	mov	[Variable[x]], eax
-	jmp	beginwhile0
-endwhile0:
+	jmp	beginwhile1
+endwhile1:
 	mov	eax, 9
-	mov	[Variable[t]], eax
-	mov	eax, [z]
+	mov	[Variable[t0]], eax
+	mov	eax, [z0]
 	jmp	endprog
 
 

@@ -6,7 +6,7 @@ package AST.expression;
 
 import AST.Environment;
 import AST.Expression;
-import AST.Type;
+import AST.type.Type;
 import toolbox.base.Couple;
 import toolbox.base.List;
 import toolbox.usage.ICouple;

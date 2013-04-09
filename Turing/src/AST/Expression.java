@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;

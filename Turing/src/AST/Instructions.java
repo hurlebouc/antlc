@@ -4,6 +4,7 @@
  */
 package AST;
 
+import AST.type.Type;
 import AST.expression.Variable;
 import java.util.LinkedList;
 import toolbox.base.Couple;

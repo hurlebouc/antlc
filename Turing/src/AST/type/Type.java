@@ -2,11 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package AST;
+package AST.type;
 
+import AST.Environment;
 import AST.expression.Variable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import toolbox.base.Couple;
 import toolbox.base.Fun;
 import toolbox.base.List;
@@ -19,46 +18,38 @@ import toolbox.usage.ICouple;
  */
 public class Type {
 
-//    private static ArrayList<Type> listeTypes;
     public final static Type tyint = new Type("int");
     public final static Type tystring = new Type("string");
     public final static Type tyunit = new Type("unit");
-    
+
+    public static Environment getBuiltInEnv() {
+        Environment env = Environment.empty;
+        env = Environment.addType(Type.tyint, env);
+        env = Environment.addType(Type.tystring, env);
+        env = Environment.addType(Type.tyunit, env);
+        return env;
+    }
+
+    public static Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> getBuiltInAlphaMap() {
+        List<ICouple<Variable, Variable>> mapVar = List.empty();
+        List<ICouple<Type, Type>> mapType = List.empty();
+        mapType = List.cons(new ICouple<Type, Type>(tyint, tyint, 0), mapType);
+        mapType = List.cons(new ICouple<Type, Type>(tystring, tystring, 0), mapType);
+        mapType = List.cons(new ICouple<Type, Type>(tyunit, tyunit, 0), mapType);
+//        mapType = List.cons(new ICouple<Type, Type>(tyint, new Type("int0"), 0), mapType);
+//        mapType = List.cons(new ICouple<Type, Type>(tystring, new Type("string0"), 0), mapType);
+//        mapType = List.cons(new ICouple<Type, Type>(tyunit, new Type("unit0"), 0), mapType);
+        Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap;
+        alphaMap = new Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>>(mapVar, mapType);
+        return alphaMap;
+    }
     private final String name;
 
     private Type(String typeName) {
         this.name = typeName;
     }
 
-//    private static void initListeType() {
-//        listeTypes = new ArrayList<Type>();
-//        listeTypes.add(tyint);
-//        listeTypes.add(tystring);
-//    }
-//
-//    private static Type search(String typeName) {
-//        for (Type type : listeTypes) {
-//            if (typeName.equals(type.name)) {
-//                return type;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    @Deprecated
-//    public static Type declare(String typeName) {
-//        if (listeTypes == null) {
-//            initListeType();
-//        }
-//        if (Type.search(typeName) != null) {
-//            throw new UnsupportedOperationException("Le type " + typeName + " est déjà déclaré.");
-//        }
-//        Type res = new Type(typeName);
-//        listeTypes.add(res);
-//        return res;
-//    }
-    
-    public static Type newType(String nom){
+    public static Type newType(String nom) {
         return new Type(nom);
     }
 
@@ -70,15 +61,15 @@ public class Type {
     public String getName() {
         return name;
     }
-    
-    public boolean equals(Type t){
+
+    public boolean equals(Type t) {
         return this.name.equals(t.name);
     }
 
     public Type alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
-        
+
         final Type comp = this;
-        
+
         Fun<ICouple<Type, Type>, Boolean> p = new Fun<ICouple<Type, Type>, Boolean>() {
             @Override
             public Boolean apply(ICouple<Type, Type> arg) {
@@ -86,7 +77,7 @@ public class Type {
                 return t.equals(comp);
             }
         };
-        
+
         Couple<Type, Type> matching;
         try {
             matching = List.search(p, alphaMap.snd);

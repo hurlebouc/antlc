@@ -8,7 +8,7 @@ import AST.Environment;
 import AST.Instruction;
 import AST.Instructions;
 import AST.Expression;
-import AST.Type;
+import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.base.List;

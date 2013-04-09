@@ -5,7 +5,7 @@
 package toolbox.pack;
 
 import AST.Instructions;
-import AST.Type;
+import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.base.List;

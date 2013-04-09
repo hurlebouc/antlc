@@ -50,9 +50,9 @@ public class List<T> {
         if (p.apply(list.head)) {
             return list.head;
         }
-        if (list.tail == empty()) {
-            throw new NotFoundException();
-        }
+//        if (list.tail == empty()) {
+//            throw new NotFoundException();
+//        }
         return List.search(p, list.tail);
     }
 
