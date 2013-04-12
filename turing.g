@@ -63,8 +63,8 @@
  	;
  
  arguments returns [Arguments result]
- 	:	type=ID n=ID 			{$result = new Arguments($n.text, $type.text);}
- 		|type=ID n=ID ',' arg=arguments	{($arg.result).addVar($n.text, $type.text); $result = $arg.result;}
+ 	:	type=ID n=ID 			{$result = Arguments.addCouple($n.text, $type.text, Arguments.empty());}
+ 		|type=ID n=ID ',' arg=arguments	{$result = Arguments.addCouple($n.text, $type.text, $arg.result);}
  	;
  
  program returns [Program result]

@@ -41,13 +41,21 @@ public class Program {
         }
         asm = asm.replaceFirst("VAR_LIST", var);
 
-        var = "" + (arg.size() + 1);
+        var = "" + (Arguments.length(arg) + 1);
         asm = asm.replaceFirst("INPUT_NUMBER", var);
 
         var = "";
-        for (int i = 0; i < arg.size(); i++) {
-            var += "\tmov\teax, [ebx+" + ((i + 1) * 4) + "]\n\tcall\tatoi\n\tmov\t[" + arg.get(i).getName() + "], eax\n\n";
+        Arguments iter = arg;
+        int i = 0;
+        while(!Arguments.isEmpty(iter)){
+            Variable variable = iter.head().fst;
+            var += "\tmov\teax, [ebx+" + ((i + 1) * 4) + "]\n\tcall\tatoi\n\tmov\t[" + variable.getName() + "], eax\n\n";
+            i++;
+            iter = (Arguments) iter.tail();
         }
+//        for (int i = 0; i < arg.size(); i++) {
+//            var += "\tmov\teax, [ebx+" + ((i + 1) * 4) + "]\n\tcall\tatoi\n\tmov\t[" + arg.get(i).getName() + "], eax\n\n";
+//        }
         asm = asm.replaceFirst("INPUT_LIST", var);
 
 //        asm = asm.replaceFirst(";OUTPUT", "\tmov\teax, [" + output.getName() + "]\n");
@@ -82,4 +90,13 @@ public class Program {
         Instructions alphaInstr = PackedAlphaInstr.getRenamed();
         return new Program(alphaArg, alphaInstr);
     }
+    
+    public String prettyPrint(){
+        String res = "inpup(";
+//        res += arg.prettyPrint() + "){\n";
+//        res += instr.prettyPrint("   ");
+        res += "}\n";
+        return res;
+    }
+    
 }

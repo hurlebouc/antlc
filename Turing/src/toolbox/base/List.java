@@ -56,8 +56,16 @@ public class List<T> {
         return List.search(p, list.tail);
     }
 
-    public boolean isEmpty() {
-        return this.equals(List.empty());
+    public static <T> boolean isEmpty(List<T> list) {
+        return list == List.empty();
+    }
+    
+    public static <T> int length(List<T> list){
+        if (List.isEmpty(list)) {
+            return 0;
+        } else {
+            return 1 + length(list.tail);
+        }
     }
     
     /*
