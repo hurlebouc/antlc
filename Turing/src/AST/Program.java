@@ -53,9 +53,7 @@ public class Program {
             i++;
             iter = (Arguments) iter.tail();
         }
-//        for (int i = 0; i < arg.size(); i++) {
-//            var += "\tmov\teax, [ebx+" + ((i + 1) * 4) + "]\n\tcall\tatoi\n\tmov\t[" + arg.get(i).getName() + "], eax\n\n";
-//        }
+        
         asm = asm.replaceFirst("INPUT_LIST", var);
 
 //        asm = asm.replaceFirst(";OUTPUT", "\tmov\teax, [" + output.getName() + "]\n");
