@@ -6,7 +6,6 @@ package AST;
 
 import AST.type.Type;
 import AST.expression.Variable;
-import com.sun.jdi.connect.Connector;
 import java.util.LinkedList;
 import toolbox.base.Couple;
 import toolbox.base.Left;
@@ -19,7 +18,6 @@ import toolbox.base.List;
  */
 public class Arguments extends List<Couple<Variable, Type>> {
     
-//    private Environment locEnv;
     
     private Arguments(Variable var, Type ty, Arguments arg){
         super(new Couple<Variable, Type>(var, ty), arg);
@@ -31,23 +29,14 @@ public class Arguments extends List<Couple<Variable, Type>> {
     
     public static Arguments empty(){return null;};
     
-//    public Arguments(String varName, String typeName) {
-//        super();
-//        locEnv = Environment.empty;
-//        this.addVar(varName, typeName);
-//    }
 
     public static Arguments addCouple(String varName, String typeName, Arguments arg) {
         // TODO : vérifier que toutes les variales ont des noms différents
-//        this.addFirst(Variable.newVariable(varName));
-//        locEnv = Environment.addVariable(Variable.newVariable(varName), Type.newType(typeName), locEnv);
         return new Arguments(Variable.newVariable(varName), Type.newType(typeName), arg);
     }
     
     public static Arguments cons(Couple<Variable, Type> couple, Arguments arg) {
         // TODO : vérifier que toutes les variales ont des noms différents
-//        this.addFirst(Variable.newVariable(varName));
-//        locEnv = Environment.addVariable(Variable.newVariable(varName), Type.newType(typeName), locEnv);
         return new Arguments(couple, arg);
     }
 
@@ -88,9 +77,6 @@ public class Arguments extends List<Couple<Variable, Type>> {
             iter = (Arguments) iter.tail();
             varMap = List.cons(new ICouple<Variable, Variable>(variable, variable, 0), varMap);
         }
-//        for (Variable variable : this) {
-//            varMap = List.cons(new ICouple<Variable, Variable>(variable, variable, 0), varMap);
-//        }
         alphaMap = new Couple(varMap, typeMap);
         return alphaMap;
     }
