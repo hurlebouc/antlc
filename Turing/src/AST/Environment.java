@@ -87,22 +87,28 @@ public class Environment extends List<Either<Couple<Variable, Type>, Type>> {
         return ty;
     }
 
-    public Type existVar(Variable var) throws TypingException {
+    public Type existVar(Variable var) {
         Type res;
         try {
             res = searchVar(var);
         } catch (NotFoundException ex) {
-            throw new TypingException("Variable " + var + " undeclared in this scope.");
+//            throw new TypingException("Variable " + var + " undeclared in this scope.");
+            throw new UnknownError("Erreur inattendue : variable non présente "
+                    + "dans l'environnement de typage, devrait avoir été "
+                    + "détéctée dans le test de bonne formation");
         }
         return res;
     }
 
-    public Type existType(Type type) throws TypingException {
+    public Type existType(Type type) {
         Type res;
         try {
             res = searchType(type);
         } catch (NotFoundException ex) {
-            throw new TypingException("Type " + type + " undeclared in this scope.");
+//            throw new TypingException("Type " + type + " undeclared in this scope.");
+            throw new UnknownError("Erreur inattendue : type non présent dans "
+                    + "l'environnement de typage, devrait avoir été détectée "
+                    + "dans le tes de bonne formation");
         }
         return res;
     }

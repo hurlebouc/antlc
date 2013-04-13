@@ -8,7 +8,11 @@ import AST.Environment;
 import AST.Instruction;
 import AST.expression.Variable;
 import AST.Expression;
+import AST.TypingException;
+import AST.UnboundVariableException;
 import AST.type.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;
 import toolbox.base.List;
@@ -47,16 +51,18 @@ public class Affectation extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
+    public void typeCheck(Environment env) throws TypingException {
 //        Variable variable = env.existVar(var);
         Type typeExpr = e.getType(env);
         Type typeVar = var.getType(env);
         if (typeVar.equals(Type.tystring) && typeExpr.equals(Type.tyint)) {
             System.out.println("WARNING : conversion automatique int -> string.");
         } else if (!typeVar.equals(typeExpr)) {
-            return false;
+            throw new TypingException("Affectation impossible : la variable est de type "
+                    + typeVar.getName()
+                    + " alors que l''expression est de type "
+                    + typeExpr.getName());
         }
-        return true;
     }
 
     @Override
@@ -70,7 +76,7 @@ public class Affectation extends Instruction {
     }
 
     @Override
-    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundVariableException {
         Variable alphaVar = (Variable) var.alphaRename(alphaMap);
         Expression alphaExpr = e.alphaRename(alphaMap);
         Instruction alphaInstr = new Affectation(alphaVar, alphaExpr);

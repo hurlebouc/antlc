@@ -7,6 +7,8 @@ package turing;
 import parser.turingParser;
 import parser.turingLexer;
 import AST.Program;
+import AST.UnboundTypeException;
+import AST.UnboundVariableException;
 import org.antlr.runtime.*;
 
 /**
@@ -18,9 +20,9 @@ public class Turing {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws RecognitionException {
-        String s = "last(0(x11))";
-        //String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
+    public static void main(String[] args) throws RecognitionException, UnboundTypeException, UnboundVariableException {
+//        String s = "last(0(x11))";
+//        String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
         String src = utilitaire.Utilitaire.lireFichier("addition.while");
         
         CharStream stream = new ANTLRStringStream(src);

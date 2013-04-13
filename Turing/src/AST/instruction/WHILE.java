@@ -8,6 +8,9 @@ import AST.Environment;
 import AST.Instruction;
 import AST.Instructions;
 import AST.Expression;
+import AST.TypingException;
+import AST.UnboundTypeException;
+import AST.UnboundVariableException;
 import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
@@ -55,12 +58,12 @@ public class WHILE extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
+    public void typeCheck(Environment env) throws TypingException {
         if(!e.getType(env).equals(Type.tyint)){
-//            throw new UnsupportedOperationException("while réclame un type int mais " + e + " est de type " + e.getType(env));
-            return false;
+            throw new TypingException("L'instruction while réclame un type int "
+                    + "mais " + e + " est de type " + e.getType(env));
         }
-        return li.typeCheck(env);
+        li.typeCheck(env);
     }
 
     @Override
@@ -74,7 +77,7 @@ public class WHILE extends Instruction {
     }
 
     @Override
-    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundTypeException, UnboundVariableException {
         Expression alphaExpression = e.alphaRename(alphaMap);
         
         RenamingPack<Instructions> rpInstrs = li.alphaRename(alphaMap);

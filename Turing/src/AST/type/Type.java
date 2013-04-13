@@ -5,6 +5,7 @@
 package AST.type;
 
 import AST.Environment;
+import AST.UnboundTypeException;
 import AST.expression.Variable;
 import toolbox.base.Couple;
 import toolbox.base.Fun;
@@ -66,7 +67,7 @@ public class Type {
         return this.name.equals(t.name);
     }
 
-    public Type alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public Type alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundTypeException {
 
         final Type comp = this;
 
@@ -82,7 +83,7 @@ public class Type {
         try {
             matching = List.search(p, alphaMap.snd);
         } catch (NotFoundException ex) {
-            throw new UnknownError("Erreur inattendue : " + ex.getMessage());
+            throw new UnboundTypeException("Le type " + this.getName() + " n'est pas défini.");
         }
         return matching.snd;
     }

@@ -22,7 +22,6 @@ abstract public class Expression {
     
     abstract public Expression alphaRename(
             Couple< List<ICouple<Variable, Variable>>,
-                    List<ICouple<Type, Type>> > alphaMap);
-    
+                    List<ICouple<Type, Type>> > alphaMap) throws UnboundVariableException;    
     abstract public String prettyPrint();
 }

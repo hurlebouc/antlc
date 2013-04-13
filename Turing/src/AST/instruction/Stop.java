@@ -31,9 +31,7 @@ public class Stop extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
-        return true;
-    }
+    public void typeCheck(Environment env) {}
 
     @Override
     public Environment nextEnv(Environment env) {

@@ -1,0 +1,28 @@
+/*
+* Les fonctions un() et zero() 
+*/
+
+input(int x){
+    //string z;
+    int z;
+    // z := #;
+    z := 0;
+    while(x){
+        int t;
+        t := head(x);
+        // if (t = 0(#)){
+        if (t = zero(0)){
+            // z := 0(z);
+            z := zero(z);
+        };
+        // if (t = 1(#)){
+        if (t = un(0)){
+            // z := 1(z);
+            z := un(z);
+        };
+        x := last(x);
+    };
+    string t;
+    t:=9;
+    return z;
+}

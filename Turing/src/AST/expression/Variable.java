@@ -7,7 +7,7 @@ package AST.expression;
 import AST.Environment;
 import AST.Expression;
 import AST.type.Type;
-import AST.TypingException;
+import AST.UnboundVariableException;
 import toolbox.base.Couple;
 import toolbox.base.Fun;
 import toolbox.base.List;
@@ -47,7 +47,7 @@ public class Variable extends Expression {
     public Type getType(Environment env) {
         try {
             return env.existVar(this);
-        } catch (TypingException ex) {
+        } catch (UnknownError ex) {
             throw new UnknownError("Erreur non attendue : " + ex.getMessage());
         }
     }
@@ -57,7 +57,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundVariableException {
         final Variable comp = this;
         
         Fun<ICouple<Variable, Variable>, Boolean> p = new Fun<ICouple<Variable, Variable>, Boolean>() {
@@ -72,7 +72,7 @@ public class Variable extends Expression {
         try {
             matching = List.search(p, alphaMap.fst);
         } catch (NotFoundException ex) {
-            throw new UnsupportedOperationException("Erreur inattendue : " + ex.getMessage());
+            throw new UnboundVariableException("La variable " + this.getName() + " n'est pas déclarée.");
         }
         return matching.snd;
     }

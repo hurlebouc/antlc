@@ -73,13 +73,13 @@ public class Program {
         return res;
     }
 
-    public void typeCheck() {
+    public void typeCheck() throws TypingException {
         Environment env = Type.getBuiltInEnv();
         env = Environment.concat(env, arg.buildLocalEnv());
         instr.typeCheck(env);
     }
 
-    public Program alphaRename() {
+    public Program alphaRename() throws UnboundTypeException, UnboundVariableException {
         Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap;
         alphaMap = Type.getBuiltInAlphaMap();
         alphaMap = arg.alphaRename(alphaMap);
@@ -90,7 +90,7 @@ public class Program {
     }
     
     public String prettyPrint(){
-        String res = "inpup(";
+        String res = "input(";
         res += arg.prettyPrint() + "){\n";
         res += instr.prettyPrint("   ");
         res += "}\n";

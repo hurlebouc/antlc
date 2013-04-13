@@ -6,6 +6,7 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
+import AST.UnboundTypeException;
 import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
@@ -33,10 +34,7 @@ public class TypeDeclaration extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
-        return true;
-//        env.declareType(type);
-    }
+    public void typeCheck(Environment env) {}
 
     @Override
     public Environment nextEnv(Environment env) {
@@ -53,7 +51,7 @@ public class TypeDeclaration extends Instruction {
     }
 
     @Override
-    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundTypeException {
         
         List<ICouple<Variable, Variable>> varMap = alphaMap.fst;
         List<ICouple<Type, Type>> typeMap = alphaMap.snd;
@@ -72,8 +70,11 @@ public class TypeDeclaration extends Instruction {
             Type renommage = Type.newType(type.getName() + (index + 1));
             typeMap = List.cons(new ICouple<Type, Type>(type, renommage, index+1), typeMap);
         } catch (NotFoundException ex) {
-            Type renommage = Type.newType(type.getName() + 0);
-            typeMap = List.cons(new ICouple<Type, Type>(type, renommage, 0), typeMap);
+//            Type renommage = Type.newType(type.getName() + 0);
+//            typeMap = List.cons(new ICouple<Type, Type>(type, renommage, 0), typeMap);
+            typeMap = List.cons(new ICouple<Type, Type>(type, type, 0), typeMap); 
+            // On ne change pas le nom des premières variables : la fonction alors 
+            // d'alpha renommage admet un point fixe
         }
         
         Type alphaType = type.alphaRename(alphaMap);

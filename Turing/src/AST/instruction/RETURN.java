@@ -7,6 +7,8 @@ package AST.instruction;
 import AST.Environment;
 import AST.Instruction;
 import AST.Expression;
+import AST.TypingException;
+import AST.UnboundVariableException;
 import AST.type.Type;
 import AST.expression.Variable;
 import toolbox.base.Couple;
@@ -34,11 +36,15 @@ public class RETURN extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
+    public void typeCheck(Environment env) throws TypingException {
         if (!Type.tyint.equals(output.getType(env))) {
-            throw new UnsupportedOperationException("return ne peut renvoyer que des (int) mais " + output + " est de type (" + output.getType(env) + ").");
+            throw new TypingException("L'instruction return ne peut renvoyer que"
+                    + " des (int) mais "
+                    + output
+                    + " est de type ("
+                    + output.getType(env)
+                    + ").");
         }
-        return true;
     }
 
     @Override
@@ -52,7 +58,7 @@ public class RETURN extends Instruction {
     }
 
     @Override
-    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundVariableException {
         Expression alphaExpression = output.alphaRename(alphaMap);
         RenamingPack<Instruction> res = new RenamingPack(new RETURN(alphaExpression), alphaMap);
         return res;

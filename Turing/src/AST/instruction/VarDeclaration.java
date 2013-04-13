@@ -6,8 +6,10 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
-import AST.type.Type;
 import AST.TypingException;
+import AST.UnboundTypeException;
+import AST.type.Type;
+import AST.UnboundVariableException;
 import AST.expression.Variable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +28,7 @@ public class VarDeclaration extends Instruction {
 
     private Variable var;
     private Type type;
-    
+
     public VarDeclaration(String varName, String typeName) {
 //        this.var = Variable.declare(varName, typeName);
         this.type = Type.newType(typeName);
@@ -37,7 +39,7 @@ public class VarDeclaration extends Instruction {
         this.type = alphaType;
         this.var = alphaVar;
     }
-    
+
     @Override
     public String toString() {
         return var.toString();
@@ -49,25 +51,19 @@ public class VarDeclaration extends Instruction {
     }
 
     @Override
-    public boolean typeCheck(Environment env) {
-        try {
-            env.existType(type);
-        } catch (TypingException ex) {
-            Logger.getLogger(VarDeclaration.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return true;
+    public void typeCheck(Environment env) {
+        env.existType(type);
     }
 
     @Override
     public Environment nextEnv(Environment env) {
-        
+
         /*
          * Ici on se contente d'ajouter la nouvelle variable à l'environnement car on
          * suppose que toutes les variables sont différents par alpha-renommage.
          * De même pour les types.
          */
-        return Environment.addVariable(var, type, env); 
+        return Environment.addVariable(var, type, env);
     }
 
     @Override
@@ -76,10 +72,10 @@ public class VarDeclaration extends Instruction {
     }
 
     @Override
-    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
+    public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundVariableException, UnboundTypeException {
         List<ICouple<Variable, Variable>> varMap = alphaMap.fst;
         List<ICouple<Type, Type>> typeMap = alphaMap.snd;
-        
+
         Fun<ICouple<Variable, Variable>, Boolean> p = new Fun<ICouple<Variable, Variable>, Boolean>() {
             @Override
             public Boolean apply(ICouple<Variable, Variable> arg) {
@@ -87,24 +83,27 @@ public class VarDeclaration extends Instruction {
                 return t.equals(var);
             }
         };
-        
+
         try {
             ICouple<Variable, Variable> last = List.search(p, varMap);
             int index = last.getIndex();
             Variable renommage = Variable.newVariable(var.getName() + (index + 1));
-            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, index+1), varMap);
+            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, index + 1), varMap);
         } catch (NotFoundException ex) {
-            Variable renommage = Variable.newVariable(var.getName() + 0);
-            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, 0), varMap);
+//            Variable renommage = Variable.newVariable(var.getName() + 0);
+//            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, 0), varMap);
+            varMap = List.cons(new ICouple<Variable, Variable>(var, var, 0), varMap);
+            // On ne change pas le nom des premières variables : la fonction alors 
+            // d'alpha renommage admet un point fixe
         }
-        
+
         Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> newAlphaMap = new Couple(varMap, typeMap);
-        
+
         Type alphaType = type.alphaRename(newAlphaMap);
         Variable alphaVar = (Variable) var.alphaRename(newAlphaMap);
-        
+
         RenamingPack<Instruction> res = new RenamingPack(new VarDeclaration(alphaVar, alphaType), newAlphaMap);
-        
+
         return res;
     }
 

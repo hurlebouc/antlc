@@ -18,12 +18,10 @@ import toolbox.pack.RenamingPack;
  */
 public class Instructions extends LinkedList<Instruction>{    
     
-    public boolean typeCheck(Environment env){
+    public boolean typeCheck(Environment env) throws TypingException{
         Environment newEnv = env;
         for (Instruction instruction : this) {
-            if (!instruction.typeCheck(newEnv)){
-                return false;
-            }
+            instruction.typeCheck(newEnv);
             newEnv = instruction.nextEnv(newEnv);
         }
         return true;
@@ -48,7 +46,7 @@ public class Instructions extends LinkedList<Instruction>{
      */
     public RenamingPack<Instructions> alphaRename(
             Couple< List<ICouple<Variable, Variable>>,
-                    List<ICouple<Type, Type>> > alphaMap) {
+                    List<ICouple<Type, Type>> > alphaMap) throws UnboundTypeException, UnboundVariableException {
         Instructions alphaInstr = new Instructions();
         for (Instruction instruction : this) {
             RenamingPack<Instruction> packInstr = instruction.alphaRename(alphaMap);

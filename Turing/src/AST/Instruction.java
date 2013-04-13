@@ -23,7 +23,7 @@ abstract public class Instruction {
      * @param env environnement dans lequel doit être typé l'instruction
      * @return true si l'instruction est typable
      */
-    abstract public boolean typeCheck(Environment env);
+    abstract public void typeCheck(Environment env) throws TypingException;
 
     /**
      * Construit le nouvel environnement (est logiquement appelée après le test
@@ -51,7 +51,8 @@ abstract public class Instruction {
      * @return
      */
     abstract public RenamingPack<Instruction> alphaRename(
-            Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap);
+            Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap)
+            throws UnboundTypeException, UnboundVariableException;
     
     /**
      * Pretty printer
