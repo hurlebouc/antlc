@@ -76,4 +76,9 @@ public class Variable extends Expression {
         }
         return matching.snd;
     }
+
+    @Override
+    public String prettyPrint() {
+        return nom;
+    }
 }

@@ -41,4 +41,9 @@ public class Nombre extends Expression {
     public Expression alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
         return this;
     }
+
+    @Override
+    public String prettyPrint() {
+        return "" + v;
+    }
 }

@@ -57,4 +57,9 @@ public class RETURN extends Instruction {
         RenamingPack<Instruction> res = new RenamingPack(new RETURN(alphaExpression), alphaMap);
         return res;
     }
+
+    @Override
+    public String prettyPrint(String offset) {
+        return offset + "return " + output.prettyPrint();
+    }
 }

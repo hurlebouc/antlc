@@ -43,4 +43,9 @@ public class Head extends Expression {
         Expression alphaExpression = e.alphaRename(alphaMap);
         return new Head(alphaExpression);
     }
+
+    @Override
+    public String prettyPrint() {
+        return "head(" + e.prettyPrint() + ")";
+    }
 }

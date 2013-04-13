@@ -80,4 +80,19 @@ public class Arguments extends List<Couple<Variable, Type>> {
         alphaMap = new Couple(varMap, typeMap);
         return alphaMap;
     }
+
+    String prettyPrint() {
+        Arguments iter = this;
+        String res = "";
+        while (!Arguments.isEmpty(iter)) {            
+            Variable var = iter.head().fst;
+            Type type = iter.head().snd;
+            iter = (Arguments) iter.tail();
+            res += type.getName() + " " + var.getName();
+            if (!Arguments.isEmpty(iter)) {
+                res += ", ";
+            }
+        }
+        return res;
+    }
 }

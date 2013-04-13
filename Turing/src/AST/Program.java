@@ -91,8 +91,8 @@ public class Program {
     
     public String prettyPrint(){
         String res = "inpup(";
-//        res += arg.prettyPrint() + "){\n";
-//        res += instr.prettyPrint("   ");
+        res += arg.prettyPrint() + "){\n";
+        res += instr.prettyPrint("   ");
         res += "}\n";
         return res;
     }

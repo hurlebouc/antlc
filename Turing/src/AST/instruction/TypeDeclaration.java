@@ -81,4 +81,9 @@ public class TypeDeclaration extends Instruction {
         
         return res;
     }
+
+    @Override
+    public String prettyPrint(String offset) {
+        return offset + "typedef " + type.getName();
+    }
 }

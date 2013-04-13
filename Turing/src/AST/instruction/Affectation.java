@@ -78,5 +78,10 @@ public class Affectation extends Instruction {
         return res;
     }
 
+    @Override
+    public String prettyPrint(String offset) {
+        return offset + var.prettyPrint() + " := " + e.prettyPrint();
+    }
+
     
 }

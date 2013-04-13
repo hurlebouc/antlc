@@ -23,4 +23,6 @@ abstract public class Expression {
     abstract public Expression alphaRename(
             Couple< List<ICouple<Variable, Variable>>,
                     List<ICouple<Type, Type>> > alphaMap);
+    
+    abstract public String prettyPrint();
 }

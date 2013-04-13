@@ -58,4 +58,12 @@ public class Instructions extends LinkedList<Instruction>{
         RenamingPack<Instructions> res = new RenamingPack(alphaInstr, alphaMap);
         return res;
     }
+    
+    public String prettyPrint(String offset){
+        String res = "";
+        for (Instruction instruction : this) {
+            res += instruction.prettyPrint(offset) + ";\n";
+        }
+        return res;
+    }
 }

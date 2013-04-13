@@ -107,4 +107,9 @@ public class VarDeclaration extends Instruction {
         
         return res;
     }
+
+    @Override
+    public String prettyPrint(String offset) {
+        return offset + type.getName() + " " + var.prettyPrint();
+    }
 }

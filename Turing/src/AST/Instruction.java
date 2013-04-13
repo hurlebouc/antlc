@@ -52,4 +52,10 @@ abstract public class Instruction {
      */
     abstract public RenamingPack<Instruction> alphaRename(
             Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap);
+    
+    /**
+     * Pretty printer
+     * @return 
+     */
+    abstract public String prettyPrint(String offset);
 }

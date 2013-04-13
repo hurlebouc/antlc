@@ -85,5 +85,13 @@ public class IF extends Instruction {
         return new RenamingPack(alphaIF, alphaMap); // après le if, le alpha est le même qu'au début
     }
 
+    @Override
+    public String prettyPrint(String offset) {
+        String res = offset + "if(" + e1.prettyPrint() + " = " + e2.prettyPrint() + ") {\n";
+        res += li.prettyPrint(offset + "   ");
+        res += offset + "}";
+        return res;
+    }
+
 
 }

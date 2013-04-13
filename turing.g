@@ -33,13 +33,13 @@
  	':=';
  
  expression returns [Expression result]
- 	:	'#' 				{$result = new Valeur("");}
- 		| 'zero' '(' e=expression ')'	{$result = new Cons('0', $e.result);}
- 		| 'un' '(' e=expression ')' 	{$result = new Cons('1', $e.result);}
- 		| 'last' '(' e=expression ')' 	{$result = new Last($e.result);}
- 		| 'head' '(' e=expression ')' 	{$result = new Head($e.result);}
- 		| n=ID 				{$result = Variable.newVariable($n.text);}
- 		| n=NUM 			{$result = new Nombre($n.text);}
+ 	:	'#' 									{$result = new Valeur("");}
+ 		| 'zero' '(' e=expression ')'						{$result = new Cons('0', $e.result);}
+ 		| 'un' '(' e=expression ')' 						{$result = new Cons('1', $e.result);}
+ 		| 'last' '(' e=expression ')' 						{$result = new Last($e.result);}
+ 		| 'head' '(' e=expression ')' 						{$result = new Head($e.result);}
+ 		| n=ID 									{$result = Variable.newVariable($n.text);}
+ 		| n=NUM 								{$result = new Nombre($n.text);}
  		;
  
  instruction returns [Instruction result]
@@ -53,20 +53,20 @@
  	;
  
  instructions returns [Instructions result]
- 	:	';' 					{$result = new Instructions();}
- 		|i=instruction lia=instructions_aux 	{($lia.result).addFirst($i.result); $result = $lia.result;}
+ 	:	';' 									{$result = new Instructions();}
+ 		|i=instruction lia=instructions_aux 					{($lia.result).addFirst($i.result); $result = $lia.result;}
  	;
  
  instructions_aux returns [Instructions result]
- 	: 	';' 			{$result = new Instructions();}
- 		|';' li=instructions 	{$result = $li.result;}
+ 	: 	';' 									{$result = new Instructions();}
+ 		|';' li=instructions 							{$result = $li.result;}
  	;
  
  arguments returns [Arguments result]
- 	:	type=ID n=ID 			{$result = Arguments.addCouple($n.text, $type.text, Arguments.empty());}
- 		|type=ID n=ID ',' arg=arguments	{$result = Arguments.addCouple($n.text, $type.text, $arg.result);}
+ 	:	type=ID n=ID 								{$result = Arguments.addCouple($n.text, $type.text, Arguments.empty());}
+ 		|type=ID n=ID ',' arg=arguments						{$result = Arguments.addCouple($n.text, $type.text, $arg.result);}
  	;
  
  program returns [Program result]
- 	:	'input' '(' arg=arguments ')' '{' i=instructions '}' EOF {$result = new Program($arg.result, $i.result);}
+ 	:	'input' '(' arg=arguments ')' '{' i=instructions '}' EOF 		{$result = new Program($arg.result, $i.result);}
  	;

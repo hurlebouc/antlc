@@ -85,4 +85,12 @@ public class WHILE extends Instruction {
         
         return res;
     }
+
+    @Override
+    public String prettyPrint(String offset) {
+        String res = offset + "while(" + e.prettyPrint() + ") {\n";
+        res += li.prettyPrint(offset + "   ");
+        res += offset + "}";
+        return res;
+    }
 }

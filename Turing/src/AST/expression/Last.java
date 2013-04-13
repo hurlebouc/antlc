@@ -48,4 +48,9 @@ public class Last extends Expression {
         Expression alphaExpression = sub.alphaRename(alphaMap);
         return new Last(alphaExpression);
     }
+
+    @Override
+    public String prettyPrint() {
+        return "last(" + sub.prettyPrint() + ")";
+    }
 }

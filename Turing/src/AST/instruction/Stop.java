@@ -50,4 +50,9 @@ public class Stop extends Instruction {
         RenamingPack<Instruction> res = new RenamingPack(new Stop(), alphaMap);
         return res;
     }
+
+    @Override
+    public String prettyPrint(String offset) {
+        return offset + "stop";
+    }
 }

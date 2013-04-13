@@ -31,6 +31,7 @@ public class Turing {
         System.out.println("Parsing :\n=========");
         Program prog = parser.program();
         prog = prog.alphaRename();
+        System.out.println(prog.prettyPrint());
         System.out.println("Type check :\n============");
         prog.typeCheck();
         System.out.println("Compile :\n=========");
