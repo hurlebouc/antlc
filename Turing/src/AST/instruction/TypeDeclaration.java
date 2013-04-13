@@ -67,14 +67,14 @@ public class TypeDeclaration extends Instruction {
         try {
             ICouple<Type, Type> last = List.search(p, typeMap);
             int index = last.getIndex();
-            Type renommage = Type.newType(type.getName() + (index + 1));
+            Type renommage = Type.newType(type.getName() + type.getName() + (index + 1));
             typeMap = List.cons(new ICouple<Type, Type>(type, renommage, index+1), typeMap);
         } catch (NotFoundException ex) {
-//            Type renommage = Type.newType(type.getName() + 0);
-//            typeMap = List.cons(new ICouple<Type, Type>(type, renommage, 0), typeMap);
-            typeMap = List.cons(new ICouple<Type, Type>(type, type, 0), typeMap); 
-            // On ne change pas le nom des premières variables : la fonction alors 
-            // d'alpha renommage admet un point fixe
+            Type renommage = Type.newType(type.getName() + type.getName() + 0);
+            typeMap = List.cons(new ICouple<Type, Type>(type, renommage, 0), typeMap);
+//            typeMap = List.cons(new ICouple<Type, Type>(type, type, 0), typeMap); 
+            // On duplique le nom de la variable pour la correction de l'algorithme 
+            // de renommage.
         }
         
         Type alphaType = type.alphaRename(alphaMap);

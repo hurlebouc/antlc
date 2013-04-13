@@ -1,0 +1,36 @@
+\input{macro.tex}
+
+\begin{document}
+
+\noindent La passe d'alpha-renommage utilise la technique suivante : On constitue un environnement de renommage, c'est à dire une pile de couple de variables, la première étant la variable à renommer, la seconde la valeur de cette variable après renommage. Lorsque qu'une nouvelle variable $x$ est défini dans le code source, on ajoute cette variable à la pile, en l'associant à une nouvelle variable $y$.\\
+\\
+Cette nouvelle variable $y$ est définie selon le nom de la variable qu'elle remplace, et de sa place dans la pile : En effet, si $x$ est déjà présente dans la pile et est associée à $y'$, on veux que $y \neq y'$. Pour ce faire, on inclut dans le nom de la variable l'information de son numéro dans la pile. Cela nous assure que pour deux couples distincts $(x,y)$ et $(x,y')$ dans la pile, $y \neq y'$.\\
+\\
+Mais il faut également faire attention à ce que si $x \neq x'$ et que les couples $(x,y)$ et $(x',y')$ sont dans la pile, alors on a toujours $y \neq y'$ (c'est la moindre des choses pour éviter les captures de variables).\\
+\\
+Voici la méthode que l'on utilise pour le renommage : 
+
+\begin{itemize}
+	\item Si la variable $x$ est définie dans le code source, et que aucun couple $(x,y)$ n'est déjà présent dans la pile, alors on ajoute $(x,x \cdot x \cdot 0)$ au sommet de la pile, où $\cdot$ représente la concaténation des noms de variables.
+	\item Si au contraire, un couple $(x,y)$ est déjà présent, et que $y$ "porte" le numéro $n$\footnote{$(x,x)$ porte le numéro 0...}, on ajoutera $(x, x \cdot x \cdot\ent{n+1})$ au sommet de la pile, où $\ent{n}$ est l'écriture en base 10 de $n$.\\
+\end{itemize}
+
+\noindent Il est trivial de constater que si $(x, y)$ et $(x, y')$ sont deux couples distincts de la pile, alors $y \neq y'$.\\
+D'autre part, si $(x,y)$ et $(x', y')$ sont deux couples distincts de la pile avec $x \neq x'$, alors montrons que $ y \neq y'$. On raisonne sur la taille $\abs{ \bullet }$ de $y$ et $y'$ et on suppose que $x \cdot x \cdot \ent{n} = x' \cdot x' \cdot \ent{n'}$. Supposons, par symétrie, que $\abs{x} \leqslant \abs{x'}$. Donc on peut dire que $x' = x \cdot u$. L'égalité devient alors
+
+$$ x \cdot \ent{n} = u \cdot x \cdot u \cdot \ent{n'} $$
+
+\noindent Soit $a$ la première lettre de $x = a \cdot z$. On a donc l'égalité 
+
+$$ a \cdot z \cdot \ent{n} = u \cdot a \cdot z \cdot u \cdot \ent{n'}.$$
+
+\noindent Si $u = \varepsilon$, on a fini car alors $x = x'$. Sinon, $u$ commence par $a$. Or, selon la dernière équation, on sait que $u$ est un sous-mots de $\ent{n} \in \{0, ..., 9\}^*$. Donc $a \in \{0, ..., 9\}$, ce qui est impossible car $x$ est un nom de variable et ne peut par conséquent pas commencé par un chiffre. CQFD.
+
+
+
+
+
+
+
+
+\end{document}

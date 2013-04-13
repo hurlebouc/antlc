@@ -1,1 +1,10 @@
 /Turing/build/
+*.aux
+*.dvi
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.gz
+*.toc

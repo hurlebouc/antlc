@@ -1,18 +1,18 @@
 input(int x){
-   int z;
-   z := 0;
+   int zz0;
+   zz0 := 0;
    while(x) {
-      int t;
-      t := head(x);
-      if(t = zero(0)) {
-         z := zero(z);
+      int tt0;
+      tt0 := head(x);
+      if(tt0 = zero(0)) {
+         zz0 := zero(zz0);
       };
-      if(t = un(0)) {
-         z := un(z);
+      if(tt0 = un(0)) {
+         zz0 := un(zz0);
       };
       x := last(x);
    };
-   string t;
-   t := 9;
-   return z;
+   string tt0;
+   tt0 := 9;
+   return zz0;
 }

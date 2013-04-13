@@ -6,13 +6,10 @@ package AST.instruction;
 
 import AST.Environment;
 import AST.Instruction;
-import AST.TypingException;
 import AST.UnboundTypeException;
 import AST.type.Type;
 import AST.UnboundVariableException;
 import AST.expression.Variable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import toolbox.base.Couple;
 import toolbox.base.Fun;
 import toolbox.usage.ICouple;
@@ -87,14 +84,14 @@ public class VarDeclaration extends Instruction {
         try {
             ICouple<Variable, Variable> last = List.search(p, varMap);
             int index = last.getIndex();
-            Variable renommage = Variable.newVariable(var.getName() + (index + 1));
+            Variable renommage = Variable.newVariable(var.getName() + var.getName() + (index + 1));
             varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, index + 1), varMap);
         } catch (NotFoundException ex) {
-//            Variable renommage = Variable.newVariable(var.getName() + 0);
-//            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, 0), varMap);
-            varMap = List.cons(new ICouple<Variable, Variable>(var, var, 0), varMap);
-            // On ne change pas le nom des premières variables : la fonction alors 
-            // d'alpha renommage admet un point fixe
+            Variable renommage = Variable.newVariable(var.getName() + var.getName() + 0);
+            varMap = List.cons(new ICouple<Variable, Variable>(var, renommage, 0), varMap);
+//            varMap = List.cons(new ICouple<Variable, Variable>(var, var, 0), varMap);
+            // On duplique le nom de la variable pour la correction de l'algorithme 
+            // de renommage.
         }
 
         Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> newAlphaMap = new Couple(varMap, typeMap);
