@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/WHILE.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/TypeDeclaration.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/VarDeclaration.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/Program.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/test/turing/TuringTest.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/toolbox/base/List.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/Arguments.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/Environment.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/Instructions.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/IF.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/RETURN.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/AST/instruction/Stop.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/toolbox/pack/RenamingPack.java</file>
+        <file>file:/Users/hubert/Dropbox/projects/antlc/Turing/src/toolbox/io/IO.java</file>
+    </open-files>
+</project-private>

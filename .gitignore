@@ -10,3 +10,5 @@
 *.toc
 /Turing/dist/
 output
+/ANTLC/nbproject/private/
+/ANTLC/build/

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package turing;
+package test;
 
 import AST.DuplicatedNameException;
 import parser.turingParser;
@@ -18,7 +18,9 @@ import toolbox.io.IO;
  *
  * @author hubert
  */
-public class Turing {
+
+@Deprecated
+public class Test {
 
     /**
      * @param args the command line arguments
