@@ -45,7 +45,7 @@ public class Stop extends Instruction {
 
     @Override
     public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) {
-        RenamingPack<Instruction> res = new RenamingPack(new Stop(), alphaMap);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(new Stop(), alphaMap);
         return res;
     }
 

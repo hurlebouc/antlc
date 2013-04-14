@@ -67,21 +67,21 @@ public class List<T> {
             return 1 + length(list.tail);
         }
     }
-    
-    /*
-     * -------------------------------------------------------------------------
-     */
-
-    Integer truc(List<Integer> t) {
-        return t.head;
-    }
-
-    void bidule() {
-        List<String> truc = List.empty();
-        List machin = new List<String>("", truc);
-        /*
-         * Je ne comprends pas pourquoi Java accepte de typer ça...
-         */
-        truc(machin);
-    }
+//    
+//    /*
+//     * -------------------------------------------------------------------------
+//     */
+//
+//    Integer truc(List<Integer> t) {
+//        return t.head;
+//    }
+//
+//    void bidule() {
+//        List<String> truc = List.empty();
+//        List machin = new List<String>("", truc);
+//        /*
+//         * Je ne comprends pas pourquoi Java accepte de typer ça...
+//         */
+//        truc(machin);
+//    }
 }

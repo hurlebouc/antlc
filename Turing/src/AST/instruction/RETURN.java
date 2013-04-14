@@ -60,7 +60,7 @@ public class RETURN extends Instruction {
     @Override
     public RenamingPack<Instruction> alphaRename(Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap) throws UnboundVariableException {
         Expression alphaExpression = output.alphaRename(alphaMap);
-        RenamingPack<Instruction> res = new RenamingPack(new RETURN(alphaExpression), alphaMap);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(new RETURN(alphaExpression), alphaMap);
         return res;
     }
 

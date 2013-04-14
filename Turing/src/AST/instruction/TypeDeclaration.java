@@ -28,6 +28,10 @@ public class TypeDeclaration extends Instruction {
         this.type = Type.newType(typeName);
     }
 
+    private TypeDeclaration(Type alphaType) {
+        this.type = alphaType;
+    }
+
     @Override
     public String toAsm() {
         return "";
@@ -78,7 +82,8 @@ public class TypeDeclaration extends Instruction {
         }
         
         Type alphaType = type.alphaRename(alphaMap);
-        RenamingPack<Instruction> res = new RenamingPack(alphaType, new Couple(varMap, typeMap));
+        Instruction alphaInstr = new TypeDeclaration(alphaType);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(alphaInstr, new Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>>(varMap, typeMap));
         
         return res;
     }

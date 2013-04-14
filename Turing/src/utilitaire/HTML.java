@@ -26,7 +26,7 @@ public class HTML {
     	String result = "<TABLE BORDER>";
     	result += "<TR>";
     	result += "<TD> Fonction </TD>";
-    	result += "<TD> Trouvé </TD>";
+    	result += "<TD> Trouv√© </TD>";
     	result += "<TD> Tentatives </TD>";
     	result += "<TD> Temps de calcul </TD>";
     	result += "<TD> QI </TD>";

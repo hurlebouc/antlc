@@ -104,7 +104,7 @@ public class Point extends Point2D.Double{
 		return x*x+y*y;
 	}
 	
-	public boolean egal(Point autre){//on pourrait faire l'galit stricte, mais je prend un peu de marge
+	public boolean egal(Point autre){//on pourrait faire l'Ã©galitÃ© stricte, mais je prend un peu de marge
 		return (Math.abs(this.x - autre.x) + Math.abs(this.y - autre.y)) < epsilon;
 	}
 	

@@ -1,16 +1,16 @@
-input(int x){
+input(int xx0){
    int zz0;
    zz0 := 0;
-   while(x) {
+   while(xx0) {
       int tt0;
-      tt0 := head(x);
+      tt0 := head(xx0);
       if(tt0 = zero(0)) {
          zz0 := zero(zz0);
       };
       if(tt0 = un(0)) {
          zz0 := un(zz0);
       };
-      x := last(x);
+      xx0 := last(xx0);
    };
    string tt0;
    tt0 := 9;

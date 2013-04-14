@@ -94,12 +94,12 @@ public class VarDeclaration extends Instruction {
             // de renommage.
         }
 
-        Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> newAlphaMap = new Couple(varMap, typeMap);
+        Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> newAlphaMap = new Couple<List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>>(varMap, typeMap);
 
         Type alphaType = type.alphaRename(newAlphaMap);
         Variable alphaVar = (Variable) var.alphaRename(newAlphaMap);
 
-        RenamingPack<Instruction> res = new RenamingPack(new VarDeclaration(alphaVar, alphaType), newAlphaMap);
+        RenamingPack<Instruction> res = new RenamingPack<Instruction>(new VarDeclaration(alphaVar, alphaType), newAlphaMap);
 
         return res;
     }

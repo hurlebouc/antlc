@@ -92,7 +92,7 @@ public class IF extends Instruction {
         RenamingPack<Instructions> PackListInstr = li.alphaRename(alphaMap);
         
         Instruction alphaIF = new IF(alphaExpr1, alphaExpr2, PackListInstr.getRenamed());
-        return new RenamingPack(alphaIF, alphaMap); // après le if, le alpha est le même qu'au début
+        return new RenamingPack<Instruction>(alphaIF, alphaMap); // après le if, le alpha est le même qu'au début
     }
 
     @Override

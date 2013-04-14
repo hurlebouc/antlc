@@ -8,9 +8,10 @@ package AST;
  *
  * @author hubert
  */
-public class TypingException extends Exception {
+public class DuplicatedNameException extends Exception {
 
-    public TypingException(String s) {
-        super(s);
+    public DuplicatedNameException(String string) {
+        super(string);
     }
+    
 }

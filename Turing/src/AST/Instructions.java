@@ -53,7 +53,7 @@ public class Instructions extends LinkedList<Instruction>{
             alphaMap = packInstr.getAlphaMap();
             alphaInstr.addLast(packInstr.getRenamed());
         }
-        RenamingPack<Instructions> res = new RenamingPack(alphaInstr, alphaMap);
+        RenamingPack<Instructions> res = new RenamingPack<Instructions>(alphaInstr, alphaMap);
         return res;
     }
     

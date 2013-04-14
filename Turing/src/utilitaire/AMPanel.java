@@ -204,7 +204,7 @@ class AMPanel extends JPanel {
 	private void showTexte(AMText duTexte, Graphics2D g2) {
 		AffineTransform copie = g2.getTransform();
 		//on recupere le lieu ou l'on doit ecrire le texte
-		//dans notre repere de coordonnées
+		//dans notre repere de coordonn√©es
 		Point2D p = copie.transform(new Point2D.Double(duTexte.position.x,
 				duTexte.position.y), null);
 		AffineTransform af = new AffineTransform();

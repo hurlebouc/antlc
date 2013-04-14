@@ -101,7 +101,7 @@ public class ArdoiseMagique extends JApplet
     
     public static void dessinerPoints(double x[], double y[])
     {
-  dessinerPoints(x,y,0,0,0,0);//par défaut en noir
+  dessinerPoints(x,y,0,0,0,0);//par d√©faut en noir
   }
 
     public static void dessinerPoints(double x[], double y[], int R, int G, int B)

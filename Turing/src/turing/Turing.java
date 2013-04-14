@@ -4,9 +4,11 @@
  */
 package turing;
 
+import AST.DuplicatedNameException;
 import parser.turingParser;
 import parser.turingLexer;
 import AST.Program;
+import AST.TypingException;
 import AST.UnboundTypeException;
 import AST.UnboundVariableException;
 import org.antlr.runtime.*;
@@ -20,7 +22,7 @@ public class Turing {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws RecognitionException, UnboundTypeException, UnboundVariableException {
+    public static void main(String[] args) throws RecognitionException, UnboundTypeException, UnboundVariableException, TypingException, DuplicatedNameException {
 //        String s = "last(0(x11))";
 //        String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
         String src = utilitaire.Utilitaire.lireFichier("addition.while");

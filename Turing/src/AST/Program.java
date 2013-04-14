@@ -79,12 +79,13 @@ public class Program {
         instr.typeCheck(env);
     }
 
-    public Program alphaRename() throws UnboundTypeException, UnboundVariableException {
+    public Program alphaRename() throws UnboundTypeException, UnboundVariableException, DuplicatedNameException {
         Couple< List<ICouple<Variable, Variable>>, List<ICouple<Type, Type>>> alphaMap;
         alphaMap = Type.getBuiltInAlphaMap();
-        alphaMap = arg.alphaRename(alphaMap);
+        RenamingPack<Arguments> packedAlphaArg= Arguments.alphaRename(alphaMap, arg);
+        alphaMap = packedAlphaArg.getAlphaMap();
         RenamingPack<Instructions> PackedAlphaInstr = instr.alphaRename(alphaMap);
-        Arguments alphaArg = arg; // CHANGER ICI !!!!!!!!!
+        Arguments alphaArg = packedAlphaArg.getRenamed(); // CHANGER ICI !!!!!!!!!
         Instructions alphaInstr = PackedAlphaInstr.getRenamed();
         return new Program(alphaArg, alphaInstr);
     }

@@ -8,3 +8,5 @@
 *.snm
 *.gz
 *.toc
+/Turing/dist/
+output

@@ -64,6 +64,7 @@
  
  arguments returns [Arguments result]
  	:	type=ID n=ID 								{$result = Arguments.addCouple($n.text, $type.text, Arguments.empty());}
+ 		|									{$result = Arguments.empty();}
  		|type=ID n=ID ',' arg=arguments						{$result = Arguments.addCouple($n.text, $type.text, $arg.result);}
  	;
  

@@ -2,9 +2,9 @@ extern printf,exit
 section .data
 out:	db "%d",0xa,0x0	
 
-z0: 	 dd 0
-t0: 	 dd 0
-x: 	 dd 0
+zz0: 	 dd 0
+tt0: 	 dd 0
+xx0: 	 dd 0
 
 
 section .text
@@ -40,49 +40,49 @@ main:
 
 	mov	eax, [ebx+4]
 	call	atoi
-	mov	[x], eax
+	mov	[xx0], eax
 
 
 
 	mov	eax, 0
-	mov	[Variable[z0]], eax
+	mov	[Variable[zz0]], eax
 beginwhile1:
-	mov	eax, [x]
+	mov	eax, [xx0]
 	cmp	eax, 0
 	je	endwhile1
-	mov	eax, [x]
+	mov	eax, [xx0]
 	and	eax, 1
-	mov	[Variable[t0]], eax
-	mov	eax, [t0]
+	mov	[Variable[tt0]], eax
+	mov	eax, [tt0]
 	mov	ebx, eax
 	mov	eax, 0
 	shl	 eax, 1
 	cmp	eax, ebx
 	jne	endif2
-	mov	eax, [z0]
+	mov	eax, [zz0]
 	shl	 eax, 1
-	mov	[Variable[z0]], eax
+	mov	[Variable[zz0]], eax
 endif2:
-	mov	eax, [t0]
+	mov	eax, [tt0]
 	mov	ebx, eax
 	mov	eax, 0
 	shl	 eax, 1
 	inc	eax
 	cmp	eax, ebx
 	jne	endif3
-	mov	eax, [z0]
+	mov	eax, [zz0]
 	shl	 eax, 1
 	inc	eax
-	mov	[Variable[z0]], eax
+	mov	[Variable[zz0]], eax
 endif3:
-	mov	eax, [x]
+	mov	eax, [xx0]
 	shr	eax, 1
-	mov	[Variable[x]], eax
+	mov	[Variable[xx0]], eax
 	jmp	beginwhile1
 endwhile1:
 	mov	eax, 9
-	mov	[Variable[t0]], eax
-	mov	eax, [z0]
+	mov	[Variable[tt0]], eax
+	mov	eax, [zz0]
 	jmp	endprog
 
 
