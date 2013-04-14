@@ -12,6 +12,7 @@ import AST.TypingException;
 import AST.UnboundTypeException;
 import AST.UnboundVariableException;
 import org.antlr.runtime.*;
+import toolbox.io.IO;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Turing {
     public static void main(String[] args) throws RecognitionException, UnboundTypeException, UnboundVariableException, TypingException, DuplicatedNameException {
 //        String s = "last(0(x11))";
 //        String prog = "input( a,b,c){a:=r;while(gh){hf:=e;stop;};return b}";
-        String src = utilitaire.Utilitaire.lireFichier("addition.while");
+        String src = IO.lireFichier("addition.while");
         
         CharStream stream = new ANTLRStringStream(src);
         turingLexer lexer = new turingLexer(stream);
@@ -40,7 +41,7 @@ public class Turing {
         prog.typeCheck();
         System.out.println("Compile :\n=========");
         String asm = prog.toASM();
-        utilitaire.Utilitaire.ecrireFichier("res.asm", asm);
+        IO.ecrireFichier("res.asm", asm);
     }
 
 }

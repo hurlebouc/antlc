@@ -17,6 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import parser.turingLexer;
 import parser.turingParser;
+import toolbox.io.IO;
 
 /**
  *
@@ -44,7 +45,7 @@ public class TuringTest {
     }
     
     Program initAST(String path) throws RecognitionException{
-        String src = utilitaire.Utilitaire.lireFichier(path);
+        String src = IO.lireFichier(path);
         CharStream stream = new ANTLRStringStream(src);
         turingLexer lexer = new turingLexer(stream);
         TokenStream tokenstream = new CommonTokenStream(lexer);
@@ -60,7 +61,7 @@ public class TuringTest {
         System.out.println("test alpha renommage");
         Program prog = initAST("test/turing/src_test/addition.while");
         String got = prog.alphaRename().prettyPrint();
-        String verif = utilitaire.Utilitaire.lireFichier("test/turing/verif_test/addition_verif.while");
+        String verif = IO.lireFichier("test/turing/verif_test/addition_verif.while");
         assert(got.equals(verif));
     }
 }

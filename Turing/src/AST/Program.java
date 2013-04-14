@@ -10,8 +10,8 @@ import java.util.LinkedList;
 import toolbox.base.Couple;
 import toolbox.usage.ICouple;
 import toolbox.base.List;
+import toolbox.io.IO;
 import toolbox.pack.RenamingPack;
-import utilitaire.Utilitaire;
 
 /**
  *
@@ -33,7 +33,7 @@ public class Program {
     }
 
     public String toASM() {
-        String asm = Utilitaire.lireFichier("src/AST/corps.asm");
+        String asm = IO.lireFichier("src/AST/corps.asm");
         String var = new String();
         LinkedList<Variable> VarList = fetchVar();
         for (Variable v : VarList) {
