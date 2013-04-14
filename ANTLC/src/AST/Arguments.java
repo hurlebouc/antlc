@@ -30,7 +30,8 @@ public class Arguments extends List<Couple<Variable, Type>> {
         super(couple, arg);
     }
     
-    public static Arguments empty(){return null;};
+//    public static Arguments empty(){return null;};
+    final public static Arguments empty = null;
     
 
     public static Arguments addCouple(String varName, String typeName, Arguments arg) {

@@ -1,4 +1,4 @@
-// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antlc/turing.g 2013-04-14 18:53:24
+// $ANTLR 3.5 /Users/hubert/Dropbox/projects/antlc/turing.g 2013-04-14 20:42:55
 
   package parser;
   import AST.*;
@@ -595,13 +595,13 @@ public class turingParser extends Parser {
 					{
 					type=(Token)match(input,ID,FOLLOW_ID_in_arguments658); 
 					n=(Token)match(input,ID,FOLLOW_ID_in_arguments662); 
-					result = Arguments.addCouple((n!=null?n.getText():null), (type!=null?type.getText():null), Arguments.empty());
+					result = Arguments.addCouple((n!=null?n.getText():null), (type!=null?type.getText():null), Arguments.empty);
 					}
 					break;
 				case 2 :
 					// /Users/hubert/Dropbox/projects/antlc/turing.g:67:14: 
 					{
-					result = Arguments.empty();
+					result = Arguments.empty;
 					}
 					break;
 				case 3 :
